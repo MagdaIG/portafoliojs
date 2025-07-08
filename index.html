@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magdalena Inalaf | Bootcamp Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- AOS Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Custom CSS-->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">Magdalena Inalaf</a>
+  </div>
+</nav>
+
+<!-- Sobre mí -->
+<section class="container my-5">
+  <div class="card-purple d-flex flex-wrap align-items-center justify-content-between gap-4 p-4">
+    <div class="about-img">
+      <img src="assets/img/profile.jpeg" alt="Magdalena Inalaf" class="img-fluid shadow-sm" />
+    </div>
+    <div class="about-text">
+      <h2 class="text-purple">About Me</h2>
+      <p>
+        I'm Magdalena, a Chilean fullstack developer and analyst programmer with a background in pedagogy. I transitioned into tech through intensive bootcamps and certifications, including a recent program in <strong>Cybersecurity Management and Control Fundamentals</strong> at USACH.
+      </p>
+      <p>
+        I specialize in frontend and backend development, creating responsive, user-centered applications using modern JavaScript technologies. My academic path also includes UX/UI, Agile Methodologies, and Fullstack JavaScript development.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Intención del portafolio -->
+<section class="container d-flex flex-wrap align-items-center justify-content-between gap-4 my-5">
+  <div class="purpose-text p-4 rounded shadow-sm" data-aos="fade-right">
+    <h2 class="mb-4 text-purple"> Purpose of this Portfolio</h2>
+    <p>
+      This portfolio was created during my JavaScript Bootcamp to document my technical growth.
+      From learning the foundations of HTML and CSS, I progressed into creating dynamic applications with JavaScript, jQuery, and Bootstrap.
+    </p>
+    <p>
+      Here I showcase classwork, mini-projects, and hands-on exercises that reflect the skills I’ve developed and my passion for continuous learning.
+    </p>
+  </div>
+
+  <div class="purpose-img" data-aos="fade-left">
+    <img src="assets/img/purpose.png" alt="Portfolio Purpose" class="img-fluid rounded custom-purpose-img">
+  </div>
+</section>
+
+<!-- Proyectos del Bootcamp -->
+<section class="container my-5">
+  <h2 class="text-purple text-center mb-5">Bootcamp Projects</h2>
+  <p class="text-center mb-4">
+    In this section, you'll find all the projects I created during the JavaScript Bootcamp. We'll take a closer look at each one, exploring how they were built, what technologies were used, and what functionality they include. Each project reflects a specific learning milestone, combining code, design, and interactivity.
+  </p>
+
+  <!-- CineFlash -->
+  <div class="bootcamp-project">
+    <div class="bootcamp-info">
+      <h4>CineFlash</h4>
+      <p>Movie booking simulation using jQuery and Bootstrap. Form validation and modal confirmation.</p>
+
+      <p><strong>What this code does:</strong></p>
+      <ul>
+        <li>Captures the selected movie from a button using <code>data-pelicula</code>.</li>
+        <li>Fills the modal input with the movie name and shows the reservation modal.</li>
+        <li>When the form is submitted, the name is transferred to a second modal and confirmed.</li>
+        <li>Resets the form and displays a confirmation after 0.5s.</li>
+      </ul>
+
+      <div class="bootcamp-card p-3 rounded shadow-sm mt-4">
+        <h6 class="fw-bold mb-2">Technologies & Concepts Used</h6>
+        <ul class="mb-3">
+          <li><strong>jQuery:</strong> To simplify DOM manipulation and handle events.</li>
+          <li><strong>Bootstrap:</strong> For modals, buttons, and responsive layout.</li>
+          <li><strong>JavaScript:</strong> To control modal flow and form behavior.</li>
+        </ul>
+
+        <h6 class="fw-bold mb-2">Functionality</h6>
+        <p class="mb-2">This mini app allows users to select a movie, fill in a form, and receive a confirmation. All done interactively with modals.</p>
+
+        <h6 class="fw-bold mb-2">Why it's useful</h6>
+        <p class="mb-0">It teaches how to combine JavaScript logic with Bootstrap UI elements to build interactive, user-friendly features like real reservation systems.</p>
+      </div>
+
+      <a href="https://magdaig.github.io/cineflash-reservas/" class="project-link mt-3 d-inline-block">View CineFlash →</a>
+    </div>
+    <div class="bootcamp-code">
+      <img src="assets/img/cineflash-snippet.png" alt="CineFlash JavaScript code" class="img-fluid" />
+    </div>
+  </div>
+
+  <!-- LibroLibre -->
+  <div class="bootcamp-project">
+    <div class="bootcamp-info">
+      <h4>LibroLibre</h4>
+      <p>A digital library built with HTML, CSS, JS & Bootstrap. Searchable by title, author, or genre.</p>
+
+      <p><strong>What this code does:</strong></p>
+      <ul>
+        <li>Checks if there are filtered books. If none, displays a message.</li>
+        <li>If there are results, creates a Bootstrap card dynamically for each book.</li>
+        <li>Displays book image, title, author, genre, and synopsis.</li>
+        <li>Includes buttons for “Read”, “Favorite” and “Loan” with icons.</li>
+      </ul>
+
+      <div class="bootcamp-card p-3 rounded shadow-sm mt-4">
+        <h6 class="fw-bold mb-2">Technologies & Concepts Used</h6>
+        <ul class="mb-3">
+          <li><strong>HTML/CSS:</strong> To structure and style the layout and content.</li>
+          <li><strong>JavaScript:</strong> To dynamically display books and handle user interactions.</li>
+          <li><strong>Bootstrap:</strong> For responsive layout and styled components like cards and buttons.</li>
+        </ul>
+
+        <h6 class="fw-bold mb-2">Functionality</h6>
+        <p class="mb-2">Users can search for books, mark them as favorites, open to read more, or request a loan—all in a responsive and dynamic interface.</p>
+
+        <h6 class="fw-bold mb-2">Why it's useful</h6>
+        <p class="mb-0">It demonstrates how to use JavaScript for rendering filtered data and enhancing interactivity in a user interface.</p>
+      </div>
+
+      <a href="https://magdaig.github.io/libros-catalogo-web/" class="project-link mt-3 d-inline-block">Explore LibroLibre →</a>
+    </div>
+    <div class="bootcamp-code">
+      <img src="assets/img/librolibre-snippet.png" alt="LibroLibre code snippet" class="img-fluid" />
+    </div>
+  </div>
+</section>
+
+<!-- What I’ve Learned in JavaScript -->
+<section class="container my-5">
+    <h2 class="text-purple text-center mb-4">What I’ve Learned in JavaScript</h2>
+    <p class="text-center mb-5">
+      A summary of everything I’ve learned so far in JavaScript throughout this bootcamp — from DOM manipulation to working with Bootstrap and jQuery to build interactive projects.
+    </p>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up">
+        <h5 class="fw-bold mb-3">DOM Manipulation</h5>
+        <p>Learned how to access and modify HTML elements using JavaScript and jQuery. For example, dynamically updating book cards or setting form values.</p>
+        <pre><code class="typed-code">document.getElementById("title").textContent = "Updated!"</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="100">
+        <h5 class="fw-bold mb-3">Event Handling</h5>
+        <p>Used event listeners to detect user actions such as clicks and form submissions, like reserving a movie in CineFlash.</p>
+        <pre><code class="typed-code">$('.btn').click(() => alert("Clicked!"))</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="200">
+        <h5 class="fw-bold mb-3">Data Attributes</h5>
+        <p>Captured custom values from HTML using <code>data-*</code> attributes to pre-fill forms or track user selections.</p>
+        <pre><code class="typed-code">const peli = $(this).data('pelicula')</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="300">
+        <h5 class="fw-bold mb-3">Form Validation</h5>
+        <p>Validated forms manually before submitting or updating the interface, such as checking if all fields were filled correctly.</p>
+        <pre><code class="typed-code">if (input.value.trim() === "") alert("Required!")</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="400">
+        <h5 class="fw-bold mb-3">Bootstrap + JS Integration</h5>
+        <p>Used Bootstrap modals and dynamically controlled their visibility with JavaScript to simulate app flows.</p>
+        <pre><code class="typed-code">const modal = new bootstrap.Modal(...)</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="500">
+        <h5 class="fw-bold mb-3">Dynamic Feedback</h5>
+        <p>Applied <code>setTimeout</code> for timing effects like showing confirmation messages or transitions after user actions.</p>
+        <pre><code class="typed-code">setTimeout(() => modal.show(), 500)</code></pre>
+      </div>
+    </div>
+  </div>
+
+<!-- Máquina del tiempo -->
+<section class="container my-5">
+  <h2 class="text-purple text-center mb-5">My Web Journey</h2>
+
+  <div class="row g-4">
+    <!-- Proyecto 2023 -->
+    <div class="col-md-4">
+      <div class="journey-card">
+        <img src="assets/img/journey/htmlcss.png" alt="HTML/CSS Portfolio" class="img-fluid mb-3 rounded">
+        <h5>2023 – First Portfolio in HTML/CSS</h5>
+        <p>Created my first static portfolio focused on handmade products using HTML, CSS and a bit of JavaScript.</p>
+        <a href="https://magdaig.github.io/portafolio-MIG/" target="_blank" class="project-link">View project →</a>
+      </div>
+    </div>
+
+    <!-- Proyecto 2024 -->
+    <div class="col-md-4">
+      <div class="journey-card">
+        <img src="assets/img/journey/vue.png" alt="Vue Portfolio" class="img-fluid mb-3 rounded">
+        <h5>2024 – Vue Portfolio</h5>
+        <p>Developed a more dynamic and modular portfolio using Vue.js. Practiced component-based architecture and routing.</p>
+        <a href="https://magdaig.github.io/Portafolio-vue/" target="_blank" class="project-link">View Vue portfolio →</a>
+      </div>
+    </div>
+
+    <!-- Proyecto 2025 -->
+    <div class="col-md-4">
+      <div class="journey-card">
+        <img src="assets/img/journey/next.png" alt="Next.js Portfolio" class="img-fluid mb-3 rounded">
+        <h5>2025 – Current Portfolio with Next.js</h5>
+        <p>This portfolio is the result of my JavaScript Bootcamp journey. Built with Next.js, responsive and dynamic.</p>
+        <a href="https://inalaf.ca/" target="_blank" class="project-link">Visit inalaf.ca →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container my-5">
+  <h2 class="text-purple text-center mb-4"> Connect with Me</h2>
+  <div class="text-center">
+    <a href="https://github.com/MagdaIG" target="_blank" class="btn btn-outline-dark m-2">GitHub</a>
+    <a href="https://github.com/MagdaIG?tab=repositories" target="_blank" class="btn btn-outline-dark m-2">Repositories</a>
+    <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="btn btn-outline-dark m-2">LinkedIn</a>
+    <a href="assets/pdf/CV_Magda_English.pdf" download class="btn btn-dark m-2">Download CV</a>
+  </div>
+</section>
+
+  <!-- Contact Form -->
+  <form class="contact-form p-4 shadow-sm rounded mx-auto" style="max-width: 600px;" id="contactForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-dark w-100">Send</button>
+    </form>
+  </section>
+
+  <!-- Feedback Modal -->
+  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="feedbackModalLabel">Submission Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center" id="feedbackModalBody">
+          <!-- JS inserts message here -->
+        </div>
+        <div class="modal-footer border-0 justify-content-center">
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<footer>
+  &copy; 2025 Magdalena Inalaf. All rights reserved.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
