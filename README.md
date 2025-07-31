@@ -102,6 +102,50 @@ portafoliojs/
 - Control de versiones en GitHub
 
 ---
+---
+
+## Funcionalidad: To-Do List + Roadmap
+
+La sección interactiva de "Bootcamp Task Tracker" fue desarrollada en JavaScript puro y permite:
+
+### To-Do List
+- Agregar nuevas tareas de aprendizaje.
+- Marcar tareas como completadas (con tachado visual).
+- Eliminar tareas individualmente.
+- Contador dinámico de tareas pendientes.
+- Entrada rápida de tareas presionando Enter.
+- Visualización del día actual.
+- Diseño responsivo con Bootstrap.
+
+### Roadmap de Aprendizaje
+- Añadir hitos del bootcamp.
+- Cambiar el estado de cada hito entre pendiente/completado.
+- Progreso visual mediante una barra de avance.
+- Íconos dinámicos que cambian según el estado.
+- Diseño completamente responsivo y accesible.
+
+Estas funcionalidades reflejan el uso de **estructuras de datos como arrays**, **objetos**, **eventos**, **DOM**, y **condicionales** en el manejo del estado de las tareas.
+
+---
+
+## Fundamentos de JavaScript aplicados en este portafolio
+
+Este portafolio demuestra el uso de **JavaScript** como lenguaje clave para la creación de aplicaciones web dinámicas e interactivas. A continuación, se detallan los fundamentos aplicados:
+
+### ¿Qué es JavaScript?
+JavaScript es un lenguaje de programación interpretado que se ejecuta en el navegador. Permite manipular el contenido del sitio web en tiempo real, responder a acciones del usuario y modificar el DOM sin necesidad de recargar la página.
+
+### ¿Por qué usar JavaScript en aplicaciones web?
+- Permite crear experiencias interactivas sin depender solo del backend.
+- Hace posible la validación en tiempo real de formularios.
+- Mejora la experiencia del usuario con animaciones, modales, listas dinámicas, entre otros.
+
+### Funcionalidades implementadas gracias a JavaScript:
+- Sección de **To-Do List**: permite agregar, tachar, eliminar tareas y contar cuántas hay.
+- Sección **Roadmap**: registra hitos de aprendizaje y visualiza progreso con una barra dinámica.
+- Modales, formularios y animaciones con jQuery y Bootstrap.
+- Manipulación del DOM, uso de eventos, funciones, arrays, condicionales y objetos como `Date`.
+
 
 ##  Autora
 

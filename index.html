@@ -4,15 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Magdalena Inalaf | Bootcamp Portfolio</title>
-
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- AOS Animation CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <!-- Custom CSS-->
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -232,51 +228,131 @@
   </div>
 </section>
 
-<section class="container my-5">
-  <h2 class="text-purple text-center mb-4"> Connect with Me</h2>
-  <div class="text-center">
-    <a href="https://github.com/MagdaIG" target="_blank" class="btn btn-outline-dark m-2">GitHub</a>
-    <a href="https://github.com/MagdaIG?tab=repositories" target="_blank" class="btn btn-outline-dark m-2">Repositories</a>
-    <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="btn btn-outline-dark m-2">LinkedIn</a>
-    <a href="assets/pdf/CV_Magda_English.pdf" download class="btn btn-dark m-2">Download CV</a>
-  </div>
-</section>
+  <section class="contact-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold text-purple">Connect with Me</h2>
+      <div class="text-center mb-4">
+        <a href="https://github.com/MagdaIG" target="_blank" class="btn btn-outline-dark m-2">GitHub</a>
+        <a href="https://github.com/MagdaIG?tab=repositories" target="_blank" class="btn btn-outline-dark m-2">Repositories</a>
+        <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="btn btn-outline-dark m-2">LinkedIn</a>
+        <a href="assets/pdf/CV_Magda_English.pdf" download class="btn btn-dark m-2">Download CV</a>
+      </div>
 
-  <!-- Contact Form -->
-  <form class="contact-form p-4 shadow-sm rounded mx-auto" style="max-width: 600px;" id="contactForm">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" required />
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" required />
-      </div>
-      <div class="mb-3">
-        <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-dark w-100">Send</button>
-    </form>
+      <!-- Contact Form -->
+      <form class="contact-form p-4 shadow-lg rounded mx-auto" style="max-width: 600px;" id="contactForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-purple w-100">Send</button>
+      </form>
+    </div>
   </section>
+<!-- To-Do List + Roadmap Section -->
+<section class="container my-5" id="portfolio-tasks">
+  <div class="row g-4">
 
-  <!-- Feedback Modal -->
-  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header border-0">
-          <h5 class="modal-title" id="feedbackModalLabel">Submission Status</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- To-Do List -->
+    <div class="col-lg-6">
+      <div class="card shadow border-0 h-100">
+        <div class="card-header bg-morado text-white">
+          <h5 class="mb-1"><i class="bi bi-list-task me-2"></i> Bootcamp Task Tracker</h5>
+          <small class="text-white-50">Track daily tasks & progress</small>
         </div>
-        <div class="modal-body text-center" id="feedbackModalBody">
-          <!-- JS inserts message here -->
-        </div>
-        <div class="modal-footer border-0 justify-content-center">
-          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <input type="text" id="taskInput" class="form-control" placeholder="Enter new task">
+            <button class="btn btn-dark" id="addTaskBtn"><i class="bi bi-plus-lg"></i></button>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <small id="taskCounter">3 tasks</small>
+            <small id="currentDate">31/7/2025</small>
+          </div>
+          <ul id="taskList" class="list-group list-group-flush">
+            <!-- Completed task -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input class="form-check-input task-checkbox" type="checkbox" id="task-1" checked>
+                <label class="form-check-label text-decoration-line-through text-muted" for="task-1">
+                  Finish HTML portfolio
+                </label>
+              </div>
+              <button class="btn btn-sm btn-outline-danger delete-btn" data-id="1">
+                <i class="bi bi-trash"></i>
+              </button>
+            </li>
+            <!-- Completed task -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input class="form-check-input task-checkbox" type="checkbox" id="task-2" checked>
+                <label class="form-check-label text-decoration-line-through text-muted" for="task-2">
+                  Build CineFlash site
+                </label>
+              </div>
+              <button class="btn btn-sm btn-outline-danger delete-btn" data-id="2">
+                <i class="bi bi-trash"></i>
+              </button>
+            </li>
+            <!-- Pending task -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input class="form-check-input task-checkbox" type="checkbox" id="task-3">
+                <label class="form-check-label" for="task-3">
+                  Add To-Do List to JavaScript Portfolio
+                </label>
+              </div>
+              <button class="btn btn-sm btn-outline-danger delete-btn" data-id="3">
+                <i class="bi bi-trash"></i>
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+
+    <!-- Roadmap -->
+    <div class="col-lg-6">
+      <div class="card shadow border-0 h-100">
+        <div class="card-header bg-negro text-white">
+          <h5 class="mb-1"><i class="bi bi-map me-2"></i> Learning Roadmap</h5>
+          <small class="text-white-50">Track your curriculum milestones</small>
+        </div>
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <input type="text" id="newRoadmapTask" class="form-control" placeholder="Add milestone">
+            <button class="btn btn-dark" id="addRoadmapBtn"><i class="bi bi-plus-lg"></i></button>
+          </div>
+          <div class="progress mb-3" style="height: 8px;">
+            <div id="roadmapProgress" class="progress-bar bg-dark" role="progressbar" style="width: 66%"></div>
+          </div>
+          <ul id="roadmapList" class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>Create portfolio in HTML/CSS</span>
+              <span class="badge bg-success rounded-pill status-toggle" role="button"><i class="bi bi-check"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>Develop CineFlash with Bootstrap & jQuery</span>
+              <span class="badge bg-success rounded-pill status-toggle" role="button"><i class="bi bi-check"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>Implement To-Do List app</span>
+              <span class="badge bg-warning text-dark rounded-pill status-toggle" role="button"><i class="bi bi-clock"></i></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
+</section>
 
 <footer>
   &copy; 2025 Magdalena Inalaf. All rights reserved.

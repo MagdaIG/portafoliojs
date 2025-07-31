@@ -242,15 +242,36 @@ body {
 .bootcamp-card li {
   margin-bottom: 0.5rem;
 }
-.contact-form {
-  background-color: #fefefe;
-  border: 1px solid #ddd;
-  border-radius: 12px;
+.contact-section {
+  background-color: #f8f4fc;
 }
+
+.contact-form {
+  background-color: #fff;
+  border: 1px solid #e2d6f0;
+  border-radius: 16px;
+}
+
 .contact-form .form-control:focus {
   border-color: #a084ca;
   box-shadow: 0 0 0 0.2rem rgba(160, 132, 202, 0.25);
 }
+
+.btn-purple {
+  background-color: #a084ca;
+  color: #fff;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #8e6ec6;
+  color: #fff;
+}
+
+.text-purple {
+  color: #a084ca;
+}
+
 .modal-title {
   color: #a084ca;
   font-weight: bold;
@@ -261,4 +282,117 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem;
+}
+
+/* Task & Roadmap Cards */
+#portfolio-tasks .card {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+#portfolio-tasks .card-header {
+  padding: 1.25rem 1.5rem;
+  background: #6f42c1;
+  color: white;
+}
+
+#portfolio-tasks .card-header.bg-gradient-info {
+  background: #2d2d2d;
+  color: white;
+}
+
+#portfolio-tasks .form-control {
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+#portfolio-tasks .btn {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+#portfolio-tasks .btn-primary {
+  background-color: #6f42c1;
+  border: none;
+}
+
+#portfolio-tasks .btn-info {
+  background-color: #2d2d2d;
+  border: none;
+}
+
+#portfolio-tasks .task-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+#portfolio-tasks .list-group-item {
+  padding: 0.75rem 1.25rem;
+  border-left: none;
+  border-right: none;
+}
+
+#portfolio-tasks .list-group-item:first-child {
+  border-top: none;
+}
+
+#portfolio-tasks .delete-btn {
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+#portfolio-tasks .form-check-label {
+  cursor: pointer;
+  word-break: break-word;
+  padding-right: 1rem;
+}
+
+#roadmapList .badge {
+  transition: all 0.2s ease;
+}
+
+#roadmapList .status-toggle:hover {
+  opacity: 0.9;
+}
+
+/* Custom badges */
+#roadmapList .bg-success {
+  background-color: #6f42c1 !important;
+}
+
+#roadmapList .bg-warning {
+  background-color: #ffc107 !important;
+}
+
+#roadmapList .bg-secondary {
+  background-color: #6c757d !important;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  #portfolio-tasks .col-lg-6 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.bg-morado {
+  background-color: #6f42c1 !important;
+  color: white !important;
+}
+
+.bg-negro {
+  background-color: #2d2d2d !important;
+  color: white !important;
 }
