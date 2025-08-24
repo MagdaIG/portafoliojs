@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Magdalena Inalaf | Bootcamp Portfolio</title>
+  <title>Magdalena Inalaf | Portafolio Bootcamp</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
@@ -12,25 +12,65 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Magdalena Inalaf</a>
+    <!-- Logo/Brand -->
+    <a class="navbar-brand" href="#">
+      <div class="brand-container">
+        <div class="brand-icon">
+          <i class="bi bi-code-slash"></i>
+        </div>
+        <span class="brand-text">Magdalena Inalaf</span>
+      </div>
+    </a>
+
+    <!-- Hamburger Menu Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="#about">Sobre Mí</a>
+        <a class="nav-link" href="#projects">Proyectos</a>
+        <a class="nav-link" href="#skills">Habilidades</a>
+        <a class="nav-link" href="#journey">Mi Viaje</a>
+        <a class="nav-link" href="#contact">Contacto</a>
+      </div>
+
+      <!-- Social Links -->
+      <div class="navbar-social">
+        <a href="https://github.com/MagdaIG" target="_blank" class="social-link" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="social-link" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://inalaf.ca" target="_blank" class="social-link" aria-label="Sitio Web">
+          <i class="bi bi-globe"></i>
+        </a>
+      </div>
+    </div>
   </div>
 </nav>
 
+<!-- Spacer para el contenido fijo -->
+<div class="navbar-spacer"></div>
+
 <!-- Sobre mí -->
-<section class="container my-5">
+<section id="about" class="container my-5">
   <div class="card-purple d-flex flex-wrap align-items-center justify-content-between gap-4 p-4">
     <div class="about-img">
       <img src="assets/img/profile.jpeg" alt="Magdalena Inalaf" class="img-fluid shadow-sm" />
     </div>
     <div class="about-text">
-      <h2 class="text-purple">About Me</h2>
+      <h2 class="text-purple">Sobre Mí</h2>
       <p>
-        I'm Magdalena, a Chilean fullstack developer and analyst programmer with a background in pedagogy. I transitioned into tech through intensive bootcamps and certifications, including a recent program in <strong>Cybersecurity Management and Control Fundamentals</strong> at USACH.
+        Soy Magdalena, desarrolladora fullstack chilena y programadora analista con formación en pedagogía. Me adentré en la tecnología a través de bootcamps intensivos y certificaciones, incluyendo un programa reciente en <strong>Fundamentos de Gestión y Control de Ciberseguridad</strong> en USACH.
       </p>
       <p>
-        I specialize in frontend and backend development, creating responsive, user-centered applications using modern JavaScript technologies. My academic path also includes UX/UI, Agile Methodologies, and Fullstack JavaScript development.
+        Me especializo en desarrollo frontend y backend, creando aplicaciones responsivas centradas en el usuario utilizando tecnologías JavaScript modernas. Mi trayectoria académica también incluye UX/UI, Metodologías Ágiles y desarrollo Fullstack JavaScript.
       </p>
     </div>
   </div>
@@ -39,10 +79,10 @@
 <!-- Intención del portafolio -->
 <section class="container d-flex flex-wrap align-items-center justify-content-between gap-4 my-5">
   <div class="purpose-text p-4 rounded shadow-sm" data-aos="fade-right">
-    <h2 class="mb-4 text-purple"> Purpose of this Portfolio</h2>
+    <h2 class="mb-4 text-purple">Propósito de este Portafolio</h2>
     <p>
-      This portfolio was created during my JavaScript Bootcamp to document my technical growth.
-      From learning the foundations of HTML and CSS, I progressed into creating dynamic applications with JavaScript, jQuery, and Bootstrap.
+      Este portafolio fue creado durante mi Bootcamp de JavaScript para documentar mi crecimiento técnico.
+      Desde aprender los fundamentos de HTML y CSS, progresé hacia la creación de aplicaciones dinámicas con JavaScript, jQuery y Bootstrap.
     </p>
     <p>
       Here I showcase classwork, mini-projects, and hands-on exercises that reflect the skills I’ve developed and my passion for continuous learning.
@@ -50,47 +90,47 @@
   </div>
 
   <div class="purpose-img" data-aos="fade-left">
-    <img src="assets/img/purpose.png" alt="Portfolio Purpose" class="img-fluid rounded custom-purpose-img">
+    <img src="assets/img/purpose.png" alt="Propósito del Portafolio" class="img-fluid rounded custom-purpose-img">
   </div>
 </section>
 
 <!-- Proyectos del Bootcamp -->
-<section class="container my-5">
-  <h2 class="text-purple text-center mb-5">Bootcamp Projects</h2>
+<section id="projects" class="container my-5">
+  <h2 class="text-purple text-center mb-5">Proyectos del Bootcamp</h2>
   <p class="text-center mb-4">
-    In this section, you'll find all the projects I created during the JavaScript Bootcamp. We'll take a closer look at each one, exploring how they were built, what technologies were used, and what functionality they include. Each project reflects a specific learning milestone, combining code, design, and interactivity.
+    En esta sección encontrarás todos los proyectos que creé durante el Bootcamp de JavaScript. Revisaremos cada uno en detalle, explorando cómo fueron construidos, qué tecnologías se utilizaron y qué funcionalidades incluyen. Cada proyecto refleja un hito de aprendizaje específico, combinando código, diseño e interactividad.
   </p>
 
   <!-- CineFlash -->
   <div class="bootcamp-project">
     <div class="bootcamp-info">
       <h4>CineFlash</h4>
-      <p>Movie booking simulation using jQuery and Bootstrap. Form validation and modal confirmation.</p>
+      <p>Simulación de reserva de películas usando jQuery y Bootstrap. Validación de formularios y confirmación modal.</p>
 
-      <p><strong>What this code does:</strong></p>
+      <p><strong>Lo que hace este código:</strong></p>
       <ul>
-        <li>Captures the selected movie from a button using <code>data-pelicula</code>.</li>
-        <li>Fills the modal input with the movie name and shows the reservation modal.</li>
-        <li>When the form is submitted, the name is transferred to a second modal and confirmed.</li>
-        <li>Resets the form and displays a confirmation after 0.5s.</li>
+        <li>Captura la película seleccionada desde un botón usando <code>data-pelicula</code>.</li>
+        <li>Llena el input del modal con el nombre de la película y muestra el modal de reserva.</li>
+        <li>Cuando se envía el formulario, el nombre se transfiere a un segundo modal y se confirma.</li>
+        <li>Reinicia el formulario y muestra una confirmación después de 0.5s.</li>
       </ul>
 
       <div class="bootcamp-card p-3 rounded shadow-sm mt-4">
-        <h6 class="fw-bold mb-2">Technologies & Concepts Used</h6>
+        <h6 class="fw-bold mb-2">Tecnologías y Conceptos Utilizados</h6>
         <ul class="mb-3">
-          <li><strong>jQuery:</strong> To simplify DOM manipulation and handle events.</li>
-          <li><strong>Bootstrap:</strong> For modals, buttons, and responsive layout.</li>
-          <li><strong>JavaScript:</strong> To control modal flow and form behavior.</li>
+          <li><strong>jQuery:</strong> Para simplificar la manipulación del DOM y manejar eventos.</li>
+          <li><strong>Bootstrap:</strong> Para modales, botones y diseño responsivo.</li>
+          <li><strong>JavaScript:</strong> Para controlar el flujo de modales y comportamiento de formularios.</li>
         </ul>
 
-        <h6 class="fw-bold mb-2">Functionality</h6>
-        <p class="mb-2">This mini app allows users to select a movie, fill in a form, and receive a confirmation. All done interactively with modals.</p>
+        <h6 class="fw-bold mb-2">Funcionalidad</h6>
+        <p class="mb-2">Esta mini aplicación permite a los usuarios seleccionar una película, llenar un formulario y recibir una confirmación. Todo hecho de forma interactiva con modales.</p>
 
-        <h6 class="fw-bold mb-2">Why it's useful</h6>
-        <p class="mb-0">It teaches how to combine JavaScript logic with Bootstrap UI elements to build interactive, user-friendly features like real reservation systems.</p>
+        <h6 class="fw-bold mb-2">Por qué es útil</h6>
+        <p class="mb-0">Enseña cómo combinar lógica JavaScript con elementos UI de Bootstrap para construir características interactivas y amigables como sistemas de reserva reales.</p>
       </div>
 
-      <a href="https://magdaig.github.io/cineflash-reservas/" class="project-link mt-3 d-inline-block">View CineFlash →</a>
+      <a href="https://magdaig.github.io/cineflash-reservas/" class="project-link mt-3 d-inline-block">Ver CineFlash →</a>
     </div>
     <div class="bootcamp-code">
       <img src="assets/img/cineflash-snippet.png" alt="CineFlash JavaScript code" class="img-fluid" />
@@ -101,13 +141,13 @@
   <div class="bootcamp-project">
     <div class="bootcamp-info">
       <h4>LibroLibre</h4>
-      <p>A digital library built with HTML, CSS, JS & Bootstrap. Searchable by title, author, or genre.</p>
+      <p>Una biblioteca digital construida con HTML, CSS, JS y Bootstrap. Buscable por título, autor o género.</p>
 
-      <p><strong>What this code does:</strong></p>
+              <p><strong>Lo que hace este código:</strong></p>
       <ul>
-        <li>Checks if there are filtered books. If none, displays a message.</li>
-        <li>If there are results, creates a Bootstrap card dynamically for each book.</li>
-        <li>Displays book image, title, author, genre, and synopsis.</li>
+        <li>Verifica si hay libros filtrados. Si no hay ninguno, muestra un mensaje.</li>
+        <li>Si hay resultados, crea una tarjeta Bootstrap dinámicamente para cada libro.</li>
+        <li>Muestra imagen del libro, título, autor, género y sinopsis.</li>
         <li>Includes buttons for “Read”, “Favorite” and “Loan” with icons.</li>
       </ul>
 
@@ -134,114 +174,270 @@
   </div>
 </section>
 
-<!-- What I’ve Learned in JavaScript -->
-<section class="container my-5">
-    <h2 class="text-purple text-center mb-4">What I’ve Learned in JavaScript</h2>
+<!-- What I've Learned in JavaScript -->
+<section id="skills" class="container my-5">
+    <h2 class="text-purple text-center mb-4">Lo que He Aprendido en JavaScript</h2>
     <p class="text-center mb-5">
-      A summary of everything I’ve learned so far in JavaScript throughout this bootcamp — from DOM manipulation to working with Bootstrap and jQuery to build interactive projects.
+      Un resumen de todo lo que he aprendido hasta ahora en JavaScript durante este bootcamp — desde manipulación del DOM hasta trabajar con Bootstrap y jQuery para construir proyectos interactivos.
     </p>
 
   <div class="row g-4">
     <div class="col-md-6">
       <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up">
-        <h5 class="fw-bold mb-3">DOM Manipulation</h5>
-        <p>Learned how to access and modify HTML elements using JavaScript and jQuery. For example, dynamically updating book cards or setting form values.</p>
-        <pre><code class="typed-code">document.getElementById("title").textContent = "Updated!"</code></pre>
+        <h5 class="fw-bold mb-3">Manipulación del DOM</h5>
+        <p>Aprendí cómo acceder y modificar elementos HTML usando JavaScript y jQuery. Por ejemplo, actualizar dinámicamente tarjetas de libros o establecer valores de formularios.</p>
+        <pre><code class="typed-code">document.getElementById("title").textContent = "¡Actualizado!"</code></pre>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="100">
-        <h5 class="fw-bold mb-3">Event Handling</h5>
-        <p>Used event listeners to detect user actions such as clicks and form submissions, like reserving a movie in CineFlash.</p>
-        <pre><code class="typed-code">$('.btn').click(() => alert("Clicked!"))</code></pre>
+        <h5 class="fw-bold mb-3">Manejo de Eventos</h5>
+        <p>Usé event listeners para detectar acciones del usuario como clics y envíos de formularios, como reservar una película en CineFlash.</p>
+        <pre><code class="typed-code">$('.btn').click(() => alert("¡Clickeado!"))</code></pre>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="200">
-        <h5 class="fw-bold mb-3">Data Attributes</h5>
-        <p>Captured custom values from HTML using <code>data-*</code> attributes to pre-fill forms or track user selections.</p>
+        <h5 class="fw-bold mb-3">Atributos de Datos</h5>
+        <p>Capturé valores personalizados de HTML usando atributos <code>data-*</code> para pre-llenar formularios o rastrear selecciones del usuario.</p>
         <pre><code class="typed-code">const peli = $(this).data('pelicula')</code></pre>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="300">
-        <h5 class="fw-bold mb-3">Form Validation</h5>
-        <p>Validated forms manually before submitting or updating the interface, such as checking if all fields were filled correctly.</p>
-        <pre><code class="typed-code">if (input.value.trim() === "") alert("Required!")</code></pre>
+        <h5 class="fw-bold mb-3">Validación de Formularios</h5>
+        <p>Validé formularios manualmente antes de enviar o actualizar la interfaz, como verificar si todos los campos fueron llenados correctamente.</p>
+        <pre><code class="typed-code">if (input.value.trim() === "") alert("¡Requerido!")</code></pre>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="400">
-        <h5 class="fw-bold mb-3">Bootstrap + JS Integration</h5>
-        <p>Used Bootstrap modals and dynamically controlled their visibility with JavaScript to simulate app flows.</p>
+        <h5 class="fw-bold mb-3">Integración Bootstrap + JS</h5>
+        <p>Usé modales de Bootstrap y controlé dinámicamente su visibilidad con JavaScript para simular flujos de aplicación.</p>
         <pre><code class="typed-code">const modal = new bootstrap.Modal(...)</code></pre>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="500">
-        <h5 class="fw-bold mb-3">Dynamic Feedback</h5>
-        <p>Applied <code>setTimeout</code> for timing effects like showing confirmation messages or transitions after user actions.</p>
+        <h5 class="fw-bold mb-3">Retroalimentación Dinámica</h5>
+        <p>Apliqué <code>setTimeout</code> para efectos de temporización como mostrar mensajes de confirmación o transiciones después de acciones del usuario.</p>
         <pre><code class="typed-code">setTimeout(() => modal.show(), 500)</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="600">
+        <h5 class="fw-bold mb-3">LocalStorage & Persistencia</h5>
+        <p>Implementé almacenamiento local para guardar datos del usuario como carrito de compras y tareas, manteniendo la información entre sesiones.</p>
+        <pre><code class="typed-code">localStorage.setItem('cart', JSON.stringify(cart))</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="700">
+        <h5 class="fw-bold mb-3">Drag & Drop API</h5>
+        <p>Desarrollé funcionalidad de arrastrar y soltar para mover tareas entre columnas en el sistema Kanban, creando una experiencia interactiva.</p>
+        <pre><code class="typed-code">element.addEventListener('dragstart', handleDragStart)</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="800">
+        <h5 class="fw-bold mb-3">Filtrado y Búsqueda</h5>
+        <p>Creé sistemas de filtrado dinámico para productos y búsqueda en tiempo real, mejorando la experiencia de navegación del usuario.</p>
+        <pre><code class="typed-code">products.filter(p => p.name.includes(searchTerm))</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="900">
+        <h5 class="fw-bold mb-3">Gestión de Estado</h5>
+        <p>Manejé estados complejos de aplicaciones como el carrito de compras y el sistema de tareas, manteniendo la sincronización entre componentes.</p>
+        <pre><code class="typed-code">updateCartState(newItem)</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="1000">
+        <h5 class="fw-bold mb-3">Autenticación Simulada</h5>
+        <p>Implementé sistemas de autenticación básicos con validación de credenciales y gestión de sesiones de usuario.</p>
+        <pre><code class="typed-code">if (user.email && user.password) login()</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="1100">
+        <h5 class="fw-bold mb-3">Interfaz Kanban</h5>
+        <p>Desarrollé una interfaz tipo Kanban completa con columnas dinámicas, permitiendo organizar y gestionar tareas de forma visual.</p>
+        <pre><code class="typed-code">createKanbanColumn(status)</code></pre>
       </div>
     </div>
   </div>
 
-<!-- Máquina del tiempo -->
-<section class="container my-5">
-  <h2 class="text-purple text-center mb-5">My Web Journey</h2>
+<!-- Mi Viaje Web -->
+<section id="journey" class="container my-5">
+  <h2 class="text-purple text-center mb-5">Mi Viaje Web</h2>
 
   <div class="row g-4">
     <!-- Proyecto 2023 -->
     <div class="col-md-4">
       <div class="journey-card">
-        <img src="assets/img/journey/htmlcss.png" alt="HTML/CSS Portfolio" class="img-fluid mb-3 rounded">
-        <h5>2023 – First Portfolio in HTML/CSS</h5>
-        <p>Created my first static portfolio focused on handmade products using HTML, CSS and a bit of JavaScript.</p>
-        <a href="https://magdaig.github.io/portafolio-MIG/" target="_blank" class="project-link">View project →</a>
+        <img src="assets/img/journey/htmlcss.png" alt="Portafolio HTML/CSS" class="img-fluid mb-3 rounded">
+        <h5>2023 – Primer Portafolio en HTML/CSS</h5>
+        <p>Creé mi primer portafolio estático enfocado en productos artesanales usando HTML, CSS y un poco de JavaScript.</p>
+        <a href="https://magdaig.github.io/portafolio-MIG/" target="_blank" class="project-link">Ver proyecto →</a>
       </div>
     </div>
 
     <!-- Proyecto 2024 -->
     <div class="col-md-4">
       <div class="journey-card">
-        <img src="assets/img/journey/vue.png" alt="Vue Portfolio" class="img-fluid mb-3 rounded">
-        <h5>2024 – Vue Portfolio</h5>
-        <p>Developed a more dynamic and modular portfolio using Vue.js. Practiced component-based architecture and routing.</p>
-        <a href="https://magdaig.github.io/Portafolio-vue/" target="_blank" class="project-link">View Vue portfolio →</a>
+        <img src="assets/img/journey/vue.png" alt="Portafolio Vue" class="img-fluid mb-3 rounded">
+        <h5>2024 – Portafolio Vue</h5>
+        <p>Desarrollé un portafolio más dinámico y modular usando Vue.js. Practiqué arquitectura basada en componentes y enrutamiento.</p>
+        <a href="https://magdaig.github.io/Portafolio-vue/" target="_blank" class="project-link">Ver portafolio Vue →</a>
       </div>
     </div>
 
     <!-- Proyecto 2025 -->
     <div class="col-md-4">
       <div class="journey-card">
-        <img src="assets/img/journey/next.png" alt="Next.js Portfolio" class="img-fluid mb-3 rounded">
-        <h5>2025 – Current Portfolio with Next.js</h5>
-        <p>This portfolio is the result of my JavaScript Bootcamp journey. Built with Next.js, responsive and dynamic.</p>
-        <a href="https://inalaf.ca/" target="_blank" class="project-link">Visit inalaf.ca →</a>
+        <img src="assets/img/journey/next.png" alt="Portafolio Next.js" class="img-fluid mb-3 rounded">
+        <h5>2025 – Portafolio Actual con Next.js</h5>
+        <p>Este portafolio es el resultado de mi viaje en el Bootcamp de JavaScript. Construido con Next.js, responsivo y dinámico.</p>
+        <a href="https://inalaf.ca/" target="_blank" class="project-link">Visitar inalaf.ca →</a>
       </div>
     </div>
   </div>
 </section>
 
-  <section class="contact-section py-5">
+<!-- Proyectos de Portafolio -->
+<section class="container my-5">
+  <h2 class="text-purple text-center mb-5">Proyectos de Portafolio</h2>
+  <p class="text-center mb-4">
+    Aquí encontrarás mis proyectos más recientes desarrollados con JavaScript moderno. Cada uno demuestra diferentes habilidades y tecnologías que he aprendido y aplicado en el desarrollo web.
+  </p>
+
+  <div class="row g-4">
+    <!-- Gestión de Tareas -->
+    <div class="col-lg-6">
+      <div class="portfolio-project">
+        <div class="portfolio-image" data-aos="fade-right">
+          <img src="assets/img/gestion-tareas.png" alt="Gestión de Tareas - Kanban Board" class="img-fluid portfolio-img">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h5>Gestión de Tareas</h5>
+              <p>Sistema Kanban completo</p>
+              <a href="https://magdaig.github.io/Gestion-de-tareas-con-javascript/" class="btn btn-light btn-sm" target="_blank">
+                <i class="bi bi-eye"></i> Ver Proyecto
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-info" data-aos="fade-left">
+          <h4>Gestión de Tareas</h4>
+          <p>Sistema completo de gestión de tareas con interfaz tipo Kanban. Permite crear, editar, mover entre columnas y eliminar tareas de forma interactiva.</p>
+
+          <p><strong>Características principales:</strong></p>
+          <ul>
+            <li>Interfaz tipo Kanban con columnas: Borrador, En progreso, Edición, Completada</li>
+            <li>Drag & drop para mover tareas entre columnas</li>
+            <li>Sistema de autenticación y gestión de usuarios</li>
+            <li>Persistencia de datos en localStorage</li>
+            <li>Diseño responsive y moderno</li>
+          </ul>
+
+          <div class="portfolio-card p-3 rounded shadow-sm mt-4">
+            <h6 class="fw-bold mb-2">Tecnologías Utilizadas</h6>
+            <ul class="mb-3">
+              <li><strong>JavaScript:</strong> Lógica principal y manipulación del DOM</li>
+              <li><strong>HTML5/CSS3:</strong> Estructura y estilos modernos</li>
+              <li><strong>LocalStorage:</strong> Persistencia de datos del usuario</li>
+              <li><strong>Drag & Drop API:</strong> Funcionalidad de arrastrar y soltar</li>
+            </ul>
+
+            <h6 class="fw-bold mb-2">Funcionalidad</h6>
+            <p class="mb-2">Aplicación completa de gestión de tareas que simula herramientas profesionales como Trello o Asana, con una interfaz intuitiva y funcionalidades avanzadas.</p>
+
+            <h6 class="fw-bold mb-2">Aprendizaje</h6>
+            <p class="mb-0">Demuestra el manejo de estados complejos, eventos avanzados, y la creación de interfaces de usuario interactivas y responsivas.</p>
+          </div>
+
+          <a href="https://magdaig.github.io/Gestion-de-tareas-con-javascript/" class="project-link mt-3 d-inline-block" target="_blank">Ver Gestión de Tareas →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- E-commerce -->
+    <div class="col-lg-6">
+      <div class="portfolio-project">
+        <div class="portfolio-image" data-aos="fade-right">
+          <img src="assets/img/cute-shop.png" alt="Cute Shop - E-commerce" class="img-fluid portfolio-img">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h5>Cute Shop</h5>
+              <p>Tienda online de joyería</p>
+              <a href="https://magdaig.github.io/productos-e-commerce.js/" class="btn btn-light btn-sm" target="_blank">
+                <i class="bi bi-eye"></i> Ver Proyecto
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-info" data-aos="fade-left">
+          <h4>Cute Shop - E-commerce</h4>
+          <p>Tienda online de joyería con catálogo dinámico, carrito de compras y sistema de filtros por categorías. Interfaz moderna y funcional.</p>
+
+          <p><strong>Características principales:</strong></p>
+          <ul>
+            <li>Catálogo de productos con filtros por categorías</li>
+            <li>Carrito de compras funcional con persistencia</li>
+            <li>Búsqueda de productos en tiempo real</li>
+            <li>Diseño responsive y atractivo</li>
+            <li>Sistema de notificaciones de stock</li>
+          </ul>
+
+          <div class="portfolio-card p-3 rounded shadow-sm mt-4">
+            <h6 class="fw-bold mb-2">Tecnologías Utilizadas</h6>
+            <ul class="mb-3">
+              <li><strong>JavaScript:</strong> Lógica de negocio y interactividad</li>
+              <li><strong>HTML5/CSS3:</strong> Estructura y diseño moderno</li>
+              <li><strong>JSON:</strong> Gestión de datos de productos</li>
+              <li><strong>LocalStorage:</strong> Persistencia del carrito</li>
+            </ul>
+
+            <h6 class="fw-bold mb-2">Funcionalidad</h6>
+            <p class="mb-2">E-commerce completo con todas las funcionalidades básicas de una tienda online: navegación, filtros, carrito y proceso de compra.</p>
+
+            <h6 class="fw-bold mb-2">Aprendizaje</h6>
+            <p class="mb-0">Muestra el desarrollo de aplicaciones complejas con múltiples funcionalidades integradas y una experiencia de usuario profesional.</p>
+          </div>
+
+          <a href="https://magdaig.github.io/productos-e-commerce.js/" class="project-link mt-3 d-inline-block" target="_blank">Visitar Cute Shop →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="contact" class="contact-section py-5">
     <div class="container">
-      <h2 class="text-center mb-4 fw-bold text-purple">Connect with Me</h2>
+      <h2 class="text-center mb-4 fw-bold text-purple">Conéctate Conmigo</h2>
       <div class="text-center mb-4">
         <a href="https://github.com/MagdaIG" target="_blank" class="btn btn-outline-dark m-2">GitHub</a>
-        <a href="https://github.com/MagdaIG?tab=repositories" target="_blank" class="btn btn-outline-dark m-2">Repositories</a>
+        <a href="https://github.com/MagdaIG?tab=repositories" target="_blank" class="btn btn-outline-dark m-2">Repositorios</a>
         <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="btn btn-outline-dark m-2">LinkedIn</a>
-        <a href="assets/pdf/CV_Magda_English.pdf" download class="btn btn-dark m-2">Download CV</a>
+        <a href="assets/pdf/CV_Magda_English.pdf" download class="btn btn-dark m-2">Descargar CV</a>
       </div>
 
-      <!-- Contact Form -->
+      <!-- Formulario de Contacto -->
       <form class="contact-form p-4 shadow-lg rounded mx-auto" style="max-width: 600px;" id="contactForm">
         <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
+          <label for="name" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="name" required />
         </div>
         <div class="mb-3">
@@ -249,18 +445,19 @@
           <input type="email" class="form-control" id="email" required />
         </div>
         <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
+          <label for="message" class="form-label">Mensaje</label>
           <textarea class="form-control" id="message" rows="3" required></textarea>
         </div>
-        <button type="submit" class="btn btn-purple w-100">Send</button>
+        <button type="submit" class="btn btn-purple w-100">Enviar</button>
       </form>
     </div>
   </section>
 <!-- To-Do List + Roadmap Section -->
+<!--
 <section class="container my-5" id="portfolio-tasks">
   <div class="row g-4">
 
-    <!-- To-Do List -->
+    <!-- To-Do List -
     <div class="col-lg-6">
       <div class="card shadow border-0 h-100">
         <div class="card-header bg-morado text-white">
@@ -277,7 +474,7 @@
             <small id="currentDate">31/7/2025</small>
           </div>
           <ul id="taskList" class="list-group list-group-flush">
-            <!-- Completed task -->
+            <!-- Completed task
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="form-check">
                 <input class="form-check-input task-checkbox" type="checkbox" id="task-1" checked>
@@ -289,7 +486,7 @@
                 <i class="bi bi-trash"></i>
               </button>
             </li>
-            <!-- Completed task -->
+            <!-- Completed task --
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="form-check">
                 <input class="form-check-input task-checkbox" type="checkbox" id="task-2" checked>
@@ -301,7 +498,7 @@
                 <i class="bi bi-trash"></i>
               </button>
             </li>
-            <!-- Pending task -->
+            <!-- Pending task --
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="form-check">
                 <input class="form-check-input task-checkbox" type="checkbox" id="task-3">
@@ -318,7 +515,7 @@
       </div>
     </div>
 
-    <!-- Roadmap -->
+    <!-- Roadmap --
     <div class="col-lg-6">
       <div class="card shadow border-0 h-100">
         <div class="card-header bg-negro text-white">
@@ -353,9 +550,54 @@
 
   </div>
 </section>
+-->
 
-<footer>
-  &copy; 2025 Magdalena Inalaf. All rights reserved.
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Logo y derechos -->
+        <div class="footer-brand">
+            <div class="brand-logo">
+                <div class="brand-icon">
+                    <i class="bi bi-code-slash"></i>
+                </div>
+                <span class="brand-name">Magdalena Inalaf</span>
+            </div>
+            <div class="copyright">
+                <small>© 2025 Todos los derechos reservados</small>
+            </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="footer-links">
+            <a href="https://inalaf.ca" target="_blank" class="footer-link" aria-label="Sitio web">
+                <div class="icon-container">
+                    <i class="bi bi-globe"></i>
+                </div>
+                <span class="link-text">Sitio Web</span>
+            </a>
+            <a href="https://github.com/MagdaIG" target="_blank" class="footer-link" aria-label="GitHub">
+                <div class="icon-container">
+                    <i class="bi bi-github"></i>
+                </div>
+                <span class="link-text">GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link" aria-label="LinkedIn">
+                <div class="icon-container">
+                    <i class="bi bi-linkedin"></i>
+                </div>
+                <span class="link-text">LinkedIn</span>
+            </a>
+        </div>
+
+        <!-- Créditos -->
+        <div class="footer-credits">
+            <div class="credits-content">
+                <span class="credits-text">Desarrollado con <i class="bi bi-heart-fill"></i> por</span>
+                <span class="developer-name">Magdalena Inalaf G.</span>
+            </div>
+        </div>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,3 +1,68 @@
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Active navigation link highlighting
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= (sectionTop - 200)) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Smooth scrolling for navigation links
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      // Cerrar el menú hamburguesa después de hacer clic
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      const navbarToggler = document.querySelector('.navbar-toggler');
+
+      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+        // Usar Bootstrap para cerrar el menú
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+          toggle: false
+        });
+        bsCollapse.hide();
+
+        // Actualizar el estado del botón hamburguesa
+        if (navbarToggler) {
+          navbarToggler.setAttribute('aria-expanded', 'false');
+        }
+      }
+    }
+  });
+});
+
 // Typewriter effect when the block becomes visible
 function runTypedAnimation(block) {
   const fullText = block.getAttribute("data-fulltext");
@@ -71,6 +136,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   this.reset();
 });
 // Desde aquí voy a escribir en español para una mejor visualizacion de los comentarios
+/*
 (() => {
   // Referencias a los elementos
   const taskInput = document.getElementById("taskInput");
@@ -167,8 +233,10 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   // Render inicial
   updateList();
 })();
+*/
 
 // --- Roadmap Progress ---
+/*
 (() => {
   // Elementos del DOM necesarios
   const list = document.getElementById("roadmapList");
@@ -231,3 +299,4 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   // Inicializar progreso
   updateProgress();
 })();
+*/
