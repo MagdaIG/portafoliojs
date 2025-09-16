@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Inventario v2.0 - Mejorado | Portafolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Ajustes específicos de esta página, alineados al diseño */
+    .section-card { background-color: #fff; border: 1px solid #e2d6f0; border-radius: 16px; }
+    .lead-muted { color: #555; }
+    .code-section { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #6f42c1; }
+    .validation-badge { font-size: 0.8rem; }
+    .step-number {
+      background: linear-gradient(135deg, #6f42c1, #8e44ad);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e2d6f0;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(111, 66, 193, 0.15);
+    }
+    .improvement-highlight {
+      background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+      border-left: 4px solid #28a745;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-container">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-text">Magdalena Inalaf</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html#about">Sobre Mí</a>
+          <a class="nav-link" href="index.html#projects">Proyectos</a>
+          <a class="nav-link" href="index.html#skills">Habilidades</a>
+          <a class="nav-link" href="index.html#journey">Mi Viaje</a>
+          <a class="nav-link" href="index.html#contact">Contacto</a>
+        </div>
+        <div class="navbar-social">
+          <a href="https://github.com/MagdaIG" target="_blank" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://inalaf.ca" target="_blank" class="social-link" aria-label="Sitio Web"><i class="bi bi-globe"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-spacer"></div>
+
+<main>
+  <!-- Hero Section -->
+  <section class="container my-5" data-aos="fade-up">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-4 p-4 section-card">
+      <div>
+        <h1 class="text-purple mb-3">
+          <i class="bi bi-arrow-up-circle-fill text-success me-2"></i>
+          Sistema de Inventario v2.0 - Mejorado
+        </h1>
+        <p class="lead lead-muted mb-0">
+          Versión mejorada con validaciones avanzadas, funciones personalizadas y documentación completa.
+          Aplicando mejores prácticas de desarrollo y arquitectura de bases de datos.
+        </p>
+        <div class="mt-3">
+          <span class="badge bg-success me-2">PostgreSQL</span>
+          <span class="badge bg-info me-2">PL/pgSQL</span>
+          <span class="badge bg-warning me-2">Validaciones</span>
+          <span class="badge bg-primary me-2">Git Submodule</span>
+        </div>
+      </div>
+      <div>
+        <a href="index.html#projects" class="btn btn-purple"><i class="bi bi-arrow-left me-2"></i>Volver al Portafolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mejoras Principales -->
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4">
+      <div class="col-12">
+        <div class="card p-4 shadow-sm">
+          <h2 class="fw-bold text-purple mb-4">
+            <i class="bi bi-star-fill text-warning me-2"></i>
+            Mejoras Implementadas en v2.0
+          </h2>
+          <div class="row g-3">
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card card p-3 h-100 text-center">
+                <i class="bi bi-shield-check text-success" style="font-size: 2rem;"></i>
+                <h5 class="mt-2">Validaciones</h5>
+                <p class="small mb-0">Integridad y consistencia de datos</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card card p-3 h-100 text-center">
+                <i class="bi bi-gear-fill text-primary" style="font-size: 2rem;"></i>
+                <h5 class="mt-2">Funciones SQL</h5>
+                <p class="small mb-0">Procedimientos personalizados</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card card p-3 h-100 text-center">
+                <i class="bi bi-file-text text-info" style="font-size: 2rem;"></i>
+                <h5 class="mt-2">Documentación</h5>
+                <p class="small mb-0">Completa por módulos</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card card p-3 h-100 text-center">
+                <i class="bi bi-git text-dark" style="font-size: 2rem;"></i>
+                <h5 class="mt-2">Git Submodule</h5>
+                <p class="small mb-0">Control de versiones</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arquitectura del Sistema -->
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="150">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">
+            <i class="bi bi-diagram-3 text-primary me-2"></i>
+            Arquitectura del Sistema
+          </h2>
+          <div class="improvement-highlight">
+            <h6 class="fw-bold text-success mb-2">
+              <i class="bi bi-arrow-up-circle me-1"></i>
+              Mejora en v2.0: Modularización
+            </h6>
+            <p class="mb-0">El sistema ahora está dividido en módulos independientes para mejor mantenimiento y escalabilidad.</p>
+          </div>
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <h6 class="text-purple">Módulos Principales:</h6>
+              <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle text-success me-2"></i>Validaciones de datos</li>
+                <li><i class="bi bi-check-circle text-success me-2"></i>Gestión de transacciones</li>
+                <li><i class="bi bi-check-circle text-success me-2"></i>Reportes y consultas</li>
+                <li><i class="bi bi-check-circle text-success me-2"></i>Triggers automatizados</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 class="text-purple">Tecnologías:</h6>
+              <ul class="list-unstyled">
+                <li><i class="bi bi-database text-primary me-2"></i>PostgreSQL 15+</li>
+                <li><i class="bi bi-code-square text-info me-2"></i>PL/pgSQL</li>
+                <li><i class="bi bi-git text-dark me-2"></i>Git Submodules</li>
+                <li><i class="bi bi-file-earmark-text text-warning me-2"></i>Markdown Docs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card p-3 shadow-sm h-100 d-flex align-items-center justify-content-center">
+          <img src="assets/img/consultas-sql.png" alt="Arquitectura del sistema v2.0" class="img-fluid rounded">
+          <small class="text-muted mt-2">Diagrama de arquitectura mejorada</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Validaciones Avanzadas -->
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="200">
+    <div class="row g-4">
+      <div class="col-12">
+        <div class="card p-4 shadow-sm">
+          <h2 class="fw-bold text-purple mb-4">
+            <i class="bi bi-shield-check text-success me-2"></i>
+            Sistema de Validaciones Avanzadas
+          </h2>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <h5 class="text-purple">Validaciones de Integridad</h5>
+              <div class="d-flex align-items-start mb-3">
+                <div class="step-number">1</div>
+                <div>
+                  <h6>Validación de Stock</h6>
+                  <p class="small mb-2">Verificación automática de stock disponible antes de procesar ventas.</p>
+                  <span class="badge bg-success validation-badge">CHECK constraint</span>
+                </div>
+              </div>
+              <div class="d-flex align-items-start mb-3">
+                <div class="step-number">2</div>
+                <div>
+                  <h6>Validación de Precios</h6>
+                  <p class="small mb-2">Control de precios positivos y rangos válidos.</p>
+                  <span class="badge bg-info validation-badge">BEFORE INSERT</span>
+                </div>
+              </div>
+              <div class="d-flex align-items-start">
+                <div class="step-number">3</div>
+                <div>
+                  <h6>Validación de Fechas</h6>
+                  <p class="small mb-2">Consistencia temporal en transacciones.</p>
+                  <span class="badge bg-warning validation-badge">TRIGGER</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="code-section p-3 rounded">
+                <h6 class="text-purple mb-3">Ejemplo de Validación:</h6>
+                <pre class="mb-0"><code>-- Función de validación de stock
+CREATE OR REPLACE FUNCTION validar_stock()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.tipo = 'venta' AND
+       NEW.cantidad > (SELECT cantidad FROM productos
+                      WHERE producto_id = NEW.producto_id) THEN
+        RAISE EXCEPTION 'Stock insuficiente';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;</code></pre>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/validacion-v2-1.png">
+                  <i class="bi bi-paperclip me-2"></i>Validaciones 1
+                </a>
+                <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/validacion-v2-2.png">
+                  <i class="bi bi-paperclip me-2"></i>Validaciones 2
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funciones Personalizadas -->
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="250">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">
+            <i class="bi bi-gear-fill text-primary me-2"></i>
+            Funciones SQL Personalizadas
+          </h2>
+          <div class="improvement-highlight">
+            <h6 class="fw-bold text-success mb-2">Nuevo en v2.0</h6>
+            <p class="mb-0">Funciones modulares para reportes y cálculos complejos.</p>
+          </div>
+          <ul class="mb-3">
+            <li><strong>calcular_valor_inventario()</strong> - Valor total del inventario</li>
+            <li><strong>obtener_movimientos_mes()</strong> - Transacciones por período</li>
+            <li><strong>productos_bajo_stock()</strong> - Alertas de reabastecimiento</li>
+            <li><strong>generar_reporte_ventas()</strong> - Análisis de ventas</li>
+          </ul>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/funcion-part1.png">
+              <i class="bi bi-paperclip me-2"></i>Funciones 1
+            </a>
+            <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/funcion-part2.png">
+              <i class="bi bi-paperclip me-2"></i>Funciones 2
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">
+            <i class="bi bi-lightning-fill text-warning me-2"></i>
+            Triggers Mejorados
+          </h2>
+          <img src="assets/img/triggers-mejorados.png" alt="Triggers mejorados v2.0" class="img-fluid rounded mb-3">
+          <p class="mb-3">Triggers con validación de stock, logging de cambios y notificaciones automáticas.</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <span class="badge bg-success">AUDIT LOG</span>
+            <span class="badge bg-info">STOCK CHECK</span>
+            <span class="badge bg-warning">AUTO UPDATE</span>
+            <span class="badge bg-primary">NOTIFICATIONS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documentación y Testing -->
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="300">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">
+            <i class="bi bi-file-text text-info me-2"></i>
+            Documentación Completa
+          </h2>
+          <div class="improvement-highlight">
+            <h6 class="fw-bold text-success mb-2">Mejora en v2.0</h6>
+            <p class="mb-0">Documentación modular y detallada para cada componente del sistema.</p>
+          </div>
+          <ul class="mb-3">
+            <li><strong>README.md</strong> - Guía de instalación y configuración</li>
+            <li><strong>docs/schema/</strong> - Documentación del esquema de BD</li>
+            <li><strong>docs/functions/</strong> - Documentación de funciones SQL</li>
+            <li><strong>docs/examples/</strong> - Ejemplos de uso y consultas</li>
+          </ul>
+          <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/documentacion-completa.png">
+            <i class="bi bi-paperclip me-2"></i>Ver documentación
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">
+            <i class="bi bi-bug-fill text-danger me-2"></i>
+            Scripts de Testing
+          </h2>
+          <img src="assets/img/testing-scripts.png" alt="Scripts de testing automatizado" class="img-fluid rounded mb-3">
+          <p class="mb-3">Scripts automatizados para validar el funcionamiento del sistema y detectar errores.</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <span class="badge bg-success">UNIT TESTS</span>
+            <span class="badge bg-info">INTEGRATION</span>
+            <span class="badge bg-warning">PERFORMANCE</span>
+            <span class="badge bg-primary">VALIDATION</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Normalización Avanzada -->
+  <section class="container my-5" data-aos="fade-up" data-aos-delay="350">
+    <h2 class="text-center mb-4 text-purple">
+      <i class="bi bi-diagram-2 text-primary me-2"></i>
+      Normalización hasta 3FN - Explicación Pedagógica
+    </h2>
+    <div class="card shadow p-4">
+      <div class="improvement-highlight">
+        <h6 class="fw-bold text-success mb-2">
+          <i class="bi bi-arrow-up-circle me-1"></i>
+          Mejora en v2.0: Documentación de Normalización
+        </h6>
+        <p class="mb-0">Explicación detallada paso a paso del proceso de normalización aplicado.</p>
+      </div>
+
+      <div class="row g-4 mt-3">
+        <div class="col-lg-4">
+          <div class="card p-3 text-center">
+            <h5 class="text-primary">1FN</h5>
+            <p class="small">Eliminación de grupos repetitivos y valores atómicos</p>
+            <span class="badge bg-primary">Completado</span>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card p-3 text-center">
+            <h5 class="text-info">2FN</h5>
+            <p class="small">Eliminación de dependencias parciales</p>
+            <span class="badge bg-info">Completado</span>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card p-3 text-center">
+            <h5 class="text-success">3FN</h5>
+            <p class="small">Eliminación de dependencias transitivas</p>
+            <span class="badge bg-success">Completado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h6 class="text-purple">Ejemplo Práctico de Normalización:</h6>
+        <pre class="bg-light p-3 rounded"><code>-- Antes (No normalizado)
+CREATE TABLE inventario_completo (
+    producto_id INT,
+    nombre_producto VARCHAR(100),
+    proveedor_nombre VARCHAR(100),
+    proveedor_telefono VARCHAR(20),
+    cantidad INT,
+    precio DECIMAL(10,2)
+);
+
+-- Después (3FN)
+CREATE TABLE productos (
+    producto_id INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio DECIMAL(10,2) CHECK (precio > 0),
+    proveedor_id INT REFERENCES proveedores(proveedor_id)
+);
+
+CREATE TABLE proveedores (
+    proveedor_id INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) UNIQUE
+);</code></pre>
+      </div>
+
+      <div class="mt-3">
+        <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/normalizacion-detallada.png">
+          <i class="bi bi-paperclip me-2"></i>Ver proceso completo de normalización
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Git Submodule y Control de Versiones -->
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="400">
+    <div class="row g-4">
+      <div class="col-12">
+        <div class="card p-4 shadow-sm">
+          <h2 class="fw-bold text-purple mb-4">
+            <i class="bi bi-git text-dark me-2"></i>
+            Control de Versiones con Git Submodule
+          </h2>
+          <div class="improvement-highlight">
+            <h6 class="fw-bold text-success mb-2">Nuevo en v2.0</h6>
+            <p class="mb-0">Implementación de Git Submodules para manejo modular del código y documentación.</p>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <h6 class="text-purple">Estructura del Proyecto:</h6>
+              <pre class="bg-light p-3 rounded"><code>inventario-v2/
+├── database/          # Esquemas y scripts SQL
+├── docs/             # Documentación
+├── tests/            # Scripts de testing
+├── examples/         # Ejemplos de uso
+└── .gitmodules       # Configuración de submódulos</code></pre>
+            </div>
+            <div class="col-lg-6">
+              <h6 class="text-purple">Comandos Git Submodule:</h6>
+              <pre class="bg-light p-3 rounded"><code># Agregar submódulo
+git submodule add [URL] [path]
+
+# Actualizar submódulos
+git submodule update --remote
+
+# Clonar con submódulos
+git clone --recursive [URL]</code></pre>
+            </div>
+          </div>
+          <div class="mt-3">
+            <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/git-submodule-structure.png">
+              <i class="bi bi-paperclip me-2"></i>Ver estructura completa
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusión y Aprendizajes -->
+  <section class="container my-5" data-aos="fade-up" data-aos-delay="450">
+    <div class="card p-4 shadow-sm">
+      <h2 class="fw-bold text-purple mb-3">
+        <i class="bi bi-mortarboard text-primary me-2"></i>
+        Aprendizajes y Conclusiones
+      </h2>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h5 class="text-purple">Habilidades Desarrolladas:</h5>
+          <ul>
+            <li><strong>Arquitectura de Bases de Datos:</strong> Diseño modular y escalable</li>
+            <li><strong>PL/pgSQL Avanzado:</strong> Funciones, triggers y validaciones complejas</li>
+            <li><strong>Control de Versiones:</strong> Git Submodules para proyectos modulares</li>
+            <li><strong>Documentación Técnica:</strong> Estándares de documentación profesional</li>
+            <li><strong>Testing Automatizado:</strong> Scripts de validación y pruebas</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="text-purple">Mejoras Implementadas:</h5>
+          <ul>
+            <li>Validaciones robustas de integridad de datos</li>
+            <li>Arquitectura modular y mantenible</li>
+            <li>Documentación completa y pedagógica</li>
+            <li>Control de versiones profesional</li>
+            <li>Scripts de testing automatizados</li>
+          </ul>
+        </div>
+      </div>
+      <div class="improvement-highlight mt-4">
+        <h6 class="fw-bold text-success mb-2">
+          <i class="bi bi-trophy me-1"></i>
+          Resultado Final
+        </h6>
+        <p class="mb-0">
+          Un sistema de inventario robusto, escalable y bien documentado que demuestra
+          el dominio de PostgreSQL avanzado, buenas prácticas de desarrollo y
+          arquitectura de software profesional.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <div class="brand-logo">
+        <div class="brand-icon"><i class="bi bi-code-slash"></i></div>
+        <span class="brand-name">Magdalena Inalaf</span>
+      </div>
+      <div class="copyright"><small>© 2025 Todos los derechos reservados</small></div>
+    </div>
+    <div class="footer-links">
+      <a href="https://inalaf.ca" target="_blank" class="footer-link" aria-label="Sitio web"><div class="icon-container"><i class="bi bi-globe"></i></div><span class="link-text">Sitio Web</span></a>
+      <a href="https://github.com/MagdaIG" target="_blank" class="footer-link" aria-label="GitHub"><div class="icon-container"><i class="bi bi-github"></i></div><span class="link-text">GitHub</span></a>
+      <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link" aria-label="LinkedIn"><div class="icon-container"><i class="bi bi-linkedin"></i></div><span class="link-text">LinkedIn</span></a>
+    </div>
+    <div class="footer-credits">
+      <div class="credits-content">
+        <span class="credits-text">Desarrollado con <i class="bi bi-heart-fill"></i> por</span>
+        <span class="developer-name">Magdalena Inalaf G.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script> AOS.init(); </script>
+</body>
+</html>

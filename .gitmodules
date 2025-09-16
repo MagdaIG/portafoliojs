@@ -1,0 +1,3 @@
+[submodule "projects/bd-relacional"]
+	path = projects/bd-relacional
+	url = https://github.com/MagdaIG/proyecto-bd-relacional.git

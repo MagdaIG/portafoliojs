@@ -1029,6 +1029,11 @@ body {
   flex: 1 1 500px;
 }
 
+/* Variación más ancha para destacar un proyecto centrado */
+.portfolio-project.wide .portfolio-image { flex: 1 1 55%; }
+.portfolio-project.wide .portfolio-info { flex: 1 1 45%; }
+
+
 .portfolio-info h4 {
   color: #a084ca;
   font-weight: bold;
@@ -1082,6 +1087,7 @@ body {
     flex-direction: column;
     gap: 1.5rem;
   }
+
 
   .portfolio-image {
     flex: 1 1 100%;
