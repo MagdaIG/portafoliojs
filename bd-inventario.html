@@ -4,157 +4,194 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyecto Base de Datos Relacional</title>
+  <title>Sistema de Inventario | Portafolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body class="bd-proyecto">
-<header>
-  <h1>Sistema de Inventario con Base de Datos Relacional</h1>
-  <a href="index.html" class="btn-volver">← Volver al Portafolio</a>
-</header>
+  <style>
+    /* Ajustes específicos de esta página, alineados al diseño */
+    .section-card { background-color: #fff; border: 1px solid #e2d6f0; border-radius: 16px; }
+    .lead-muted { color: #555; }
+  </style>
+  </head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-container">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-text">Magdalena Inalaf</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html#about">Sobre Mí</a>
+          <a class="nav-link" href="index.html#projects">Proyectos</a>
+          <a class="nav-link" href="index.html#skills">Habilidades</a>
+          <a class="nav-link" href="index.html#journey">Mi Viaje</a>
+          <a class="nav-link" href="index.html#contact">Contacto</a>
+        </div>
+        <div class="navbar-social">
+          <a href="https://github.com/MagdaIG" target="_blank" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://inalaf.ca" target="_blank" class="social-link" aria-label="Sitio Web"><i class="bi bi-globe"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-spacer"></div>
 
 <main>
-  <section class="intro">
-    <h2>Objetivo del Proyecto</h2>
-    <p>
-      Este proyecto consistió en diseñar e implementar un <strong>sistema de inventario</strong> basado en una <strong>base de datos relacional utilizando PostgreSQL</strong>.
-      El sistema permite registrar productos, proveedores y transacciones de forma estructurada y segura, aplicando buenas prácticas como:
-    </p>
-    <ul>
-      <li>Uso de <strong>claves primarias y foráneas</strong> para establecer relaciones.</li>
-      <li><strong>Normalización</strong> hasta la Tercera Forma Normal (3FN).</li>
-      <li>Aplicación de <strong>transacciones SQL</strong> para mantener la integridad.</li>
-      <li>Implementación de <strong>consultas complejas</strong> y <strong>triggers</strong>.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Modelo Entidad-Relación (ERD)</h2>
-    <img src="assets/img/diagrama-erd.png" alt="Diagrama ERD del sistema" class="img-responsive">
-    <p>
-      El diagrama ERD muestra tres entidades principales: <strong>Productos</strong>, <strong>Proveedores</strong> y <strong>Transacciones</strong>.
-      Cada producto está asociado a un proveedor, y las transacciones registran operaciones (compra o venta) que afectan el inventario.
-    </p>
-  </section>
-
-  <section>
-    <h2>Estructura de Tablas en PostgreSQL</h2>
-    <img src="assets/img/consultas-sql.png" alt="Tablas creadas en PostgreSQL" class="img-responsive">
-    <p>
-      Se crearon tres tablas principales:
-    </p>
-    <ul>
-      <li><strong>productos</strong>: contiene nombre, descripción, precio y cantidad.</li>
-      <li><strong>proveedores</strong>: almacena los datos de contacto de los proveedores.</li>
-      <li><strong>transacciones</strong>: registra las operaciones de compra/venta, incluyendo la fecha y el producto involucrado.</li>
-    </ul>
-    <p>
-      Cada tabla fue diseñada con sus respectivas <strong>claves primarias</strong> y se utilizaron <strong>claves foráneas</strong> para vincular las relaciones entre ellas.
-    </p>
-    <p>
-      Se utilizaron <strong>claves primarias</strong> (como <code>producto_id</code> o <code>proveedor_id</code>) y <strong>claves foráneas</strong> para relacionar las tablas. También se agregaron restricciones como:
-    </p>
-
-    <ul>
-      <li><code>CHECK</code> para asegurar que el precio sea mayor a 0 o que la cantidad no sea negativa.</li>
-      <li><code>DEFAULT CURRENT_TIMESTAMP</code> para que la fecha se registre automáticamente.</li>
-      <li><code>NOT NULL</code> y <code>UNIQUE</code> para mantener integridad y evitar duplicados en campos clave.</li>
-    </ul>
-
-    <a href="assets/img/creacion-tablas-sql.png" target="_blank" class="btn-ver">📎 Ver creación de tablas completa</a>  </section>
-  <section>
-    <h2>Registro de Transacciones</h2>
-    <img src="assets/img/transacciones.png" alt="Transacciones en PostgreSQL" class="img-responsive">
-    <p>
-      Las transacciones permiten simular operaciones comerciales reales. Por ejemplo:
-    </p>
-    <ul>
-      <li>Una <strong>compra</strong> aumenta el stock de un producto.</li>
-      <li>Una <strong>venta</strong> disminuye el stock.</li>
-    </ul>
-    <p>
-      Esto se logró mediante el uso de <strong>triggers y funciones SQL</strong>, que modifican automáticamente la cantidad de inventario cada vez que se realiza una transacción.
-    </p>
-  </section>
-  <section>
-    <h2>Triggers y Automatización del Inventario</h2>
-    <img src="assets/img/triggers-funcion-sql.png" alt="Trigger SQL para actualizar stock" class="img-responsive">
-    <p>
-      Para asegurar que el <strong>inventario se actualice automáticamente</strong> al registrar una compra o venta, se creó una <strong>función en PostgreSQL</strong> llamada <code>actualizar_stock()</code>, junto a un <strong>trigger</strong> que se ejecuta cada vez que se inserta una nueva fila en la tabla <code>transacciones</code>.
-    </p>
-
-    <p>
-      La función revisa si la transacción es una <strong>compra</strong> (se suma stock) o una <strong>venta</strong> (se descuenta stock). En el caso de una venta, además valida que haya stock suficiente; si no, lanza una excepción.
-    </p>
-
-    <p>
-      Este tipo de lógica garantiza la <strong>integridad de los datos</strong>, evita errores humanos y automatiza una parte clave del sistema.
-    </p>
-
-    <a href="assets/img/triggers-funcion-sql.png" target="_blank" class="btn-ver"> Ver Trigger en tamaño completo</a>
-  </section>
-
-  <section>
-    <h2>Consultas SQL</h2>
-    <img src="assets/img/consulta-sql.png" alt="Consultas SQL" class="img-responsive">
-    <p>
-      Se crearon consultas para obtener información útil del sistema, tales como:
-    </p>
-    <ul>
-      <li>Productos y sus proveedores.</li>
-      <li>Transacciones realizadas en el día actual.</li>
-      <li>Productos con inventario bajo o agotado.</li>
-      <li>Proveedores que han participado en transacciones.</li>
-    </ul>
-    <p>
-      Estas consultas demuestran el uso de <strong>SELECT con JOIN</strong>, <strong>filtros con WHERE</strong>, <strong>agrupaciones con GROUP BY</strong> y <strong>funciones agregadas</strong>.
-    </p>
-  </section>
-
-  <section id="normalizacion" class="container my-5">
-    <h2 class="text-center mb-4">Normalización</h2>
-    <div class="card shadow p-4">
-      <p>
-        Para evitar duplicación de datos y asegurar su integridad, se aplicó <strong>normalización hasta la Tercera Forma Normal (3FN)</strong>.
-      </p>
-      <ul>
-        <li>Se separaron las entidades: productos, proveedores y transacciones.</li>
-        <li>Se eliminaron datos redundantes, como proveedores repetidos.</li>
-        <li>Se utilizaron <strong>claves foráneas</strong> para relacionar las tablas sin duplicar información.</li>
-      </ul>
-      <p>
-        La siguiente consulta (con error intencional) muestra un intento de JOIN que refleja la estructura normalizada:
-      </p>
-
-      <pre class="bg-light p-3 rounded"><code>
-SELECT p.nombre AS producto, pr.nombre AS proveedor
-FROM productos p
-JOIN proveedores pr ON p.proveedor_id = pr.proveedor_id;
-      </code></pre>
-
-      <p>
-        Aunque el campo <code>proveedor_id</code> no estaba en la tabla productos (de ahí el error), la intención demuestra que los datos están <strong>relacionados</strong> mediante claves externas y no se repiten dentro de una sola tabla. Esto es característico de una base de datos bien normalizada.
-      </p>
-
-      <img src="assets/img/normalizacion-error.png" alt="Consulta JOIN con error de clave" class="img-fluid rounded shadow my-3">
-
-      <p>
-        Gracias a la normalización, es posible actualizar proveedores o productos en un solo lugar, sin inconsistencias en otras partes del sistema.
-      </p>
+  <section class="container my-5" data-aos="fade-up">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-4 p-4 section-card">
+      <div>
+        <h1 class="text-purple mb-3">Sistema de Inventario con Base de Datos Relacional</h1>
+        <p class="lead lead-muted mb-0">Proyecto desarrollado en PostgreSQL aplicando buenas prácticas de modelado, normalización y transacciones SQL.</p>
+      </div>
+      <div>
+        <a href="index.html#projects" class="btn btn-purple"><i class="bi bi-arrow-left me-2"></i>Volver al Portafolio</a>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Conclusión Personal</h2>
-    <p>
-      Este proyecto me permitió aplicar en un contexto real lo aprendido sobre diseño e implementación de bases de datos relacionales. Desde el modelado inicial hasta las consultas y automatizaciones con SQL, comprendí la importancia de una estructura bien diseñada para el manejo eficiente de datos.
-      Además, reforcé el uso de herramientas como PostgreSQL, DBeaver y el diseño visual de diagramas ERD.
-    </p>
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">Objetivo del Proyecto</h2>
+          <p>
+            Este proyecto consistió en diseñar e implementar un <strong>sistema de inventario</strong> basado en una <strong>base de datos relacional utilizando PostgreSQL</strong>.
+            El sistema permite registrar productos, proveedores y transacciones aplicando buenas prácticas como:
+          </p>
+          <ul class="mb-0">
+            <li>Uso de <strong>claves primarias y foráneas</strong> para relaciones sólidas.</li>
+            <li><strong>Normalización</strong> hasta la Tercera Forma Normal (3FN).</li>
+            <li>Aplicación de <strong>transacciones SQL</strong> para mantener la integridad.</li>
+            <li>Implementación de <strong>consultas complejas</strong> y <strong>triggers</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card p-3 shadow-sm h-100 d-flex align-items-center justify-content-center">
+          <img src="assets/img/diagrama-erd.png" alt="Diagrama ERD del sistema" class="img-fluid rounded">
+          <small class="text-muted mt-2">Modelo Entidad-Relación (ERD)</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="150">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">Estructura de Tablas</h2>
+          <img src="assets/img/consultas-sql.png" alt="Tablas creadas en PostgreSQL" class="img-fluid rounded mb-3">
+          <ul>
+            <li><strong>productos</strong>: nombre, descripción, precio y cantidad.</li>
+            <li><strong>proveedores</strong>: datos de contacto de los proveedores.</li>
+            <li><strong>transacciones</strong>: compras/ventas con fecha y producto.</li>
+          </ul>
+          <p class="mb-3">Se utilizaron claves primarias y foráneas, además de restricciones como <code>CHECK</code>, <code>DEFAULT CURRENT_TIMESTAMP</code>, <code>NOT NULL</code> y <code>UNIQUE</code>.</p>
+          <a href="assets/img/creacion-tablas-sql.png" target="_blank" class="btn btn-outline-dark btn-sm"><i class="bi bi-paperclip me-2"></i>Ver creación de tablas</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">Registro de Transacciones</h2>
+          <img src="assets/img/transacciones.png" alt="Transacciones en PostgreSQL" class="img-fluid rounded mb-2">
+          <div class="mb-3"><a class="btn btn-outline-dark btn-sm w-100" href="assets/img/pruebas-de-funcionamiento-trigger.png" target="_blank"><i class="bi bi-paperclip me-2"></i>Ver pruebas de funcionamiento</a></div>
+          <ul>
+            <li>Las <strong>compras</strong> aumentan el stock.</li>
+            <li>Las <strong>ventas</strong> disminuyen el stock.</li>
+          </ul>
+          <p class="mb-0">Mediante <strong>triggers</strong> y <strong>funciones SQL</strong> se actualiza automáticamente la cantidad de inventario por transacción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-4" data-aos="fade-up" data-aos-delay="200">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">Triggers y Automatización</h2>
+          <img src="assets/img/triggers-funcion-sql.png" alt="Trigger SQL para actualizar stock" class="img-fluid rounded mb-3">
+          <p>Se creó la función <code>actualizar_stock()</code> y un <strong>trigger</strong> que ajusta el stock en cada inserción de transacción, validando stock suficiente en ventas.</p>
+          <a href="assets/img/triggers-funcion-sql.png" target="_blank" class="btn btn-outline-dark btn-sm">Ver trigger en tamaño completo</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card p-4 shadow-sm h-100">
+          <h2 class="fw-bold text-purple mb-3">Consultas SQL</h2>
+          <img src="assets/img/consulta-sql.png" alt="Consultas SQL" class="img-fluid rounded mb-3">
+          <div class="mb-3"><a class="btn btn-outline-dark btn-sm w-100" href="assets/img/consultas-sql3.png" target="_blank"><i class="bi bi-paperclip me-2"></i>Ver todas las consultas</a></div>
+          <p>Consultas con <strong>SELECT + JOIN</strong>, filtros con <strong>WHERE</strong>, <strong>GROUP BY</strong> y funciones agregadas para reportes útiles del inventario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5" id="normalizacion" data-aos="fade-up" data-aos-delay="250">
+    <h2 class="text-center mb-4 text-purple">Normalización</h2>
+    <div class="card shadow p-4">
+      <p>Se aplicó <strong>normalización hasta 3FN</strong> para evitar duplicación y asegurar integridad.</p>
+      <ul>
+        <li>Separación de entidades: productos, proveedores y transacciones.</li>
+        <li>Eliminación de datos redundantes.</li>
+        <li>Relaciones con claves foráneas sin duplicación de información.</li>
+      </ul>
+      <pre class="bg-light p-3 rounded"><code>SELECT p.nombre AS producto, pr.nombre AS proveedor
+FROM productos p
+JOIN proveedores pr ON p.proveedor_id = pr.proveedor_id;</code></pre>
+      <img src="assets/img/normalizacion-error.png" alt="Consulta JOIN con error de clave" class="img-fluid rounded shadow my-3">
+      <p>Gracias a la normalización, es posible actualizar proveedores o productos en un solo lugar, sin inconsistencias.</p>
+    </div>
+  </section>
+
+  <section class="container my-5" data-aos="fade-up" data-aos-delay="300">
+    <div class="card p-4 shadow-sm">
+      <h2 class="fw-bold text-purple mb-3">Conclusión Personal</h2>
+      <p class="mb-0">Este proyecto me permitió aplicar en un contexto real diseño e implementación de bases de datos relacionales. Desde el modelado hasta las automatizaciones con SQL, reforcé el uso de PostgreSQL, DBeaver y el diseño de ERD, destacando la importancia de una estructura sólida para el manejo eficiente de datos.</p>
+    </div>
   </section>
 </main>
 
-<footer>
-  <p>Proyecto desarrollado por Magdalena Inalaf G. — Bootcamp JS 2025</p>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <div class="brand-logo">
+        <div class="brand-icon"><i class="bi bi-code-slash"></i></div>
+        <span class="brand-name">Magdalena Inalaf</span>
+      </div>
+      <div class="copyright"><small>© 2025 Todos los derechos reservados</small></div>
+    </div>
+    <div class="footer-links">
+      <a href="https://inalaf.ca" target="_blank" class="footer-link" aria-label="Sitio web"><div class="icon-container"><i class="bi bi-globe"></i></div><span class="link-text">Sitio Web</span></a>
+      <a href="https://github.com/MagdaIG" target="_blank" class="footer-link" aria-label="GitHub"><div class="icon-container"><i class="bi bi-github"></i></div><span class="link-text">GitHub</span></a>
+      <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link" aria-label="LinkedIn"><div class="icon-container"><i class="bi bi-linkedin"></i></div><span class="link-text">LinkedIn</span></a>
+    </div>
+    <div class="footer-credits">
+      <div class="credits-content">
+        <span class="credits-text">Desarrollado con <i class="bi bi-heart-fill"></i> por</span>
+        <span class="developer-name">Magdalena Inalaf G.</span>
+      </div>
+    </div>
+  </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script> AOS.init(); </script>
 </body>
 </html>
