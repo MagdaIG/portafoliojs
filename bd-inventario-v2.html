@@ -190,8 +190,14 @@
       </div>
       <div class="col-lg-4">
         <div class="card p-3 shadow-sm h-100 d-flex align-items-center justify-content-center">
-          <img src="assets/img/consultas-sql.png" alt="Arquitectura del sistema v2.0" class="img-fluid rounded">
-          <small class="text-muted mt-2">Diagrama de arquitectura mejorada</small>
+          <div class="text-center">
+            <i class="bi bi-diagram-3 text-primary" style="font-size: 4rem;"></i>
+            <h6 class="text-purple mt-3">Arquitectura del Sistema</h6>
+            <p class="text-muted small">Diseño modular en capas</p>
+            <button class="btn btn-outline-dark btn-sm mt-2" onclick="openERDDiagram()">
+              <i class="bi bi-eye me-2"></i>Ver diagrama ERD
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -347,13 +353,75 @@ $$ LANGUAGE plpgsql;</code></pre>
             <h6 class="fw-bold text-success mb-2">Mejora en v2.0</h6>
             <p class="mb-0">Documentación modular y detallada para cada componente del sistema.</p>
           </div>
-          <ul class="mb-3">
-            <li><strong>README.md</strong> - Guía de instalación y configuración</li>
-            <li><strong>docs/schema/</strong> - Documentación del esquema de BD</li>
-            <li><strong>docs/functions/</strong> - Documentación de funciones SQL</li>
-            <li><strong>docs/examples/</strong> - Ejemplos de uso y consultas</li>
-          </ul>
-          <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/documentacion-completa.png">
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <h6 class="text-purple mb-2">📋 Documentación Principal:</h6>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-file-text text-primary me-2"></i>
+                    <strong>README Principal</strong>
+                    <small class="text-muted d-block">Guía general del proyecto</small>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 class="text-purple mb-2">📚 Documentación por Módulos:</h6>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/01-modelado/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-diagram-3 text-info me-2"></i>
+                    <strong>01 - Modelado</strong>
+                    <small class="text-muted d-block">Diseño ERD y relaciones</small>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/02-ddl/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-database text-success me-2"></i>
+                    <strong>02 - DDL</strong>
+                    <small class="text-muted d-block">Creación de tablas y estructura</small>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/03-dml/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-pencil-square text-warning me-2"></i>
+                    <strong>03 - DML</strong>
+                    <small class="text-muted d-block">Inserción y manipulación de datos</small>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/04-consultas/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-search text-primary me-2"></i>
+                    <strong>04 - Consultas</strong>
+                    <small class="text-muted d-block">Queries y reportes</small>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/05-triggers/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-lightning text-danger me-2"></i>
+                    <strong>05 - Triggers</strong>
+                    <small class="text-muted d-block">Automatización y validaciones</small>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/06-funciones/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-gear text-info me-2"></i>
+                    <strong>06 - Funciones</strong>
+                    <small class="text-muted d-block">Procedimientos personalizados</small>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="projects/bd-relacional/07-validaciones/README.md" target="_blank" class="text-decoration-none">
+                    <i class="bi bi-shield-check text-success me-2"></i>
+                    <strong>07 - Validaciones</strong>
+                    <small class="text-muted d-block">Testing y verificación de datos</small>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/readme-principal-v2.png">
             <i class="bi bi-paperclip me-2"></i>Ver documentación
           </a>
         </div>
@@ -463,9 +531,15 @@ CREATE TABLE proveedores (
 );</code></pre>
       </div>
 
-      <div class="mt-3">
-        <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/normalizacion-detallada.png">
-          <i class="bi bi-paperclip me-2"></i>Ver proceso completo de normalización
+      <div class="mt-3 d-flex gap-2 flex-wrap">
+        <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/normalizacion1.png">
+          <i class="bi bi-paperclip me-2"></i>Normalización 1
+        </a>
+        <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/normalizacion2.png">
+          <i class="bi bi-paperclip me-2"></i>Normalización 2
+        </a>
+        <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/normalizacion-readme.png">
+          <i class="bi bi-paperclip me-2"></i>Normalización README
         </a>
       </div>
     </div>
@@ -507,9 +581,9 @@ git clone --recursive [URL]</code></pre>
             </div>
           </div>
           <div class="mt-3">
-            <a href="#" class="btn btn-outline-dark btn-sm view-image" data-image="assets/img/git-submodule-structure.png">
-              <i class="bi bi-paperclip me-2"></i>Ver estructura completa
-            </a>
+            <button class="btn btn-outline-dark btn-sm" onclick="openGitSubmoduleDiagram()">
+              <i class="bi bi-diagram-3 me-2"></i>Ver diagrama interactivo
+            </button>
           </div>
         </div>
       </div>
@@ -586,6 +660,50 @@ git clone --recursive [URL]</code></pre>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script> AOS.init(); </script>
+<script>
+  AOS.init();
+
+  // Función para abrir el diagrama de Git Submodule
+  function openGitSubmoduleDiagram() {
+    const diagramWindow = window.open(
+      'git-submodule-diagram.html',
+      'GitSubmoduleDiagram',
+      'width=1200,height=800,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no'
+    );
+
+    // Centrar la ventana
+    if (diagramWindow) {
+      diagramWindow.focus();
+    }
+  }
+
+  // Función para abrir el diagrama de Arquitectura del Sistema
+  function openArquitecturaDiagram() {
+    const diagramWindow = window.open(
+      'arquitectura-sistema-diagram.html',
+      'ArquitecturaDiagram',
+      'width=1400,height=900,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no'
+    );
+
+    // Centrar la ventana
+    if (diagramWindow) {
+      diagramWindow.focus();
+    }
+  }
+
+  // Función para abrir el diagrama ERD
+  function openERDDiagram() {
+    const diagramWindow = window.open(
+      'erd-diagram.html',
+      'ERDDiagram',
+      'width=1300,height=800,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no'
+    );
+
+    // Centrar la ventana
+    if (diagramWindow) {
+      diagramWindow.focus();
+    }
+  }
+</script>
 </body>
 </html>
