@@ -104,6 +104,43 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   typedBlocks.forEach((block) => observer.observe(block));
+
+  // --- Image Modal Viewer (para ver imágenes en un modal bonito) ---
+  const modalHtml = `
+    <div class="modal fade" id="imageViewerModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content" style="background: #f8f6fc; border: 1px solid #e2d6f0; border-radius: 16px;">
+          <div class="modal-header" style="border-bottom: 1px solid #e2d6f0;">
+            <h5 class="modal-title text-purple fw-bold">Vista de imagen</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex justify-content-center">
+            <img id="imageViewerSrc" src="" alt="Vista previa" class="img-fluid rounded shadow" />
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  if (!document.getElementById('imageViewerModal')) {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = modalHtml;
+    document.body.appendChild(wrapper.firstElementChild);
+  }
+
+  const imageModalEl = document.getElementById('imageViewerModal');
+  const imageModal = imageModalEl ? new bootstrap.Modal(imageModalEl, { keyboard: true }) : null;
+
+  document.querySelectorAll('.view-image').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const src = btn.getAttribute('data-image');
+      const img = document.getElementById('imageViewerSrc');
+      if (src && img && imageModal) {
+        img.src = src;
+        imageModal.show();
+      }
+    });
+  });
 });
 
 // --- Contact form validation and feedback modal ---
