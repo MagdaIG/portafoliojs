@@ -51,8 +51,17 @@
     <p>
       Cada tabla fue diseñada con sus respectivas <strong>claves primarias</strong> y se utilizaron <strong>claves foráneas</strong> para vincular las relaciones entre ellas.
     </p>
-  </section>
+    <p>
+      Se utilizaron <strong>claves primarias</strong> (como <code>producto_id</code> o <code>proveedor_id</code>) y <strong>claves foráneas</strong> para relacionar las tablas. También se agregaron restricciones como:
+    </p>
 
+    <ul>
+      <li><code>CHECK</code> para asegurar que el precio sea mayor a 0 o que la cantidad no sea negativa.</li>
+      <li><code>DEFAULT CURRENT_TIMESTAMP</code> para que la fecha se registre automáticamente.</li>
+      <li><code>NOT NULL</code> y <code>UNIQUE</code> para mantener integridad y evitar duplicados en campos clave.</li>
+    </ul>
+
+    <a href="assets/img/creacion-tablas-sql.png" target="_blank" class="btn-ver">📎 Ver creación de tablas completa</a>  </section>
   <section>
     <h2>Registro de Transacciones</h2>
     <img src="assets/img/transacciones.png" alt="Transacciones en PostgreSQL" class="img-responsive">
@@ -66,6 +75,23 @@
     <p>
       Esto se logró mediante el uso de <strong>triggers y funciones SQL</strong>, que modifican automáticamente la cantidad de inventario cada vez que se realiza una transacción.
     </p>
+  </section>
+  <section>
+    <h2>Triggers y Automatización del Inventario</h2>
+    <img src="assets/img/triggers-funcion-sql.png" alt="Trigger SQL para actualizar stock" class="img-responsive">
+    <p>
+      Para asegurar que el <strong>inventario se actualice automáticamente</strong> al registrar una compra o venta, se creó una <strong>función en PostgreSQL</strong> llamada <code>actualizar_stock()</code>, junto a un <strong>trigger</strong> que se ejecuta cada vez que se inserta una nueva fila en la tabla <code>transacciones</code>.
+    </p>
+
+    <p>
+      La función revisa si la transacción es una <strong>compra</strong> (se suma stock) o una <strong>venta</strong> (se descuenta stock). En el caso de una venta, además valida que haya stock suficiente; si no, lanza una excepción.
+    </p>
+
+    <p>
+      Este tipo de lógica garantiza la <strong>integridad de los datos</strong>, evita errores humanos y automatiza una parte clave del sistema.
+    </p>
+
+    <a href="assets/img/triggers-funcion-sql.png" target="_blank" class="btn-ver"> Ver Trigger en tamaño completo</a>
   </section>
 
   <section>
