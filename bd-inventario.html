@@ -17,44 +17,112 @@
   <section class="intro">
     <h2>Objetivo del Proyecto</h2>
     <p>
-      Este proyecto consistió en diseñar y desarrollar un sistema de gestión de inventario usando PostgreSQL, aplicando conceptos como claves primarias/foráneas, normalización hasta 3FN, transacciones SQL, y más.
+      Este proyecto consistió en diseñar e implementar un <strong>sistema de inventario</strong> basado en una <strong>base de datos relacional utilizando PostgreSQL</strong>.
+      El sistema permite registrar productos, proveedores y transacciones de forma estructurada y segura, aplicando buenas prácticas como:
+    </p>
+    <ul>
+      <li>Uso de <strong>claves primarias y foráneas</strong> para establecer relaciones.</li>
+      <li><strong>Normalización</strong> hasta la Tercera Forma Normal (3FN).</li>
+      <li>Aplicación de <strong>transacciones SQL</strong> para mantener la integridad.</li>
+      <li>Implementación de <strong>consultas complejas</strong> y <strong>triggers</strong>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Modelo Entidad-Relación (ERD)</h2>
+    <img src="assets/img/diagrama-erd.png" alt="Diagrama ERD del sistema" class="img-responsive">
+    <p>
+      El diagrama ERD muestra tres entidades principales: <strong>Productos</strong>, <strong>Proveedores</strong> y <strong>Transacciones</strong>.
+      Cada producto está asociado a un proveedor, y las transacciones registran operaciones (compra o venta) que afectan el inventario.
     </p>
   </section>
 
   <section>
-    <h2>Modelo Entidad-Relación</h2>
-    <img src="assets/img/diagrama-erd.png" alt="Diagrama ERD del sistema" class="img-responsive">
-    <p>Diagrama ERD que representa las relaciones entre productos, proveedores y transacciones.</p>
-  </section>
-
-  <section>
     <h2>Estructura de Tablas en PostgreSQL</h2>
-    <img src="assets/img/tablas-creadas.png" alt="Tablas creadas en PostgreSQL" class="img-responsive">
-    <p>Tablas relacionales implementadas con claves primarias y foráneas, restricciones, tipos de datos y relaciones.</p>
+    <img src="assets/img/consultas-sql.png" alt="Tablas creadas en PostgreSQL" class="img-responsive">
+    <p>
+      Se crearon tres tablas principales:
+    </p>
+    <ul>
+      <li><strong>productos</strong>: contiene nombre, descripción, precio y cantidad.</li>
+      <li><strong>proveedores</strong>: almacena los datos de contacto de los proveedores.</li>
+      <li><strong>transacciones</strong>: registra las operaciones de compra/venta, incluyendo la fecha y el producto involucrado.</li>
+    </ul>
+    <p>
+      Cada tabla fue diseñada con sus respectivas <strong>claves primarias</strong> y se utilizaron <strong>claves foráneas</strong> para vincular las relaciones entre ellas.
+    </p>
   </section>
 
   <section>
     <h2>Registro de Transacciones</h2>
     <img src="assets/img/transacciones.png" alt="Transacciones en PostgreSQL" class="img-responsive">
-    <p>Las transacciones registran compras y ventas, actualizando automáticamente el inventario con triggers.</p>
+    <p>
+      Las transacciones permiten simular operaciones comerciales reales. Por ejemplo:
+    </p>
+    <ul>
+      <li>Una <strong>compra</strong> aumenta el stock de un producto.</li>
+      <li>Una <strong>venta</strong> disminuye el stock.</li>
+    </ul>
+    <p>
+      Esto se logró mediante el uso de <strong>triggers y funciones SQL</strong>, que modifican automáticamente la cantidad de inventario cada vez que se realiza una transacción.
+    </p>
   </section>
 
   <section>
     <h2>Consultas SQL</h2>
-    <img src="assets/img/consultas-sql.png" alt="Consultas SQL" class="img-responsive">
-    <p>Consultas básicas y avanzadas usando SELECT, JOIN, GROUP BY, subqueries y funciones agregadas.</p>
+    <img src="assets/img/consulta-sql.png" alt="Consultas SQL" class="img-responsive">
+    <p>
+      Se crearon consultas para obtener información útil del sistema, tales como:
+    </p>
+    <ul>
+      <li>Productos y sus proveedores.</li>
+      <li>Transacciones realizadas en el día actual.</li>
+      <li>Productos con inventario bajo o agotado.</li>
+      <li>Proveedores que han participado en transacciones.</li>
+    </ul>
+    <p>
+      Estas consultas demuestran el uso de <strong>SELECT con JOIN</strong>, <strong>filtros con WHERE</strong>, <strong>agrupaciones con GROUP BY</strong> y <strong>funciones agregadas</strong>.
+    </p>
   </section>
 
-  <section>
-    <h2>Normalización</h2>
-    <img src="assets/img/normalizacion.png" alt="Normalización hasta 3FN" class="img-responsive">
-    <p>Las tablas fueron diseñadas para cumplir con la Tercera Forma Normal (3FN), eliminando redundancias y asegurando integridad.</p>
+  <section id="normalizacion" class="container my-5">
+    <h2 class="text-center mb-4">Normalización</h2>
+    <div class="card shadow p-4">
+      <p>
+        Para evitar duplicación de datos y asegurar su integridad, se aplicó <strong>normalización hasta la Tercera Forma Normal (3FN)</strong>.
+      </p>
+      <ul>
+        <li>Se separaron las entidades: productos, proveedores y transacciones.</li>
+        <li>Se eliminaron datos redundantes, como proveedores repetidos.</li>
+        <li>Se utilizaron <strong>claves foráneas</strong> para relacionar las tablas sin duplicar información.</li>
+      </ul>
+      <p>
+        La siguiente consulta (con error intencional) muestra un intento de JOIN que refleja la estructura normalizada:
+      </p>
+
+      <pre class="bg-light p-3 rounded"><code>
+SELECT p.nombre AS producto, pr.nombre AS proveedor
+FROM productos p
+JOIN proveedores pr ON p.proveedor_id = pr.proveedor_id;
+      </code></pre>
+
+      <p>
+        Aunque el campo <code>proveedor_id</code> no estaba en la tabla productos (de ahí el error), la intención demuestra que los datos están <strong>relacionados</strong> mediante claves externas y no se repiten dentro de una sola tabla. Esto es característico de una base de datos bien normalizada.
+      </p>
+
+      <img src="assets/img/normalizacion-error.png" alt="Consulta JOIN con error de clave" class="img-fluid rounded shadow my-3">
+
+      <p>
+        Gracias a la normalización, es posible actualizar proveedores o productos en un solo lugar, sin inconsistencias en otras partes del sistema.
+      </p>
+    </div>
   </section>
 
   <section>
     <h2>Conclusión Personal</h2>
     <p>
-      Este proyecto me permitió aplicar en un contexto real lo aprendido sobre bases de datos. Implementé modelos, consultas, triggers y transacciones para crear un sistema funcional y bien estructurado.
+      Este proyecto me permitió aplicar en un contexto real lo aprendido sobre diseño e implementación de bases de datos relacionales. Desde el modelado inicial hasta las consultas y automatizaciones con SQL, comprendí la importancia de una estructura bien diseñada para el manejo eficiente de datos.
+      Además, reforcé el uso de herramientas como PostgreSQL, DBeaver y el diseño visual de diagramas ERD.
     </p>
   </section>
 </main>
