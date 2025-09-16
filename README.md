@@ -12,48 +12,119 @@ Este portafolio fue desarrollado como parte del módulo del Bootcamp de JavaScri
 
 ## Tecnologías utilizadas
 
+### Frontend
 - HTML5
 - CSS3
 - Bootstrap 5
-- JavaScript
+- JavaScript (ES6+)
 - jQuery
 - AOS (Animate on Scroll)
+
+### Backend y Base de Datos
+- PostgreSQL 15+
+- PL/pgSQL
+- SQL (DDL, DML, DQL)
+
+### Herramientas y Control de Versiones
 - Git y GitHub
+- Git Submodules
+- Markdown
+- Mermaid (Diagramas)
+
+### Metodologías
+- Normalización de bases de datos (3FN)
+- Arquitectura en capas
+- Documentación técnica modular
 
 ---
 
 ## Habilidades demostradas
 
-Estructuración semántica con HTML5  
-Estilos personalizados y responsividad con CSS y Bootstrap  
-Manipulación del DOM con JavaScript  
-Manejo de eventos e interactividad con jQuery  
-Uso de animaciones con AOS  
-Validación de formularios  
-Control de versiones con Git  
-Repositorio remoto y documentación con GitHub
+### Desarrollo Frontend
+- Estructuración semántica con HTML5
+- Estilos personalizados y responsividad con CSS y Bootstrap
+- Manipulación del DOM con JavaScript
+- Manejo de eventos e interactividad con jQuery
+- Uso de animaciones con AOS
+- Validación de formularios
+- Diseño de interfaces de usuario
+
+### Desarrollo Backend y Base de Datos
+- Diseño de bases de datos relacionales
+- Normalización hasta 3FN
+- Programación en PL/pgSQL
+- Creación de triggers y funciones
+- Optimización de consultas SQL
+- Validaciones de integridad de datos
+
+### Herramientas y Metodologías
+- Control de versiones con Git
+- Uso de Git Submodules
+- Documentación técnica modular
+- Creación de diagramas interactivos
+- Testing y validación de sistemas
+- Arquitectura de software
 
 ---
 
 ## Estructura del proyecto
+```
 portafoliojs/
-├── index.html
+├── index.html                          # Página principal del portafolio
+├── bd-inventario.html                  # Proyecto de base de datos v1.0
+├── bd-inventario-v2.html               # Proyecto de base de datos v2.0 mejorado
+├── git-submodule-diagram.html          # Diagrama interactivo de Git Submodules
+├── arquitectura-sistema-diagram.html   # Diagrama de arquitectura del sistema
+├── erd-diagram.html                    # Diagrama ERD interactivo
+├── git-submodule-diagram.md            # Documentación de Git Submodules
+├── .gitmodules                         # Configuración de Git Submodules
+├── README.md                           # Este archivo
 ├── assets/
 │   ├── css/
-│   │   └── styles.css
+│   │   └── styles.css                  # Estilos personalizados
 │   ├── js/
-│   │   └── script.js
+│   │   └── script.js                   # Funcionalidades JavaScript
 │   ├── img/
-│   │   ├── profile.jpeg
-│   │   ├── purpose.png
-│   │   ├── cineflash-snippet.png
-│   │   ├── librolibre-snippet.png
-│   │   └── journey/
+│   │   ├── profile.jpeg                # Foto de perfil
+│   │   ├── purpose.png                 # Imagen de propósito
+│   │   ├── cineflash-snippet.png       # Screenshot CineFlash
+│   │   ├── librolibre-snippet.png      # Screenshot LibroLibre
+│   │   ├── gestion-tareas.png          # Proyecto gestión de tareas
+│   │   ├── cute-shop.png               # Proyecto e-commerce
+│   │   ├── nuevo-diagrama.png          # Diagrama del sistema v2.0
+│   │   ├── validacion-v2-1.png         # Validaciones parte 1
+│   │   ├── validacion-v2-2.png         # Validaciones parte 2
+│   │   ├── funcion-part1.png           # Funciones parte 1
+│   │   ├── funcion-part2.png           # Funciones parte 2
+│   │   ├── trigger-v2.png              # Triggers mejorados
+│   │   ├── normalizacion1.png          # Normalización paso 1
+│   │   ├── normalizacion2.png          # Normalización paso 2
+│   │   ├── normalizacion-readme.png    # README de normalización
+│   │   ├── readme-principal-v2.png     # README principal v2.0
+│   │   ├── consultas-sql.png           # Consultas SQL
+│   │   ├── consultas-sql3.png          # Consultas SQL completas
+│   │   ├── pruebas-de-funcionamiento-trigger.png
+│   │   ├── transacciones.png           # Imagen de transacciones
+│   │   ├── triggers-funcion-sql.png    # Triggers y funciones
+│   │   ├── diagrama-erd.png            # Diagrama ERD original
+│   │   ├── normalizacion-error.png     # Error de normalización
+│   │   └── journey/                    # Imágenes del viaje de aprendizaje
 │   │       ├── htmlcss.png
 │   │       ├── vue.png
 │   │       └── next.png
 │   └── pdf/
-│       └── CV_Magda_English.pdf
+│       └── CV_Magda_English.pdf        # CV en inglés
+└── projects/                           # Git Submodule
+    └── bd-relacional/                  # Proyecto de base de datos relacional
+        ├── README.md                   # Documentación principal
+        ├── 01-modelado/                # Módulo de modelado
+        ├── 02-ddl/                     # Módulo DDL
+        ├── 03-dml/                     # Módulo DML
+        ├── 04-consultas/               # Módulo de consultas
+        ├── 05-triggers/                # Módulo de triggers
+        ├── 06-funciones/               # Módulo de funciones
+        └── 07-validaciones/            # Módulo de validaciones
+```
 
 ---
 
@@ -76,6 +147,36 @@ portafoliojs/
 > Catálogo de libros con sistema de búsqueda dinámica, botones de acción, y tarjetas responsivas.
 
 🔗 [Ver LibroLibre](https://magdaig.github.io/libros-catalogo-web/)
+
+---
+
+### Gestión de Tareas
+
+![Gestión de Tareas](assets/img/gestion-tareas.png)
+
+> Aplicación de gestión de tareas con funcionalidades de arrastrar y soltar, filtrado, búsqueda y persistencia de datos.
+
+🔗 [Ver Gestión de Tareas](https://magdaig.github.io/Gestion-de-tareas-con-javascript/)
+
+---
+
+### Cute Shop - E-commerce
+
+![Cute Shop](assets/img/cute-shop.png)
+
+> Tienda online de productos kawaii con carrito de compras, filtros dinámicos y diseño responsivo.
+
+🔗 [Ver Cute Shop](https://magdaig.github.io/productos-e-commerce.js/)
+
+---
+
+### Sistema de Inventario v2.0
+
+![Sistema de Inventario](assets/img/nuevo-diagrama.png)
+
+> Sistema completo de gestión de inventario con PostgreSQL, validaciones avanzadas, triggers y documentación modular.
+
+🔗 [Ver Sistema de Inventario v2.0](bd-inventario-v2.html)
 
 ---
 
