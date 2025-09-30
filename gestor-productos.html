@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Productos - Backend Node.js | Portafolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Ajustes específicos de esta página */
+    .section-card { background-color: #fff; border: 1px solid #e2d6f0; border-radius: 16px; }
+    .lead-muted { color: #555; }
+    .code-section { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1e40af; }
+    .feature-badge { font-size: 0.8rem; }
+    .step-number {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e2d6f0;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+    }
+    .tech-highlight {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-left: 4px solid #1e40af;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .code-snippet {
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+    }
+    .screenshot-container {
+      border: 2px solid #e2d6f0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-container">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-text">Magdalena Inalaf</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html#about">Sobre Mí</a>
+          <a class="nav-link" href="index.html#projects">Proyectos</a>
+          <a class="nav-link" href="index.html#skills">Habilidades</a>
+          <a class="nav-link" href="index.html#contact">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer para el contenido fijo -->
+  <div class="navbar-spacer"></div>
+
+  <!-- Hero Section -->
+  <section class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-aos="fade-right">
+        <h1 class="display-4 fw-bold text-purple mb-3">Gestión de Productos - Backend</h1>
+        <p class="lead lead-muted mb-4">
+          Aplicación web backend desarrollada con Node.js y Express para gestión de productos de tienda en línea.
+          Implementa persistencia de datos, manejo de archivos, rutas dinámicas y servidor web completo.
+        </p>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <span class="badge bg-success feature-badge">Node.js</span>
+          <span class="badge bg-info feature-badge">Express</span>
+          <span class="badge bg-warning feature-badge">EJS</span>
+          <span class="badge bg-primary feature-badge">fs Module</span>
+          <span class="badge bg-secondary feature-badge">npm</span>
+          <span class="badge bg-dark feature-badge">Multer</span>
+        </div>
+        <a href="https://github.com/MagdaIG/gestor-productos" target="_blank" class="btn btn-purple me-3">
+          <i class="bi bi-github me-2"></i>Ver Código
+        </a>
+        <a href="index.html#projects" class="btn btn-outline-purple">
+          <i class="bi bi-arrow-left me-2"></i>Volver a Proyectos
+        </a>
+      </div>
+      <div class="col-lg-4" data-aos="fade-left">
+        <div class="screenshot-container">
+          <img src="assets/img/gestion-productos.png" alt="Gestión de Productos" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Descripción del Proyecto -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4">Descripción del Proyecto</h2>
+      <p class="lead-muted mb-4">
+        Este proyecto es una aplicación web backend desarrollada como parte del Bootcamp de JavaScript, enfocada en la gestión
+        de productos para una tienda en línea. La aplicación implementa un servidor Express completo con persistencia de datos,
+        manejo de archivos y rutas dinámicas, cumpliendo con todos los requisitos del proyecto original.
+      </p>
+
+      <div class="tech-highlight">
+        <h5 class="fw-bold mb-3"><i class="bi bi-lightbulb me-2"></i>Objetivos del Proyecto Original</h5>
+        <ul class="mb-0">
+          <li>Crear un servidor Express básico que sirva contenido estático y dinámico</li>
+          <li>Implementar persistencia de productos en archivos JSON utilizando fs</li>
+          <li>Desarrollar rutas para mostrar y agregar productos a través de formularios</li>
+          <li>Configurar manejo de errores básico en el servidor</li>
+          <li>Gestionar dependencias con npm y documentar el proceso</li>
+          <li>Demostrar funcionamiento correcto con pruebas de almacenamiento y lectura</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Características Principales -->
+  <section class="container my-5">
+    <h2 class="text-purple text-center mb-5">Características Principales</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">1</div>
+            <h5 class="mb-0 fw-bold">Servidor Express</h5>
+          </div>
+          <p class="text-muted">Servidor web básico que sirve contenido estático y dinámico, configurado para escuchar en puerto 3000.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">2</div>
+            <h5 class="mb-0 fw-bold">Persistencia de Datos</h5>
+          </div>
+          <p class="text-muted">Almacenamiento de productos en archivos JSON utilizando el módulo fs de Node.js de manera asíncrona.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">3</div>
+            <h5 class="mb-0 fw-bold">Rutas Dinámicas</h5>
+          </div>
+          <p class="text-muted">Rutas para mostrar productos y agregar nuevos productos a través de formularios con EJS.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">4</div>
+            <h5 class="mb-0 fw-bold">Gestión de Dependencias</h5>
+          </div>
+          <p class="text-muted">Uso de npm para instalar y gestionar dependencias como Express, EJS, Multer y nodemon.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">5</div>
+            <h5 class="mb-0 fw-bold">Manejo de Errores</h5>
+          </div>
+          <p class="text-muted">Middleware para capturar errores 404 y errores generales del servidor con mensajes apropiados.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="feature-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">6</div>
+            <h5 class="mb-0 fw-bold">Manejo de Archivos</h5>
+          </div>
+          <p class="text-muted">Sistema de subida de imágenes con Multer y validación de tipos de archivo permitidos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arquitectura y Tecnologías -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4">Arquitectura y Tecnologías</h2>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3">Backend Core</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Node.js:</strong> Runtime de JavaScript para servidor</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Express.js:</strong> Framework web minimalista y flexible</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>fs Module:</strong> Módulo nativo para manejo de archivos</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>EJS:</strong> Motor de plantillas para renderizado</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>JSON:</strong> Formato de persistencia de datos</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3">Dependencias y Herramientas</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>npm:</strong> Gestor de paquetes y dependencias</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Multer:</strong> Middleware para manejo de archivos</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>nodemon:</strong> Reinicio automático del servidor</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>body-parser:</strong> Parsing de datos de formularios</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Middleware:</strong> Manejo de errores y rutas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Código Destacado -->
+  <section class="container my-5">
+    <h2 class="text-purple text-center mb-5">Código Destacado</h2>
+
+    <div class="row g-4">
+      <!-- Servidor Express -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-server me-2"></i>Configuración del Servidor</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/configuracion-servidor.png" alt="Configuración del Servidor Express" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Persistencia de Datos -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-database me-2"></i>Persistencia con fs</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/persistencia-fs.png" alt="Persistencia con fs" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rutas Express -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-router me-2"></i>Rutas Express</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/rutas-express.png" alt="Rutas Express" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manejo de Errores -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-exclamation-triangle me-2"></i>Manejo de Errores</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/manejo-errores.png" alt="Manejo de Errores" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funcionalidades Detalladas -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4">Funcionalidades Detalladas</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h4 class="fw-bold mb-3">Servidor y Rutas</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-server text-success me-2"></i><strong>Servidor Express:</strong> Configurado en puerto 3000</li>
+            <li class="mb-2"><i class="bi bi-house text-info me-2"></i><strong>Ruta Principal:</strong> Mensaje de bienvenida</li>
+            <li class="mb-2"><i class="bi bi-list text-warning me-2"></i><strong>Ruta Productos:</strong> Lista dinámica con EJS</li>
+            <li class="mb-2"><i class="bi bi-plus text-primary me-2"></i><strong>Ruta POST:</strong> Agregar productos via formulario</li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h4 class="fw-bold mb-3">Persistencia y Archivos</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-file-earmark-text text-primary me-2"></i><strong>Archivo JSON:</strong> Almacenamiento de productos</li>
+            <li class="mb-2"><i class="bi bi-arrow-clockwise text-info me-2"></i><strong>Operaciones fs:</strong> Lectura/escritura asíncrona</li>
+            <li class="mb-2"><i class="bi bi-upload text-success me-2"></i><strong>Multer:</strong> Manejo de archivos de imagen</li>
+            <li class="mb-2"><i class="bi bi-shield-check text-secondary me-2"></i><strong>Validación:</strong> Tipos de archivo permitidos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aprendizajes y Desafíos -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4">Aprendizajes y Desafíos</h2>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3 text-success">Lo que Aprendí</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i>Configuración de servidores Express.js</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i>Persistencia de datos con módulo fs</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i>Implementación de rutas dinámicas y estáticas</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i>Gestión de dependencias con npm</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i>Manejo de archivos con Multer</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i>Implementación de middleware para errores</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3 text-warning">Desafíos Superados</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-arrow-right text-warning me-2"></i>Configuración correcta del servidor Express</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-warning me-2"></i>Implementación de persistencia con archivos JSON</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-warning me-2"></i>Manejo asíncrono de operaciones de archivos</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-warning me-2"></i>Configuración de Multer para subida de imágenes</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-warning me-2"></i>Implementación de manejo de errores 404 y 500</li>
+            <li class="mb-2"><i class="bi bi-arrow-right text-warning me-2"></i>Documentación completa del proceso de desarrollo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enlaces y Recursos -->
+  <section class="container my-5">
+    <div class="section-card p-4 text-center" data-aos="fade-up">
+      <h2 class="text-purple mb-4">Enlaces y Recursos</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="https://github.com/MagdaIG/gestor-productos" target="_blank" class="btn btn-outline-dark w-100">
+            <i class="bi bi-github me-2"></i>Repositorio GitHub
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="index.html#projects" class="btn btn-outline-purple w-100">
+            <i class="bi bi-arrow-left me-2"></i>Volver a Proyectos
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="index.html#contact" class="btn btn-purple w-100">
+            <i class="bi bi-envelope me-2"></i>Contactar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-name">Magdalena Inalaf</span>
+        </div>
+        <div class="copyright">
+          <small>© 2025 Todos los derechos reservados</small>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://inalaf.ca" target="_blank" class="footer-link">
+          <div class="icon-container">
+            <i class="bi bi-globe"></i>
+          </div>
+          <span class="link-text">Sitio Web</span>
+        </a>
+        <a href="https://github.com/MagdaIG" target="_blank" class="footer-link">
+          <div class="icon-container">
+            <i class="bi bi-github"></i>
+          </div>
+          <span class="link-text">GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link">
+          <div class="icon-container">
+            <i class="bi bi-linkedin"></i>
+          </div>
+          <span class="link-text">LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
+
