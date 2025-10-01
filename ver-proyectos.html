@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Proyectos - Magdalena Inalaf</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
-    
+
     <style>
         .project-hero {
             background: linear-gradient(135deg, #a084ca, #8e6ec6);
@@ -27,7 +27,7 @@
             padding: 100px 0 80px;
             margin-top: 70px;
         }
-        
+
         .project-card {
             background: white;
             border-radius: 15px;
@@ -36,29 +36,29 @@
             transition: all 0.3s ease;
             height: 100%;
         }
-        
+
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-        
+
         .project-image {
             height: 250px;
             overflow: hidden;
             position: relative;
         }
-        
+
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .project-card:hover .project-image img {
             transform: scale(1.05);
         }
-        
+
         .project-overlay {
             position: absolute;
             top: 0;
@@ -72,48 +72,48 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .project-card:hover .project-overlay {
             opacity: 1;
         }
-        
+
         .overlay-content {
             text-align: center;
             color: white;
         }
-        
+
         .project-content {
             padding: 2rem;
         }
-        
+
         .project-title {
             color: #a084ca;
             font-weight: 700;
             margin-bottom: 1rem;
         }
-        
+
         .project-description {
             color: #666;
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
-        
+
         .project-features {
             margin-bottom: 1.5rem;
         }
-        
+
         .project-features ul {
             list-style: none;
             padding: 0;
         }
-        
+
         .project-features li {
             padding: 0.5rem 0;
             border-bottom: 1px solid #f0f0f0;
             position: relative;
             padding-left: 1.5rem;
         }
-        
+
         .project-features li:before {
             content: "✓";
             position: absolute;
@@ -121,11 +121,11 @@
             color: #a084ca;
             font-weight: bold;
         }
-        
+
         .project-tech {
             margin-bottom: 1.5rem;
         }
-        
+
         .tech-badge {
             background: linear-gradient(45deg, #a084ca, #8e6ec6);
             color: white;
@@ -135,13 +135,13 @@
             margin: 0.2rem;
             display: inline-block;
         }
-        
+
         .project-links {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
-        
+
         .btn-project {
             background: linear-gradient(45deg, #a084ca, #8e6ec6);
             border: none;
@@ -154,13 +154,13 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .btn-project:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(160, 132, 202, 0.4);
             color: white;
         }
-        
+
         .btn-outline-project {
             border: 2px solid #a084ca;
             color: #a084ca;
@@ -173,20 +173,20 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .btn-outline-project:hover {
             background: #a084ca;
             color: white;
             transform: translateY(-2px);
         }
-        
+
         .section-title {
             color: #a084ca;
             font-weight: 700;
             margin-bottom: 3rem;
             text-align: center;
         }
-        
+
         .project-category {
             background: #f8f9fa;
             padding: 0.5rem 1rem;
@@ -196,7 +196,7 @@
             margin-bottom: 1rem;
             display: inline-block;
         }
-        
+
         .project-stats {
             display: flex;
             justify-content: space-between;
@@ -204,17 +204,17 @@
             padding-top: 1rem;
             border-top: 1px solid #f0f0f0;
         }
-        
+
         .stat-item {
             text-align: center;
         }
-        
+
         .stat-number {
             font-size: 1.5rem;
             font-weight: 700;
             color: #a084ca;
         }
-        
+
         .stat-label {
             font-size: 0.8rem;
             color: #666;
@@ -267,7 +267,7 @@
                 <div class="col-lg-8" data-aos="fade-right">
                     <h1 class="display-4 fw-bold mb-4">Mis Proyectos</h1>
                     <p class="lead mb-4">
-                        Una colección de proyectos que demuestran mi evolución como desarrolladora web, 
+                        Una colección de proyectos que demuestran mi evolución como desarrolladora web,
                         desde aplicaciones frontend hasta sistemas de base de datos complejos.
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
@@ -299,7 +299,7 @@
             <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">
                 Proyectos desarrollados con JavaScript moderno y tecnologías web actuales
             </p>
-            
+
             <div class="row g-4">
                 <!-- Gestión de Tareas -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
@@ -320,7 +320,7 @@
                             <div class="project-category">Frontend • JavaScript</div>
                             <h3 class="project-title">Gestión de Tareas</h3>
                             <p class="project-description">
-                                Sistema completo de gestión de tareas con interfaz tipo Kanban. Permite crear, editar, 
+                                Sistema completo de gestión de tareas con interfaz tipo Kanban. Permite crear, editar,
                                 mover entre columnas y eliminar tareas de forma interactiva con persistencia de datos.
                             </p>
                             <div class="project-features">
@@ -384,7 +384,7 @@
                             <div class="project-category">Frontend • E-commerce</div>
                             <h3 class="project-title">Cute Shop - E-commerce</h3>
                             <p class="project-description">
-                                Tienda online de joyería con catálogo dinámico, carrito de compras y sistema de filtros 
+                                Tienda online de joyería con catálogo dinámico, carrito de compras y sistema de filtros
                                 por categorías. Interfaz moderna y funcional con experiencia de usuario optimizada.
                             </p>
                             <div class="project-features">
@@ -439,7 +439,7 @@
             <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">
                 Sistemas de gestión de inventario con PostgreSQL y arquitectura en capas
             </p>
-            
+
             <div class="row g-4">
                 <!-- Gestión de Inventario v1.0 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
@@ -460,7 +460,7 @@
                             <div class="project-category">Backend • PostgreSQL</div>
                             <h3 class="project-title">Gestión de Inventario v1.0</h3>
                             <p class="project-description">
-                                Sistema básico de gestión de inventario con PostgreSQL. Incluye creación de tablas, 
+                                Sistema básico de gestión de inventario con PostgreSQL. Incluye creación de tablas,
                                 inserción de datos, consultas SQL y triggers básicos para automatización.
                             </p>
                             <div class="project-features">
@@ -524,7 +524,7 @@
                             <div class="project-category">Backend • PostgreSQL • Avanzado</div>
                             <h3 class="project-title">Gestión de Inventario v2.0 - Mejorado</h3>
                             <p class="project-description">
-                                Versión mejorada del sistema de inventario con validaciones avanzadas, funciones personalizadas, 
+                                Versión mejorada del sistema de inventario con validaciones avanzadas, funciones personalizadas,
                                 triggers mejorados y documentación completa por módulos.
                             </p>
                             <div class="project-features">
@@ -675,13 +675,13 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
-    
+
     <script>
         // Initialize AOS
         AOS.init({
