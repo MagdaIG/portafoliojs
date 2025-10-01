@@ -255,6 +255,16 @@
 <img src="assets/img/configuracion-servidor.png" alt="Configuración del Servidor Express" class="img-fluid">
             </div>
           </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se configuró un servidor Express básico que escucha en el puerto 3000, con middleware para parsing de datos y configuración de EJS como motor de plantillas.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">Express es el framework web más popular para Node.js, proporcionando una base sólida para crear aplicaciones web con rutas, middleware y manejo de requests/responses.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Permite crear un servidor web que puede manejar peticiones HTTP, servir contenido estático y dinámico, y procesar formularios de usuarios.</p>
+          </div>
         </div>
       </div>
 
@@ -266,6 +276,16 @@
             <div class="code-snippet">
 <img src="assets/img/persistencia-fs.png" alt="Persistencia con fs" class="img-fluid">
             </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementaron funciones asíncronas para leer y escribir productos en un archivo JSON usando el módulo fs de Node.js, con manejo de errores para archivos inexistentes.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">El módulo fs permite operaciones de archivos de forma asíncrona, evitando bloquear el hilo principal del servidor. JSON es un formato ligero y fácil de manipular.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Garantiza que los datos de productos se mantengan persistentes entre reinicios del servidor, permitiendo almacenar y recuperar información de manera confiable.</p>
           </div>
         </div>
       </div>
@@ -279,6 +299,16 @@
 <img src="assets/img/rutas-express.png" alt="Rutas Express" class="img-fluid">
             </div>
           </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementaron rutas RESTful para operaciones CRUD completas: GET para mostrar productos, POST para crear, PUT para actualizar y DELETE para eliminar.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">Las rutas RESTful siguen convenciones estándar de la industria, haciendo la API predecible y fácil de mantener. Cada método HTTP tiene un propósito específico.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Permite que el frontend se comunique con el backend de manera estructurada, facilitando operaciones de productos y proporcionando una API clara y consistente.</p>
+          </div>
         </div>
       </div>
 
@@ -289,6 +319,198 @@
           <div class="code-section p-3 rounded">
             <div class="code-snippet">
 <img src="assets/img/manejo-errores.png" alt="Manejo de Errores" class="img-fluid">
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementó middleware para capturar errores 404 (página no encontrada) y errores generales del servidor (500), mostrando páginas de error personalizadas.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">El manejo de errores es fundamental para proporcionar una experiencia de usuario profesional y ayudar en el debugging durante el desarrollo.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Evita que la aplicación se rompa completamente cuando ocurren errores, proporcionando mensajes informativos y manteniendo la estabilidad del servidor.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sistema de Modales JavaScript -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-window me-2"></i>Sistema de Modales Dinámicos</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/sistema-modales.png" alt="Sistema de Modales JavaScript" class="img-fluid">
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementó un sistema completo de modales usando JavaScript vanilla, con creación dinámica de elementos DOM para mostrar feedback al usuario.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">Los modales proporcionan feedback inmediato y consistente sin recargar la página, mejorando significativamente la experiencia del usuario.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Informa al usuario sobre el resultado de sus acciones (éxito, error, confirmación) y previene acciones accidentales como eliminar productos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validación de Formularios -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-shield-check me-2"></i>Validación de Formularios</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/validacion-formularios.png" alt="Validación de Formularios" class="img-fluid">
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementó validación en tiempo real usando event listeners en el evento submit, con preventDefault() para detener envíos inválidos.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">La validación del lado del cliente mejora la UX al proporcionar feedback inmediato y reduce la carga en el servidor al evitar envíos de datos inválidos.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Garantiza que solo se envíen datos válidos al servidor, previene errores y mejora la experiencia del usuario con mensajes claros.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestión de Imágenes -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-image me-2"></i>Gestión de Imágenes</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/gestion-imagenes.png" alt="Gestión de Imágenes" class="img-fluid">
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementó vista previa de imágenes usando FileReader API, con validación de tipo de archivo y tamaño máximo (5MB).</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">FileReader permite mostrar vistas previas instantáneas sin subir el archivo al servidor, mejorando la experiencia del usuario y optimizando el rendimiento.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Permite al usuario ver la imagen antes de guardar, valida que sea un archivo de imagen válido y controla el tamaño para optimizar el almacenamiento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operaciones CRUD con Fetch API -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-database me-2"></i>Operaciones CRUD con Fetch API</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/crud-fetch.png" alt="Operaciones CRUD con Fetch API" class="img-fluid">
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementaron operaciones asíncronas usando Fetch API con async/await para eliminar productos, incluyendo manejo completo de errores.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">Fetch API es la forma moderna de hacer peticiones HTTP en JavaScript, y async/await hace el código más legible que las promesas tradicionales.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Permite operaciones del lado del cliente sin recargar la página, proporcionando una experiencia fluida y moderna al usuario.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formateo de Datos -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-currency-dollar me-2"></i>Formateo de Datos y Localización</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/formateo-datos.png" alt="Formateo de Datos" class="img-fluid">
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementó formateo automático de precios usando Intl.NumberFormat para pesos chilenos y toLocaleDateString para fechas.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">Intl API proporciona formateo estándar y localizado, asegurando consistencia y legibilidad para usuarios chilenos.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Mejora la legibilidad de precios y fechas, proporciona formato consistente en toda la aplicación y respeta las convenciones locales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animaciones y UX -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="section-card p-4 h-100">
+          <h4 class="fw-bold mb-3"><i class="bi bi-magic me-2"></i>Animaciones y Mejoras de UX</h4>
+          <div class="code-section p-3 rounded">
+            <div class="code-snippet">
+<img src="assets/img/animaciones-ux.png" alt="Animaciones y UX" class="img-fluid">
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-bold text-primary">¿Qué se hizo?</h6>
+            <p class="small text-muted mb-2">Se implementaron microinteracciones con event listeners para hover effects en botones y transiciones suaves en modales.</p>
+
+            <h6 class="fw-bold text-success">¿Por qué?</h6>
+            <p class="small text-muted mb-2">Las animaciones proporcionan feedback visual inmediato, haciendo que la interfaz se sienta más responsiva y profesional.</p>
+
+            <h6 class="fw-bold text-info">¿Para qué sirve?</h6>
+            <p class="small text-muted">Mejora la percepción de calidad de la aplicación, proporciona feedback visual claro y hace la experiencia más atractiva e interactiva.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen Técnico JavaScript -->
+    <div class="row mt-5">
+      <div class="col-12" data-aos="fade-up">
+        <div class="section-card p-4">
+          <h3 class="text-purple mb-4 text-center"><i class="bi bi-code-slash me-2"></i>Resumen Técnico del Código JavaScript</h3>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="tech-highlight">
+                <h5 class="fw-bold mb-3 text-primary">Tecnologías Utilizadas</h5>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Vanilla JavaScript:</strong> Sin frameworks, máximo rendimiento</li>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Fetch API:</strong> Comunicación asíncrona moderna</li>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>FileReader API:</strong> Manejo de archivos en el cliente</li>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Intl API:</strong> Localización y formateo</li>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>DOM Manipulation:</strong> Creación dinámica de elementos</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="tech-highlight">
+                <h5 class="fw-bold mb-3 text-success">Patrones Implementados</h5>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i><strong>Event Delegation:</strong> Manejo eficiente de eventos</li>
+                  <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i><strong>Async/Await:</strong> Manejo moderno de promesas</li>
+                  <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i><strong>Error Handling:</strong> Try/catch comprehensivo</li>
+                  <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i><strong>Modular Functions:</strong> Código reutilizable</li>
+                  <li class="mb-2"><i class="bi bi-arrow-right text-success me-2"></i><strong>Progressive Enhancement:</strong> Funcionalidad sin JavaScript</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="tech-highlight">
+                <h5 class="fw-bold mb-3 text-info">Características Destacadas</h5>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i><strong>Responsive Design:</strong> Funciona en todos los dispositivos</li>
+                  <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i><strong>Accessibility:</strong> Navegación por teclado y screen readers</li>
+                  <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i><strong>Performance:</strong> Optimizado para carga rápida</li>
+                  <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i><strong>User Experience:</strong> Feedback inmediato y consistente</li>
+                  <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i><strong>Error Recovery:</strong> Manejo graceful de errores</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
