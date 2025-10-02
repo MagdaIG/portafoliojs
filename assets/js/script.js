@@ -33,33 +33,40 @@ window.addEventListener('scroll', () => {
 // Smooth scrolling for navigation links
 navLinks.forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault();
     const targetId = link.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
 
-    if (targetSection) {
-      targetSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    // Solo interceptar enlaces que apunten a secciones en la misma página
+    // NO interceptar enlaces que contengan 'index.html' (enlaces a otras páginas)
+    if (targetId.startsWith('#') && !targetId.includes('index.html')) {
+      e.preventDefault();
+      const targetSection = document.querySelector(targetId);
 
-      // Cerrar el menú hamburguesa después de hacer clic
-      const navbarCollapse = document.querySelector('.navbar-collapse');
-      const navbarToggler = document.querySelector('.navbar-toggler');
-
-      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-        // Usar Bootstrap para cerrar el menú
-        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-          toggle: false
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
-        bsCollapse.hide();
 
-        // Actualizar el estado del botón hamburguesa
-        if (navbarToggler) {
-          navbarToggler.setAttribute('aria-expanded', 'false');
+        // Cerrar el menú hamburguesa después de hacer clic
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+
+        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+          // Usar Bootstrap para cerrar el menú
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false
+          });
+          bsCollapse.hide();
+
+          // Actualizar el estado del botón hamburguesa
+          if (navbarToggler) {
+            navbarToggler.setAttribute('aria-expanded', 'false');
+          }
         }
       }
     }
+    // Para enlaces que contienen 'index.html', NO hacer preventDefault()
+    // Esto permite que la navegación funcione normalmente
   });
 });
 

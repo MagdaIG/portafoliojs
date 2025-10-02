@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Contactos - Node.js | Portafolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .section-card { background-color: #fff; border: 1px solid #e2d6f0; border-radius: 16px; }
+    .lead-muted { color: #555; }
+    .code-section { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1e40af; }
+    .feature-badge { font-size: 0.8rem; }
+    .step-number {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e2d6f0;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+    }
+    .tech-highlight {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-left: 4px solid #1e40af;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .code-snippet {
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .ux-feature {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid #0ea5e9;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-container">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-text">Magdalena Inalaf</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html#about">Sobre Mí</a>
+          <a class="nav-link" href="index.html#portfolio-projects">Proyectos</a>
+          <a class="nav-link" href="index.html#skills">Habilidades</a>
+          <a class="nav-link" href="index.html#journey">Mi Viaje</a>
+          <a class="nav-link" href="index.html#contact">Contacto</a>
+        </div>
+        <div class="navbar-social">
+          <a href="https://github.com/MagdaIG" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://inalaf.ca" target="_blank" class="social-link" aria-label="Sitio Web">
+            <i class="bi bi-globe"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-spacer"></div>
+
+  <!-- Hero Section -->
+  <section class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h1 class="display-4 fw-bold text-purple mb-4">Gestor de Contactos</h1>
+        <p class="lead lead-muted mb-4">
+          Aplicación web moderna desarrollada con Node.js y Express para gestión completa de contactos.
+          Implementa CRUD completo, persistencia en archivos de texto y enfoque en UX/UI.
+        </p>
+        <div class="d-flex gap-3 mb-4">
+          <span class="badge bg-primary">Node.js</span>
+          <span class="badge bg-success">Express</span>
+          <span class="badge bg-info">EJS</span>
+          <span class="badge bg-warning">UX/UI</span>
+        </div>
+        <a href="https://github.com/MagdaIG/gestor-contactos" target="_blank" class="btn btn-purple me-3">
+          <i class="bi bi-github me-2"></i>Ver Código
+        </a>
+        <a href="index.html#portfolio-projects" class="btn btn-outline-purple">
+          <i class="bi bi-arrow-left me-2"></i>Volver a Proyectos
+        </a>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="text-center">
+          <i class="bi bi-person-lines-fill" style="font-size: 8rem; color: #1e40af;"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interfaz de la Aplicación -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-window me-2"></i>Interfaz de la Aplicación</h2>
+      <div class="text-center mb-4">
+        <img src="assets/img/gestor-contacto-2.png" alt="Interfaz del Gestor de Contactos" class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;">
+      </div>
+      <p class="text-center text-muted">
+        <strong>Vista principal de la aplicación:</strong> Lista de contactos con colores personalizados,
+        botones de acción (favorito, editar, eliminar) y diseño responsive optimizado para todos los dispositivos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Objetivo del Reto Académico -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-target me-2"></i>Objetivo del Reto Académico</h2>
+      <div class="alert alert-info mb-4">
+        <h5 class="alert-heading"><i class="bi bi-mortarboard me-2"></i>Evaluación del Módulo Node.js</h5>
+        <p class="mb-0">
+          <strong>Objetivo General:</strong> Desarrollar una aplicación web utilizando Node.js y Express para gestionar contactos.
+          La aplicación debe permitir agregar, editar, eliminar y listar contactos. Los datos deben almacenarse en archivos
+          de texto plano, y la aplicación debe utilizar un motor de plantillas para renderizar vistas dinámicas.
+        </p>
+      </div>
+
+      <h4 class="fw-bold mb-3 text-primary">Requisitos del Reto</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="fw-bold mb-3"><i class="bi bi-list-check me-2"></i>Características Obligatorias</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Servidor web básico con Express</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Motor de plantillas para vistas dinámicas</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Almacenamiento en archivos de texto plano</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Rutas CRUD (Crear, Leer, Actualizar, Eliminar)</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Gestión de dependencias con NPM</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Manejo de errores y middleware</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6 class="fw-bold mb-3"><i class="bi bi-star me-2"></i>Mejoras Adicionales Implementadas</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Enfoque pedagógico en UX/UI</li>
+            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Búsqueda en tiempo real</li>
+            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>15 colores pasteles personalizados</li>
+            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Accesibilidad completa (ARIA, teclado)</li>
+            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Diseño responsive y moderno</li>
+            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Documentación completa del proceso</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fases de Desarrollo Pedagógicas -->
+  <section class="container my-5">
+    <h2 class="text-purple text-center mb-5"><i class="bi bi-diagram-3 me-2"></i>Fases de Desarrollo</h2>
+    <p class="text-center mb-5 text-muted">
+      Siguiendo las 6 fases establecidas en el reto académico, cada una con objetivos específicos de aprendizaje
+    </p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card p-4 h-100" data-aos="fade-up">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">1</div>
+            <h5 class="mb-0">Configuración del Entorno</h5>
+          </div>
+          <p class="mb-3"><strong>Objetivo:</strong> Configurar el entorno de desarrollo Node.js</p>
+          <ul class="list-unstyled small mb-3">
+            <li class="mb-1">• <code>npm init</code> - Inicializar proyecto</li>
+            <li class="mb-1">• <code>npm install express</code> - Framework web</li>
+            <li class="mb-1">• <code>npm install ejs</code> - Motor de plantillas</li>
+            <li class="mb-1">• Configurar package.json</li>
+          </ul>
+          <div class="tech-highlight">
+            <small><strong>Aprendizaje:</strong> Gestión de dependencias y configuración de proyectos</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card p-4 h-100" data-aos="fade-up" data-aos-delay="100">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">2</div>
+            <h5 class="mb-0">Servidor y Rutas Básicas</h5>
+          </div>
+          <p class="mb-3"><strong>Objetivo:</strong> Crear servidor Express con rutas CRUD</p>
+          <ul class="list-unstyled small mb-3">
+            <li class="mb-1">• <code>express.static()</code> - Archivos estáticos</li>
+            <li class="mb-1">• <code>app.get()</code> - Ruta principal</li>
+            <li class="mb-1">• <code>app.post()</code> - Crear contactos</li>
+            <li class="mb-1">• <code>app.put()</code> - Actualizar contactos</li>
+            <li class="mb-1">• <code>app.delete()</code> - Eliminar contactos</li>
+          </ul>
+          <div class="tech-highlight">
+            <small><strong>Aprendizaje:</strong> Arquitectura REST y manejo de rutas</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card p-4 h-100" data-aos="fade-up" data-aos-delay="200">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">3</div>
+            <h5 class="mb-0">Persistencia en Archivos</h5>
+          </div>
+          <p class="mb-3"><strong>Objetivo:</strong> Implementar almacenamiento en archivos de texto</p>
+          <ul class="list-unstyled small mb-3">
+            <li class="mb-1">• <code>fs.readFileSync()</code> - Leer contactos</li>
+            <li class="mb-1">• <code>fs.writeFileSync()</code> - Guardar contactos</li>
+            <li class="mb-1">• Manejo de errores con try-catch</li>
+            <li class="mb-1">• Formato JSON en archivos .txt</li>
+          </ul>
+          <div class="tech-highlight">
+            <small><strong>Aprendizaje:</strong> Persistencia de datos sin base de datos</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card p-4 h-100" data-aos="fade-up" data-aos-delay="300">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">4</div>
+            <h5 class="mb-0">Motor de Plantillas</h5>
+          </div>
+          <p class="mb-3"><strong>Objetivo:</strong> Crear vistas dinámicas con EJS</p>
+          <ul class="list-unstyled small mb-3">
+            <li class="mb-1">• <code>&lt;%= %&gt;</code> - Renderizar datos</li>
+            <li class="mb-1">• <code>&lt;% %&gt;</code> - Lógica JavaScript</li>
+            <li class="mb-1">• Formularios dinámicos</li>
+            <li class="mb-1">• Rutas con parámetros <code>/editar/:id</code></li>
+          </ul>
+          <div class="tech-highlight">
+            <small><strong>Aprendizaje:</strong> Separación de lógica y presentación</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card p-4 h-100" data-aos="fade-up" data-aos-delay="400">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">5</div>
+            <h5 class="mb-0">Manejo de Errores</h5>
+          </div>
+          <p class="mb-3"><strong>Objetivo:</strong> Implementar manejo robusto de errores</p>
+          <ul class="list-unstyled small mb-3">
+            <li class="mb-1">• Middleware de errores 404/500</li>
+            <li class="mb-1">• Try-catch en operaciones de archivos</li>
+            <li class="mb-1">• Mensajes de error amigables</li>
+            <li class="mb-1">• Validación de datos de entrada</li>
+          </ul>
+          <div class="tech-highlight">
+            <small><strong>Aprendizaje:</strong> Debugging y manejo de excepciones</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card p-4 h-100" data-aos="fade-up" data-aos-delay="500">
+          <div class="d-flex align-items-center mb-3">
+            <div class="step-number">6</div>
+            <h5 class="mb-0">Código Limpio + UX/UI</h5>
+          </div>
+          <p class="mb-3"><strong>Objetivo:</strong> Organizar código y mejorar experiencia</p>
+          <ul class="list-unstyled small mb-3">
+            <li class="mb-1">• Separación en archivos (routes/, views/)</li>
+            <li class="mb-1">• Comentarios y documentación</li>
+            <li class="mb-1">• Búsqueda en tiempo real</li>
+            <li class="mb-1">• Accesibilidad y responsive design</li>
+          </ul>
+          <div class="tech-highlight">
+            <small><strong>Aprendizaje:</strong> Buenas prácticas y UX/UI</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Características Técnicas -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-gear me-2"></i>Características Técnicas</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3 text-primary"><i class="bi bi-server me-2"></i>Backend - Node.js</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-primary me-2"></i>Servidor Express con rutas dinámicas</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-primary me-2"></i>Motor de plantillas EJS para vistas</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-primary me-2"></i>Persistencia en archivos de texto plano</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-primary me-2"></i>Middleware para manejo de formularios</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-primary me-2"></i>Manejo de errores 404 y 500</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-primary me-2"></i>Archivos estáticos con express.static()</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3 text-success"><i class="bi bi-palette me-2"></i>Frontend - UX/UI</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-success me-2"></i>Búsqueda en tiempo real con debouncing</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-success me-2"></i>15 colores pasteles personalizados</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-success me-2"></i>Navegación por teclado completa</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-success me-2"></i>Gestos táctiles para móviles</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-success me-2"></i>Toast notifications elegantes</li>
+            <li class="mb-2"><i class="bi bi-arrow-right-circle-fill text-success me-2"></i>Diseño responsive y accesible</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Código de Ejemplo -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-code-slash me-2"></i>Código de Ejemplo</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-3"><i class="bi bi-server me-2"></i>Servidor Express Principal</h5>
+          <p class="mb-3 text-muted">
+            <strong>¿Qué hace este código?</strong><br>
+            Configura el servidor web principal de la aplicación. Establece Express como framework,
+            configura el motor de plantillas EJS para renderizar vistas dinámicas, y define los
+            middleware necesarios para manejar archivos estáticos y datos de formularios.
+          </p>
+          <p class="mb-3 text-muted">
+            <strong>¿Para qué se usa?</strong><br>
+            Es el punto de entrada de la aplicación que permite crear un servidor web funcional,
+            servir archivos estáticos (CSS, JS, imágenes), procesar formularios y enrutar las
+            peticiones a las diferentes secciones de la aplicación.
+          </p>
+          <div class="text-center">
+            <img src="assets/img/servidor-express.png" alt="Código del servidor Express principal" class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-3"><i class="bi bi-people me-2"></i>Gestión de Contactos</h5>
+          <p class="mb-3 text-muted">
+            <strong>¿Qué hace este código?</strong><br>
+            Implementa las funciones de persistencia de datos para leer y escribir contactos en
+            archivos de texto plano. Utiliza el módulo `fs` de Node.js para manejar operaciones
+            de archivos de forma síncrona, con manejo de errores para casos donde el archivo no existe.
+          </p>
+          <p class="mb-3 text-muted">
+            <strong>¿Para qué se usa?</strong><br>
+            Permite almacenar y recuperar la información de contactos de forma persistente.
+            La función `leerContactos()` carga los datos al iniciar la aplicación, mientras que
+            `guardarContactos()` actualiza el archivo cada vez que se agrega, edita o elimina un contacto.
+          </p>
+          <div class="text-center">
+            <img src="assets/img/gestion-contactos.png" alt="Código de gestión de contactos" class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mejoras UX/UI -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-magic me-2"></i>Mejoras de UX/UI Implementadas</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="ux-feature">
+            <h6 class="fw-bold mb-2"><i class="bi bi-search me-2"></i>Búsqueda en Tiempo Real</h6>
+            <p class="mb-0">Búsqueda instantánea con debouncing para optimizar performance y resultados inmediatos.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ux-feature">
+            <h6 class="fw-bold mb-2"><i class="bi bi-palette me-2"></i>Colores Personalizados</h6>
+            <p class="mb-0">15 colores pasteles únicos para cada contacto, creando identidad visual.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ux-feature">
+            <h6 class="fw-bold mb-2"><i class="bi bi-keyboard me-2"></i>Navegación por Teclado</h6>
+            <p class="mb-0">Soporte completo para navegación por teclado con atajos y ARIA labels.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ux-feature">
+            <h6 class="fw-bold mb-2"><i class="bi bi-phone me-2"></i>Experiencia Móvil</h6>
+            <p class="mb-0">Gestos táctiles, diseño responsive y botones optimizados para touch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entregables del Reto -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-folder me-2"></i>Entregables del Reto Académico</h2>
+      <div class="alert alert-success mb-4">
+        <h5 class="alert-heading"><i class="bi bi-check-circle me-2"></i>Archivos Entregados</h5>
+        <p class="mb-0">Todos los archivos requeridos fueron entregados según las especificaciones del reto</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-file-earmark-check me-2"></i>Archivos Obligatorios</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-primary text-white rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">JS</div>
+                </div>
+                <div>
+                  <strong>app.js</strong><br>
+                  <small class="text-muted">Servidor principal con código del servidor y rutas</small>
+                </div>
+              </div>
+            </li>
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-secondary text-white rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">TXT</div>
+                </div>
+                <div>
+                  <strong>contactos.txt</strong><br>
+                  <small class="text-muted">Archivo con contactos de ejemplo en formato JSON</small>
+                </div>
+              </div>
+            </li>
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-warning text-dark rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">EJS</div>
+                </div>
+                <div>
+                  <strong>Archivos de vista (.ejs)</strong><br>
+                  <small class="text-muted">index.ejs, formulario.ejs, error.ejs para mostrar y gestionar contactos</small>
+                </div>
+              </div>
+            </li>
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-info text-white rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">MD</div>
+                </div>
+                <div>
+                  <strong>README.md</strong><br>
+                  <small class="text-muted">Instrucciones completas para configurar y ejecutar la aplicación</small>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h5 class="fw-bold mb-3 text-success"><i class="bi bi-plus-circle me-2"></i>Archivos Adicionales</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-success text-white rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">JS</div>
+                </div>
+                <div>
+                  <strong>routes/contactos.js</strong><br>
+                  <small class="text-muted">Rutas organizadas en archivo separado (buena práctica)</small>
+                </div>
+              </div>
+            </li>
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-success text-white rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">JS</div>
+                </div>
+                <div>
+                  <strong>data/contactosManager.js</strong><br>
+                  <small class="text-muted">Lógica de gestión de contactos separada</small>
+                </div>
+              </div>
+            </li>
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-success text-white rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">CSS</div>
+                </div>
+                <div>
+                  <strong>public/ (CSS, JS, imágenes)</strong><br>
+                  <small class="text-muted">Archivos estáticos para mejorar la experiencia de usuario</small>
+                </div>
+              </div>
+            </li>
+            <li class="mb-3">
+              <div class="d-flex align-items-start">
+                <div class="me-3 mt-1">
+                  <div class="bg-success text-white rounded px-2 py-1" style="font-size: 0.8rem; font-weight: bold;">EJS</div>
+                </div>
+                <div>
+                  <strong>landing.ejs</strong><br>
+                  <small class="text-muted">Página de inicio adicional con información del proyecto</small>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estructura del Proyecto -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-diagram-2 me-2"></i>Estructura del Proyecto</h2>
+      <div class="code-section p-4">
+        <pre><code>gestor-contactos/
+├── app.js                 # Servidor principal (ENTREGABLE)
+├── package.json           # Dependencias del proyecto
+├── README.md             # Documentación completa (ENTREGABLE)
+├── data/
+│   ├── contactos.txt     # Base de datos de contactos (ENTREGABLE)
+│   └── contactosManager.js # Lógica de gestión (EXTRA)
+├── routes/
+│   └── contactos.js      # Rutas de la API (EXTRA)
+├── views/
+│   ├── index.ejs         # Página principal (ENTREGABLE)
+│   ├── formulario.ejs    # Formulario de contacto (ENTREGABLE)
+│   ├── landing.ejs       # Página de inicio (EXTRA)
+│   └── error.ejs         # Página de errores (ENTREGABLE)
+└── public/
+    ├── css/
+    │   ├── style.css     # Estilos principales (EXTRA)
+    │   └── landing.css   # Estilos de landing (EXTRA)
+    ├── js/
+    │   ├── app.js        # JavaScript principal (EXTRA)
+    │   └── landing.js    # JavaScript de landing (EXTRA)
+    └── images/
+        └── contact.png   # Imagen por defecto (EXTRA)</code></pre>
+      </div>
+      <div class="mt-3">
+        <small class="text-muted">
+          <strong>Leyenda:</strong> (ENTREGABLE) = Archivo obligatorio del reto | (EXTRA) = Mejora adicional
+        </small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aprendizajes y Desafíos -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-graph-up me-2"></i>Aprendizajes y Desafíos</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3 text-success"><i class="bi bi-lightbulb me-2"></i>Aprendizajes Adquiridos</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-lightbulb-fill text-success me-2"></i>Configuración completa de servidor Express</li>
+            <li class="mb-2"><i class="bi bi-lightbulb-fill text-success me-2"></i>Uso de motores de plantillas EJS</li>
+            <li class="mb-2"><i class="bi bi-lightbulb-fill text-success me-2"></i>Persistencia de datos en archivos de texto</li>
+            <li class="mb-2"><i class="bi bi-lightbulb-fill text-success me-2"></i>Implementación de CRUD completo</li>
+            <li class="mb-2"><i class="bi bi-lightbulb-fill text-success me-2"></i>Manejo de errores y middleware</li>
+            <li class="mb-2"><i class="bi bi-lightbulb-fill text-success me-2"></i>Principios de UX/UI en aplicaciones web</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3 text-warning"><i class="bi bi-trophy me-2"></i>Desafíos Superados</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-trophy-fill text-warning me-2"></i>Configuración correcta del entorno Node.js</li>
+            <li class="mb-2"><i class="bi bi-trophy-fill text-warning me-2"></i>Implementación de persistencia con archivos</li>
+            <li class="mb-2"><i class="bi bi-trophy-fill text-warning me-2"></i>Manejo asíncrono de operaciones de archivos</li>
+            <li class="mb-2"><i class="bi bi-trophy-fill text-warning me-2"></i>Creación de vistas dinámicas con EJS</li>
+            <li class="mb-2"><i class="bi bi-trophy-fill text-warning me-2"></i>Implementación de búsqueda en tiempo real</li>
+            <li class="mb-2"><i class="bi bi-trophy-fill text-warning me-2"></i>Optimización de experiencia de usuario</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enlaces y Recursos -->
+  <section class="container my-5">
+    <div class="section-card p-4 text-center" data-aos="fade-up">
+      <h2 class="text-purple mb-4">Enlaces y Recursos</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="https://github.com/MagdaIG/gestor-contactos" target="_blank" class="btn btn-outline-dark w-100">
+            <i class="bi bi-github me-2"></i>Repositorio GitHub
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="index.html#portfolio-projects" class="btn btn-outline-purple w-100">
+            <i class="bi bi-arrow-left me-2"></i>Volver a Proyectos
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="index.html#contact" class="btn btn-purple w-100">
+            <i class="bi bi-envelope me-2"></i>Contactar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-name">Magdalena Inalaf</span>
+        </div>
+        <div class="copyright">
+          <small>© 2025 Todos los derechos reservados</small>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://inalaf.ca" target="_blank" class="footer-link" aria-label="Sitio web">
+          <div class="icon-container">
+            <i class="bi bi-globe"></i>
+          </div>
+          <span class="link-text">Sitio Web</span>
+        </a>
+        <a href="https://github.com/MagdaIG" target="_blank" class="footer-link" aria-label="GitHub">
+          <div class="icon-container">
+            <i class="bi bi-github"></i>
+          </div>
+          <span class="link-text">GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link" aria-label="LinkedIn">
+          <div class="icon-container">
+            <i class="bi bi-linkedin"></i>
+          </div>
+          <span class="link-text">LinkedIn</span>
+        </a>
+      </div>
+      <div class="footer-credits">
+        <div class="credits-content">
+          <span class="credits-text">Desarrollado con <i class="bi bi-heart-fill"></i> por</span>
+          <span class="developer-name">Magdalena Inalaf G.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
