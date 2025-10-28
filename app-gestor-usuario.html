@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Gestor de Usuarios - Node.js + PostgreSQL + Sequelize | Portafolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .section-card { background-color: #fff; border: 1px solid #e2d6f0; border-radius: 16px; }
+    .lead-muted { color: #555; }
+    .code-section { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1e40af; }
+    .feature-badge { font-size: 0.8rem; }
+    .step-number {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e2d6f0;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+    }
+    .tech-highlight {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-left: 4px solid #1e40af;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .code-snippet {
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .diagram-button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+      margin: 10px;
+    }
+    .diagram-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4);
+    }
+    .diagram-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    .diagram-button:hover::before {
+      left: 100%;
+    }
+    .diagram-button.architecture {
+      background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+      box-shadow: 0 8px 16px rgba(231, 76, 60, 0.3);
+    }
+    .diagram-button.architecture:hover {
+      box-shadow: 0 12px 24px rgba(231, 76, 60, 0.4);
+    }
+    .diagram-button.database {
+      background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+      box-shadow: 0 8px 16px rgba(243, 156, 18, 0.3);
+    }
+    .diagram-button.database:hover {
+      box-shadow: 0 12px 24px rgba(243, 156, 18, 0.4);
+    }
+    .button-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .button-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .button-description {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+    .relation-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid #0ea5e9;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+    .relation-type {
+      font-weight: 700;
+      color: #0c4a6e;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .relation-description {
+      color: #0369a1;
+      font-size: 0.95rem;
+    }
+    .transaction-highlight {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .explanation-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #0d6efd;
+      margin-top: 15px;
+    }
+    .concept-card {
+      background: #fff;
+      border: 1px solid #e2d6f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .concept-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .concept-benefits {
+      background: rgba(13, 110, 253, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-container">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-text">Magdalena Inalaf</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html#about">Sobre Mí</a>
+          <a class="nav-link" href="index.html#portfolio-projects">Proyectos</a>
+          <a class="nav-link" href="index.html#skills">Habilidades</a>
+          <a class="nav-link" href="index.html#journey">Mi Viaje</a>
+          <a class="nav-link" href="index.html#contact">Contacto</a>
+        </div>
+        <div class="navbar-social">
+          <a href="https://github.com/MagdaIG" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://inalaf.ca" target="_blank" class="social-link" aria-label="Sitio Web">
+            <i class="bi bi-globe"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer para el contenido fijo -->
+  <div class="navbar-spacer"></div>
+
+  <!-- Header -->
+  <header class="py-5 bg-gradient-primary text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8" data-aos="fade-right">
+          <h1 class="display-4 fw-bold mb-3 text-purple">
+            <i class="bi bi-people-fill me-3"></i>
+            App Gestor de Usuarios
+          </h1>
+          <p class="lead mb-4">
+            Sistema completo de gestión de usuarios y roles desarrollado con Node.js, Express, PostgreSQL y Sequelize ORM.
+            Implementa relaciones complejas de base de datos y transacciones atómicas.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <span class="badge bg-primary px-3 py-2">
+              <i class="bi bi-server me-2"></i>Node.js + Express
+            </span>
+            <span class="badge bg-success px-3 py-2">
+              <i class="bi bi-database me-2"></i>PostgreSQL + Sequelize
+            </span>
+            <span class="badge bg-warning px-3 py-2">
+              <i class="bi bi-shield-check me-2"></i>Transacciones
+            </span>
+            <span class="badge bg-info px-3 py-2">
+              <i class="bi bi-diagram-3 me-2"></i>Relaciones 1:1, 1:N, N:M
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center" data-aos="fade-left">
+          <div class="screenshot-container">
+            <img src="assets/img/screenshot-dashboard.png?v=2" alt="App Gestor de Usuarios - Dashboard" class="img-fluid rounded">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Descripción del Proyecto -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-info-circle me-2"></i>Descripción del Proyecto</h2>
+      <p class="lead-muted mb-4">
+        Este proyecto fue desarrollado como parte del módulo de Aplicaciones Node del Bootcamp de JavaScript.
+        El objetivo era crear una aplicación web completa para gestionar usuarios y roles, implementando
+        operaciones CRUD utilizando un ORM (Sequelize) y manejando relaciones entre entidades a través
+        de asociaciones uno a uno, uno a muchos y muchos a muchos.
+      </p>
+
+      <div class="tech-highlight">
+        <h5 class="fw-bold mb-3"><i class="bi bi-target me-2"></i>Objetivos del Proyecto</h5>
+        <ul class="mb-0">
+          <li><strong>Conexión a PostgreSQL:</strong> Implementar buenas prácticas de conexión a la base de datos</li>
+          <li><strong>Modelado con Sequelize:</strong> Crear modelos de datos utilizando un ORM</li>
+          <li><strong>Operaciones CRUD:</strong> Implementar crear, leer, actualizar y eliminar sobre usuarios y roles</li>
+          <li><strong>Transacciones:</strong> Asegurar integridad y consistencia de los datos</li>
+          <li><strong>Relaciones complejas:</strong> Implementar asociaciones 1:1, 1:N y N:M</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagramas del Sistema -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-diagram-3 me-2"></i>Diagramas del Sistema</h2>
+      <p class="lead-muted mb-4">
+        Explora la arquitectura y estructura de la base de datos del sistema a través de estos diagramas interactivos:
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <button class="diagram-button w-100" onclick="openDiagram('architecture')">
+            <span class="button-icon"><i class="bi bi-diagram-3"></i></span>
+            <div class="button-title">Arquitectura del Sistema</div>
+            <div class="button-description">
+              Visualiza la arquitectura en capas, tecnologías utilizadas y flujo de datos del sistema completo
+            </div>
+          </button>
+        </div>
+
+        <div class="col-md-6">
+          <button class="diagram-button database w-100" onclick="openDiagram('database')">
+            <span class="button-icon"><i class="bi bi-database"></i></span>
+            <div class="button-title">Diagrama de Base de Datos</div>
+            <div class="button-description">
+              Explora las tablas, relaciones y estructura completa de la base de datos con todas las asociaciones
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tecnologías Utilizadas -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-gear-fill me-2"></i>Tecnologías Utilizadas</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-primary">
+              <i class="bi bi-server me-2"></i>Backend
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><strong>Node.js:</strong> Runtime de JavaScript</li>
+              <li class="mb-2"><strong>Express.js:</strong> Framework web minimalista</li>
+              <li class="mb-2"><strong>Sequelize:</strong> ORM para manejo de base de datos</li>
+              <li class="mb-2"><strong>Joi:</strong> Validación de esquemas</li>
+              <li class="mb-2"><strong>bcryptjs:</strong> Hash de contraseñas</li>
+              <li class="mb-2"><strong>UUID:</strong> Identificadores únicos universales</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-success">
+              <i class="bi bi-database me-2"></i>Base de Datos
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><strong>PostgreSQL:</strong> Base de datos principal</li>
+              <li class="mb-2"><strong>SQLite:</strong> Base de datos de desarrollo</li>
+              <li class="mb-2"><strong>Migraciones:</strong> Control de versiones del esquema</li>
+              <li class="mb-2"><strong>Seeders:</strong> Datos iniciales y de prueba</li>
+              <li class="mb-2"><strong>Transacciones:</strong> Operaciones atómicas</li>
+              <li class="mb-2"><strong>Índices:</strong> Optimización de consultas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-info">
+              <i class="bi bi-layout-text-window me-2"></i>Frontend
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><strong>HTML5:</strong> Estructura semántica</li>
+              <li class="mb-2"><strong>CSS3:</strong> Estilos personalizados</li>
+              <li class="mb-2"><strong>Bootstrap 5:</strong> Framework CSS responsivo</li>
+              <li class="mb-2"><strong>JavaScript ES6+:</strong> Lógica del cliente</li>
+              <li class="mb-2"><strong>Fetch API:</strong> Comunicación con el backend</li>
+              <li class="mb-2"><strong>Modularidad:</strong> Código organizado en módulos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-warning">
+              <i class="bi bi-shield-check me-2"></i>Seguridad y Validación
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><strong>Hash de contraseñas:</strong> bcryptjs con salt rounds</li>
+              <li class="mb-2"><strong>Validación de entrada:</strong> Joi para todos los datos</li>
+              <li class="mb-2"><strong>Sanitización:</strong> Limpieza de datos</li>
+              <li class="mb-2"><strong>Manejo de errores:</strong> Middleware centralizado</li>
+              <li class="mb-2"><strong>Variables de entorno:</strong> Configuración segura</li>
+              <li class="mb-2"><strong>Cascadas:</strong> Eliminación automática de datos relacionados</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Relaciones de Base de Datos -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-diagram-2 me-2"></i>Relaciones de Base de Datos</h2>
+      <p class="lead-muted mb-4">
+        El sistema implementa los tres tipos principales de relaciones de base de datos:
+      </p>
+
+      <div class="relation-card">
+        <div class="relation-type">1:1 - Usuario ↔ UserProfile</div>
+        <div class="relation-description">
+          Cada usuario puede tener un perfil personalizado con información adicional como biografía y avatar.
+          Esta relación demuestra cómo manejar datos opcionales de manera eficiente.
+        </div>
+      </div>
+
+      <div class="relation-card">
+        <div class="relation-type">1:N - Rol → Usuarios</div>
+        <div class="relation-description">
+          Un rol puede tener muchos usuarios asignados, pero cada usuario tiene un rol principal.
+          Esta es la relación más común en sistemas de gestión de usuarios.
+        </div>
+      </div>
+
+      <div class="relation-card">
+        <div class="relation-type">N:M - Usuarios ↔ Roles</div>
+        <div class="relation-description">
+          Un usuario puede tener múltiples roles adicionales, y un rol puede ser asignado a varios usuarios.
+          Implementado con una tabla pivote <code>UserRoles</code> que almacena las relaciones.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transacciones -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-arrow-repeat me-2"></i>Transacciones y Operaciones Atómicas</h2>
+      <p class="lead-muted mb-4">
+        El sistema utiliza transacciones para garantizar que las operaciones complejas se ejecuten de manera atómica:
+      </p>
+
+      <div class="transaction-highlight">
+        <h5 class="fw-bold mb-3"><i class="bi bi-check-circle me-2"></i>Operaciones Transaccionales</h5>
+        <ul class="mb-0">
+          <li><strong>Crear usuario:</strong> Crear usuario + perfil + asignar roles múltiples</li>
+          <li><strong>Actualizar usuario:</strong> Actualizar datos + sincronizar roles + actualizar perfil</li>
+          <li><strong>Eliminar usuario:</strong> Eliminar perfil + limpiar relaciones + eliminar usuario</li>
+        </ul>
+      </div>
+
+      <div class="code-section p-4 mt-4">
+        <h6 class="fw-bold mb-3"><i class="bi bi-code-square me-2"></i>Ejemplo de Transacción en Sequelize:</h6>
+        <div class="screenshot-container mb-3">
+          <img src="assets/img/ejemplodetransaccionensequelize.png?v=3" alt="Ejemplo de Transacción en Sequelize" class="img-fluid rounded">
+        </div>
+
+        <div class="explanation-section p-3 bg-light rounded">
+          <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-lightbulb me-2"></i>Explicación del Código:</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <h6 class="fw-bold text-success">¿Qué hace este código?</h6>
+              <ul class="small">
+                <li><strong>Inicia una transacción:</strong> <code>sequelize.transaction()</code> crea un contexto transaccional</li>
+                <li><strong>Crea el usuario:</strong> Inserta el registro principal en la tabla usuarios</li>
+                <li><strong>Crea el perfil:</strong> Inserta datos adicionales en la tabla user_profiles</li>
+                <li><strong>Asigna roles:</strong> Inserta múltiples registros en la tabla pivote user_roles</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold text-info">¿Por qué usar transacciones?</h6>
+              <ul class="small">
+                <li><strong>Atomicidad:</strong> Todo se ejecuta o nada se ejecuta</li>
+                <li><strong>Consistencia:</strong> Los datos siempre quedan en estado válido</li>
+                <li><strong>Aislamiento:</strong> Previene conflictos entre operaciones concurrentes</li>
+                <li><strong>Durabilidad:</strong> Los cambios se mantienen incluso si hay fallos del sistema</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conceptos Técnicos Importantes -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-book me-2"></i>Conceptos Técnicos Clave</h2>
+      <p class="lead-muted mb-4">
+        Esta sección explica los conceptos técnicos fundamentales implementados en el proyecto:
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="concept-card p-4 rounded border-start border-4 border-primary">
+            <h5 class="fw-bold mb-3 text-primary">
+              <i class="bi bi-database-gear me-2"></i>ORM (Object-Relational Mapping)
+            </h5>
+            <p class="mb-3">Sequelize es un ORM que permite trabajar con bases de datos usando objetos JavaScript en lugar de SQL directo.</p>
+            <div class="concept-benefits">
+              <h6 class="fw-bold text-success mb-2">Beneficios:</h6>
+              <ul class="small mb-0">
+                <li><strong>Abstracción:</strong> No necesitas escribir SQL manualmente</li>
+                <li><strong>Validación:</strong> Validación automática de tipos de datos</li>
+                <li><strong>Relaciones:</strong> Manejo automático de asociaciones entre tablas</li>
+                <li><strong>Migraciones:</strong> Control de versiones del esquema de BD</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="concept-card p-4 rounded border-start border-4 border-success">
+            <h5 class="fw-bold mb-3 text-success">
+              <i class="bi bi-shield-lock me-2"></i>Hash de Contraseñas
+            </h5>
+            <p class="mb-3">bcryptjs implementa el algoritmo bcrypt para hashear contraseñas de forma segura.</p>
+            <div class="concept-benefits">
+              <h6 class="fw-bold text-success mb-2">Características:</h6>
+              <ul class="small mb-0">
+                <li><strong>Salt automático:</strong> Cada hash es único aunque la contraseña sea igual</li>
+                <li><strong>Coste ajustable:</strong> Puedes aumentar la dificultad computacional</li>
+                <li><strong>Irreversible:</strong> No se puede obtener la contraseña original</li>
+                <li><strong>Resistente a ataques:</strong> Protege contra ataques de fuerza bruta</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="concept-card p-4 rounded border-start border-4 border-info">
+            <h5 class="fw-bold mb-3 text-info">
+              <i class="bi bi-check-square me-2"></i>Validación con Joi
+            </h5>
+            <p class="mb-3">Joi es una librería de validación que permite definir esquemas para validar datos de entrada.</p>
+            <div class="concept-benefits">
+              <h6 class="fw-bold text-success mb-2">Ventajas:</h6>
+              <ul class="small mb-0">
+                <li><strong>Esquemas declarativos:</strong> Define reglas de validación de forma clara</li>
+                <li><strong>Mensajes personalizados:</strong> Errores descriptivos para el usuario</li>
+                <li><strong>Sanitización:</strong> Limpia y transforma datos automáticamente</li>
+                <li><strong>Reutilización:</strong> Los esquemas se pueden usar en múltiples lugares</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="concept-card p-4 rounded border-start border-4 border-warning">
+            <h5 class="fw-bold mb-3 text-warning">
+              <i class="bi bi-diagram-2 me-2"></i>Relaciones de Base de Datos
+            </h5>
+            <p class="mb-3">El proyecto implementa los tres tipos principales de relaciones entre entidades.</p>
+            <div class="concept-benefits">
+              <h6 class="fw-bold text-success mb-2">Tipos implementados:</h6>
+              <ul class="small mb-0">
+                <li><strong>1:1 (Uno a Uno):</strong> Usuario ↔ Perfil (cada usuario tiene un perfil)</li>
+                <li><strong>1:N (Uno a Muchos):</strong> Rol → Usuarios (un rol puede tener muchos usuarios)</li>
+                <li><strong>N:M (Muchos a Muchos):</strong> Usuarios ↔ Roles (tabla pivote UserRoles)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estructura del Proyecto -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-folder2-open me-2"></i>Estructura del Proyecto</h2>
+      <div class="code-section p-4">
+        <pre><code>app-gestor-usuario/
+├── config/
+│   ├── config.js          # Configuración de Sequelize CLI
+│   ├── config.json        # Configuración de base de datos
+│   └── database.js        # Conexión a la base de datos
+├── controllers/
+│   ├── RolController.js   # Lógica de negocio para roles
+│   └── UsuarioController.js # Lógica de negocio para usuarios
+├── middleware/
+│   ├── errorHandler.js    # Manejo centralizado de errores
+│   └── validations.js     # Validación de requests
+├── migrations/            # Migraciones de base de datos
+├── models/
+│   ├── index.js          # Configuración de modelos y asociaciones
+│   ├── Rol.js            # Modelo de roles
+│   ├── Usuario.js         # Modelo de usuarios
+│   ├── UserProfile.js     # Modelo de perfiles (relación 1:1)
+│   └── UserRoles.js       # Tabla pivote (relación N:M)
+├── public/                # Frontend estático
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── styles.css # Estilos personalizados
+│   │   └── js/
+│   │       ├── api.js     # Funciones para llamadas API
+│   │       ├── config.js  # Configuración del frontend
+│   │       ├── ui.js      # Utilidades de interfaz
+│   │       ├── validators.js # Validaciones del cliente
+│   │       ├── users.js   # Lógica de gestión de usuarios
+│   │       ├── user-detail.js # Detalle de usuario
+│   │       ├── roles.js   # Lógica de gestión de roles
+│   │       └── components/
+│   │           └── templates.js # Plantillas HTML
+│   ├── index.html         # Dashboard principal
+│   ├── users.html         # Lista de usuarios
+│   ├── user-detail.html   # Detalle de usuario
+│   └── roles.html         # Gestión de roles
+├── routes/
+│   └── api.js             # Rutas de la API
+├── schemas/
+│   ├── roles.schema.js    # Esquemas de validación para roles
+│   └── users.schema.js    # Esquemas de validación para usuarios
+├── seeders/               # Datos de ejemplo
+├── services/
+│   └── TransaccionService.js # Servicios transaccionales
+├── utils/
+│   └── hash.js            # Utilidades para hash de contraseñas
+├── app.js                 # Archivo principal del servidor
+├── package.json           # Dependencias y scripts
+└── README.md              # Documentación completa</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Características Principales -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-star-fill me-2"></i>Características Principales</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-primary">
+              <i class="bi bi-gear me-2"></i>Backend Robusto
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">✅ Servidor Express con rutas dinámicas</li>
+              <li class="mb-2">✅ CRUD completo para usuarios y roles</li>
+              <li class="mb-2">✅ Validación robusta con Joi</li>
+              <li class="mb-2">✅ Hash seguro de contraseñas</li>
+              <li class="mb-2">✅ Manejo centralizado de errores</li>
+              <li class="mb-2">✅ Transacciones para operaciones complejas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-success">
+              <i class="bi bi-database me-2"></i>Base de Datos Avanzada
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">✅ Modelos Sequelize con asociaciones</li>
+              <li class="mb-2">✅ Migraciones para control de versiones</li>
+              <li class="mb-2">✅ Relaciones 1:1, 1:N y N:M</li>
+              <li class="mb-2">✅ Índices únicos para emails y nombres</li>
+              <li class="mb-2">✅ Cascadas para eliminación automática</li>
+              <li class="mb-2">✅ UUIDs para identificadores únicos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-info">
+              <i class="bi bi-layout-text-window me-2"></i>Frontend Moderno
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">✅ Interfaz responsiva con Bootstrap 5</li>
+              <li class="mb-2">✅ Dashboard con estadísticas</li>
+              <li class="mb-2">✅ Gestión completa de usuarios</li>
+              <li class="mb-2">✅ Sistema de roles avanzado</li>
+              <li class="mb-2">✅ Validaciones en tiempo real</li>
+              <li class="mb-2">✅ Feedback visual con toasts</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-warning">
+              <i class="bi bi-shield-check me-2"></i>Buenas Prácticas
+            </h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">✅ Separación de responsabilidades</li>
+              <li class="mb-2">✅ Código modular y reutilizable</li>
+              <li class="mb-2">✅ Documentación JSDoc completa</li>
+              <li class="mb-2">✅ Convenciones de nombres consistentes</li>
+              <li class="mb-2">✅ Manejo de errores robusto</li>
+              <li class="mb-2">✅ Testing y validación de sistemas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capturas de Pantalla del Sistema -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-images me-2"></i>Capturas de Pantalla del Sistema</h2>
+      <p class="lead-muted mb-4">
+        Explora las diferentes funcionalidades del sistema a través de estas capturas de pantalla:
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-primary">
+              <i class="bi bi-speedometer2 me-2"></i>Dashboard Principal
+            </h5>
+            <div class="screenshot-container mb-3">
+              <img src="assets/img/screenshot-dashboard.png?v=2" alt="Dashboard del Sistema" class="img-fluid rounded">
+            </div>
+            <p class="mb-0">Dashboard principal con estadísticas del sistema, total de usuarios, roles y fecha del último usuario creado.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-success">
+              <i class="bi bi-people me-2"></i>Lista de Usuarios
+            </h5>
+            <div class="screenshot-container mb-3">
+              <img src="assets/img/screenshot-users-list.png?v=2" alt="Lista de Usuarios" class="img-fluid rounded">
+            </div>
+            <p class="mb-0">Gestión de usuarios con búsqueda, filtros, paginación y acciones CRUD completas.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-info">
+              <i class="bi bi-person-plus me-2"></i>Formulario de Usuario
+            </h5>
+            <div class="screenshot-container mb-3">
+              <img src="assets/img/screenshot-user-form.png" alt="Formulario de Usuario" class="img-fluid rounded">
+            </div>
+            <p class="mb-0">Formulario completo para crear/editar usuarios con perfil extendido y asignación de roles múltiples.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-warning">
+              <i class="bi bi-shield me-2"></i>Gestión de Roles
+            </h5>
+            <div class="screenshot-container mb-3">
+              <img src="assets/img/screenshot-roles.png" alt="Gestión de Roles" class="img-fluid rounded">
+            </div>
+            <p class="mb-0">Interfaz para administrar roles del sistema con descripciones y estado activo/inactivo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Endpoints de la API -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-link-45deg me-2"></i>Endpoints de la API</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-primary">
+              <i class="bi bi-people me-2"></i>Endpoints de Usuarios
+            </h5>
+            <div class="screenshot-container mb-3">
+              <img src="assets/img/endpoints-usuarios.png?v=3" alt="Endpoints de Usuarios" class="img-fluid rounded">
+            </div>
+
+            <div class="explanation-section p-3 bg-light rounded">
+              <h6 class="fw-bold mb-2 text-primary"><i class="bi bi-info-circle me-2"></i>Explicación de las Rutas:</h6>
+              <div class="small">
+                <p><strong>POST /api/users:</strong> Crea un nuevo usuario con validación completa y transacciones</p>
+                <p><strong>GET /api/users:</strong> Lista usuarios con paginación y filtros opcionales</p>
+                <p><strong>GET /api/users/:id:</strong> Obtiene un usuario específico con sus relaciones</p>
+                <p><strong>PUT /api/users/:id:</strong> Actualiza usuario, perfil y roles de forma atómica</p>
+                <p><strong>DELETE /api/users/:id:</strong> Elimina usuario y limpia todas las relaciones</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-success">
+              <i class="bi bi-shield me-2"></i>Endpoints de Roles
+            </h5>
+            <div class="screenshot-container mb-3">
+              <img src="assets/img/rutas-de-roles.png?v=3" alt="Rutas de Roles" class="img-fluid rounded">
+            </div>
+
+            <div class="explanation-section p-3 bg-light rounded">
+              <h6 class="fw-bold mb-2 text-success"><i class="bi bi-shield-check me-2"></i>Gestión de Roles:</h6>
+              <div class="small">
+                <p><strong>POST /api/roles:</strong> Crea nuevos roles con validación de nombres únicos</p>
+                <p><strong>GET /api/roles:</strong> Lista todos los roles disponibles en el sistema</p>
+                <p><strong>GET /api/roles/:id:</strong> Obtiene un rol específico con usuarios asignados</p>
+                <p><strong>PUT /api/roles/:id:</strong> Actualiza información del rol (nombre, descripción)</p>
+                <p><strong>DELETE /api/roles/:id:</strong> Elimina rol y limpia asignaciones de usuarios</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-highlight mt-4">
+        <h5 class="fw-bold mb-3"><i class="bi bi-tools me-2"></i>Health Check</h5>
+        <div class="screenshot-container mb-3">
+          <img src="assets/img/health-check.png?v=3" alt="Health Check Endpoint" class="img-fluid rounded">
+        </div>
+
+        <div class="explanation-section p-3 bg-light rounded">
+          <h6 class="fw-bold mb-2 text-warning"><i class="bi bi-heart-pulse me-2"></i>¿Qué es un Health Check?</h6>
+          <div class="small">
+            <p><strong>GET /api/health:</strong> Endpoint de monitoreo que verifica el estado del servidor y la conexión a la base de datos.</p>
+            <p><strong>Propósito:</strong> Permite a sistemas externos (load balancers, monitoreo) verificar si la aplicación está funcionando correctamente.</p>
+            <p><strong>Respuesta:</strong> Retorna información sobre el estado del servidor, versión de la aplicación y estado de la base de datos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Habilidades Desarrolladas -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-trophy-fill me-2"></i>Habilidades Desarrolladas</h2>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card p-4 rounded text-center">
+            <div class="step-number mx-auto mb-3">1</div>
+            <h5 class="fw-bold mb-3">Backend Development</h5>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2">• Desarrollo con Node.js y Express</li>
+              <li class="mb-2">• Implementación de APIs REST</li>
+              <li class="mb-2">• Manejo de middleware personalizado</li>
+              <li class="mb-2">• Validación de datos con Joi</li>
+              <li class="mb-2">• Hash seguro de contraseñas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card p-4 rounded text-center">
+            <div class="step-number mx-auto mb-3">2</div>
+            <h5 class="fw-bold mb-3">Base de Datos</h5>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2">• Diseño de esquemas relacionales</li>
+              <li class="mb-2">• Uso de ORM (Sequelize)</li>
+              <li class="mb-2">• Implementación de migraciones</li>
+              <li class="mb-2">• Manejo de transacciones</li>
+              <li class="mb-2">• Optimización con índices</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card p-4 rounded text-center">
+            <div class="step-number mx-auto mb-3">3</div>
+            <h5 class="fw-bold mb-3">Frontend</h5>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2">• Desarrollo de interfaces responsivas</li>
+              <li class="mb-2">• Comunicación con APIs</li>
+              <li class="mb-2">• Validación en tiempo real</li>
+              <li class="mb-2">• Manejo de estados complejos</li>
+              <li class="mb-2">• UX/UI moderno</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enlaces y Recursos -->
+  <section class="container my-5">
+    <div class="section-card p-4" data-aos="fade-up">
+      <h2 class="text-purple mb-4"><i class="bi bi-link-45deg me-2"></i>Enlaces y Recursos</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-primary">
+              <i class="bi bi-github me-2"></i>Repositorio
+            </h5>
+            <p class="mb-3">Accede al código fuente completo del proyecto:</p>
+            <a href="https://github.com/MagdaIG/gestor-usuarios" class="btn btn-primary" target="_blank">
+              <i class="bi bi-github me-2"></i>Ver en GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-4 rounded">
+            <h5 class="fw-bold mb-3 text-success">
+              <i class="bi bi-file-text me-2"></i>Documentación
+            </h5>
+            <p class="mb-3">Lee la documentación completa del proyecto:</p>
+            <a href="https://github.com/MagdaIG/gestor-usuarios/blob/main/README.md" class="btn btn-success" target="_blank">
+              <i class="bi bi-file-text me-2"></i>Ver README
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-name">Magdalena Inalaf</span>
+        </div>
+        <div class="copyright">
+          <small>© 2025 Todos los derechos reservados</small>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://inalaf.ca" target="_blank" class="footer-link" aria-label="Sitio web">
+          <div class="icon-container">
+            <i class="bi bi-globe"></i>
+          </div>
+          <span class="link-text">Sitio Web</span>
+        </a>
+        <a href="https://github.com/MagdaIG" target="_blank" class="footer-link" aria-label="GitHub">
+          <div class="icon-container">
+            <i class="bi bi-github"></i>
+          </div>
+          <span class="link-text">GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link" aria-label="LinkedIn">
+          <div class="icon-container">
+            <i class="bi bi-linkedin"></i>
+          </div>
+          <span class="link-text">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="footer-credits">
+        <div class="credits-content">
+          <span class="credits-text">Desarrollado con <i class="bi bi-heart-fill"></i> por</span>
+          <span class="developer-name">Magdalena Inalaf G.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function openDiagram(type) {
+      if (type === 'architecture') {
+        window.open('architecture-overview.html', '_blank');
+      } else if (type === 'database') {
+        window.open('diagram-database.html', '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
