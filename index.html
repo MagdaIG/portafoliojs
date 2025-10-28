@@ -10,6 +10,69 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Estilos para la sección de habilidades mejorada -->
+  <style>
+    .skill-card {
+      transition: all 0.2s ease-in-out;
+      border: 1px solid rgba(0,0,0,0.05);
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .skill-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+      border-color: rgba(128, 90, 213, 0.2);
+    }
+
+    .skill-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, rgba(128, 90, 213, 0.1) 0%, rgba(128, 90, 213, 0.05) 100%);
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+
+    .skill-context {
+      background: rgba(128, 90, 213, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border-left: 3px solid #805ad5;
+    }
+
+    .skill-context i {
+      color: #805ad5;
+    }
+
+    .typed-code {
+      background: #2d3748;
+      color: #e2e8f0;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 0.9em;
+      border: 1px solid #4a5568;
+    }
+
+    /* Animación suave para los subtítulos de categorías */
+    h4.text-purple {
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h4.text-purple::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #805ad5, #9f7aea);
+      border-radius: 2px;
+    }
+  </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top">
@@ -95,13 +158,13 @@
 </section>
 
 <!-- Proyectos del Bootcamp -->
+<!--
 <section id="projects" class="container my-5">
   <h2 class="text-purple text-center mb-5">Proyectos del Bootcamp</h2>
   <p class="text-center mb-4">
     En esta sección encontrarás todos los proyectos que creé durante el Bootcamp de JavaScript. Revisaremos cada uno en detalle, explorando cómo fueron construidos, qué tecnologías se utilizaron y qué funcionalidades incluyen. Cada proyecto refleja un hito de aprendizaje específico, combinando código, diseño e interactividad.
   </p>
 
-  <!-- CineFlash -->
   <div class="bootcamp-project">
     <div class="bootcamp-info">
       <h4>CineFlash</h4>
@@ -137,7 +200,6 @@
     </div>
   </div>
 
-  <!-- LibroLibre -->
   <div class="bootcamp-project">
     <div class="bootcamp-info">
       <h4>LibroLibre</h4>
@@ -148,7 +210,7 @@
         <li>Verifica si hay libros filtrados. Si no hay ninguno, muestra un mensaje.</li>
         <li>Si hay resultados, crea una tarjeta Bootstrap dinámicamente para cada libro.</li>
         <li>Muestra imagen del libro, título, autor, género y sinopsis.</li>
-        <li>Includes buttons for “Read”, “Favorite” and “Loan” with icons.</li>
+        <li>Includes buttons for "Read", "Favorite" and "Loan" with icons.</li>
       </ul>
 
       <div class="bootcamp-card p-3 rounded shadow-sm mt-4">
@@ -173,111 +235,205 @@
     </div>
   </div>
 </section>
+-->
 
 <!-- What I've Learned in JavaScript -->
 <section id="skills" class="container my-5">
     <h2 class="text-purple text-center mb-4">Lo que He Aprendido en JavaScript</h2>
-    <p class="text-center mb-5">
-      Un resumen de todo lo que he aprendido hasta ahora en JavaScript durante este bootcamp — desde manipulación del DOM hasta trabajar con Bootstrap y jQuery para construir proyectos interactivos.
-    </p>
+    <div class="text-center mb-5">
+      <p class="lead">
+        Un resumen de las tecnologías y conceptos que he dominado en JavaScript durante mi desarrollo profesional.
+      </p>
+      <p class="text-muted">
+        Estas habilidades han sido aplicadas en proyectos reales como <strong>App Gestor de Usuarios</strong>, <strong>Gestor de Contactos</strong>, <strong>Gestor de Productos</strong> y <strong>Sistema Kanban</strong>, demostrando mi capacidad para crear aplicaciones web completas y funcionales.
+      </p>
+    </div>
 
-  <div class="row g-4">
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up">
-        <h5 class="fw-bold mb-3">Manipulación del DOM</h5>
-        <p>Aprendí cómo acceder y modificar elementos HTML usando JavaScript y jQuery. Por ejemplo, actualizar dinámicamente tarjetas de libros o establecer valores de formularios.</p>
-        <pre><code class="typed-code">document.getElementById("title").textContent = "¡Actualizado!"</code></pre>
+    <!-- Frontend Development -->
+    <div class="mt-5">
+      <h4 class="text-purple mb-4"><i class="bi bi-laptop me-2"></i>Frontend Development</h4>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-code-square text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Manipulación del DOM</h5>
+            <p>Aprendí cómo acceder y modificar elementos HTML usando JavaScript y jQuery. Por ejemplo, actualizar dinámicamente tarjetas de libros o establecer valores de formularios.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> LibroLibre, Cute Shop, Gestión de Tareas</small>
+            </div>
+            <pre><code class="typed-code">document.getElementById("title").textContent = "¡Actualizado!"</code></pre>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-mouse text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Manejo de Eventos</h5>
+            <p>Usé event listeners para detectar acciones del usuario como clics y envíos de formularios, creando interfaces interactivas y responsivas.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> Todos los proyectos frontend</small>
+            </div>
+            <pre><code class="typed-code">$('.btn').click(() => alert("¡Clickeado!"))</code></pre>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-bootstrap text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Integración Bootstrap + JS</h5>
+            <p>Usé modales de Bootstrap y controlé dinámicamente su visibilidad con JavaScript para simular flujos de aplicación profesionales.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> CineFlash, Gestión de Tareas, Portafolio</small>
+            </div>
+            <pre><code class="typed-code">const modal = new bootstrap.Modal(...)</code></pre>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-search text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Filtrado y Búsqueda</h5>
+            <p>Creé sistemas de filtrado dinámico para productos y búsqueda en tiempo real, mejorando la experiencia de navegación del usuario.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> LibroLibre, Cute Shop, Gestor de Productos</small>
+            </div>
+            <pre><code class="typed-code">products.filter(p => p.name.includes(searchTerm))</code></pre>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="100">
-        <h5 class="fw-bold mb-3">Manejo de Eventos</h5>
-        <p>Usé event listeners para detectar acciones del usuario como clics y envíos de formularios, como reservar una película en CineFlash.</p>
-        <pre><code class="typed-code">$('.btn').click(() => alert("¡Clickeado!"))</code></pre>
+    <!-- User Experience & Interaction -->
+    <div class="mt-5">
+      <h4 class="text-purple mb-4"><i class="bi bi-person-check me-2"></i>User Experience & Interaction</h4>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-hand-index text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Drag & Drop API</h5>
+            <p>Desarrollé funcionalidad de arrastrar y soltar para mover tareas entre columnas en el sistema Kanban, creando una experiencia interactiva moderna.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> Sistema Kanban de Gestión de Tareas</small>
+            </div>
+            <pre><code class="typed-code">element.addEventListener('dragstart', handleDragStart)</code></pre>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-clock text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Retroalimentación Dinámica</h5>
+            <p>Apliqué <code>setTimeout</code> para efectos de temporización como mostrar mensajes de confirmación o transiciones después de acciones del usuario.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> CineFlash, Gestión de Tareas</small>
+            </div>
+            <pre><code class="typed-code">setTimeout(() => modal.show(), 500)</code></pre>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-kanban text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Interfaz Kanban</h5>
+            <p>Desarrollé una interfaz tipo Kanban completa con columnas dinámicas, permitiendo organizar y gestionar tareas de forma visual e intuitiva.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> Sistema de Gestión de Tareas</small>
+            </div>
+            <pre><code class="typed-code">createKanbanColumn(status)</code></pre>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-shield-check text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Validación de Formularios</h5>
+            <p>Validé formularios manualmente antes de enviar o actualizar la interfaz, como verificar si todos los campos fueron llenados correctamente.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> Todos los formularios de los proyectos</small>
+            </div>
+            <pre><code class="typed-code">if (input.value.trim() === "") alert("¡Requerido!")</code></pre>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="200">
-        <h5 class="fw-bold mb-3">Atributos de Datos</h5>
-        <p>Capturé valores personalizados de HTML usando atributos <code>data-*</code> para pre-llenar formularios o rastrear selecciones del usuario.</p>
-        <pre><code class="typed-code">const peli = $(this).data('pelicula')</code></pre>
-      </div>
-    </div>
+    <!-- Data Management -->
+    <div class="mt-5">
+      <h4 class="text-purple mb-4"><i class="bi bi-database me-2"></i>Data Management</h4>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-hdd text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">LocalStorage & Persistencia</h5>
+            <p>Implementé almacenamiento local para guardar datos del usuario como carrito de compras y tareas, manteniendo la información entre sesiones.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> Cute Shop, Gestión de Tareas</small>
+            </div>
+            <pre><code class="typed-code">localStorage.setItem('cart', JSON.stringify(cart))</code></pre>
+          </div>
+        </div>
 
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="300">
-        <h5 class="fw-bold mb-3">Validación de Formularios</h5>
-        <p>Validé formularios manualmente antes de enviar o actualizar la interfaz, como verificar si todos los campos fueron llenados correctamente.</p>
-        <pre><code class="typed-code">if (input.value.trim() === "") alert("¡Requerido!")</code></pre>
-      </div>
-    </div>
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-diagram-3 text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Gestión de Estado</h5>
+            <p>Manejé estados complejos de aplicaciones como el carrito de compras y el sistema de tareas, manteniendo la sincronización entre componentes.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> Cute Shop, Gestión de Tareas</small>
+            </div>
+            <pre><code class="typed-code">updateCartState(newItem)</code></pre>
+          </div>
+        </div>
 
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="400">
-        <h5 class="fw-bold mb-3">Integración Bootstrap + JS</h5>
-        <p>Usé modales de Bootstrap y controlé dinámicamente su visibilidad con JavaScript para simular flujos de aplicación.</p>
-        <pre><code class="typed-code">const modal = new bootstrap.Modal(...)</code></pre>
-      </div>
-    </div>
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-tags text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Atributos de Datos</h5>
+            <p>Capturé valores personalizados de HTML usando atributos <code>data-*</code> para pre-llenar formularios o rastrear selecciones del usuario.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> CineFlash, LibroLibre</small>
+            </div>
+            <pre><code class="typed-code">const peli = $(this).data('pelicula')</code></pre>
+          </div>
+        </div>
 
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="500">
-        <h5 class="fw-bold mb-3">Retroalimentación Dinámica</h5>
-        <p>Apliqué <code>setTimeout</code> para efectos de temporización como mostrar mensajes de confirmación o transiciones después de acciones del usuario.</p>
-        <pre><code class="typed-code">setTimeout(() => modal.show(), 500)</code></pre>
+        <div class="col-md-6">
+          <div class="skill-card p-4 shadow-sm rounded-4 bg-light" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-icon mb-3">
+              <i class="bi bi-person-badge text-purple fs-3"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Autenticación Simulada</h5>
+            <p>Implementé sistemas de autenticación básicos con validación de credenciales y gestión de sesiones de usuario.</p>
+            <div class="skill-context mb-3">
+              <small class="text-muted"><i class="bi bi-geo-alt me-1"></i><strong>Se aplicó en:</strong> Gestión de Tareas, Gestor de Contactos</small>
+            </div>
+            <pre><code class="typed-code">if (user.email && user.password) login()</code></pre>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="600">
-        <h5 class="fw-bold mb-3">LocalStorage & Persistencia</h5>
-        <p>Implementé almacenamiento local para guardar datos del usuario como carrito de compras y tareas, manteniendo la información entre sesiones.</p>
-        <pre><code class="typed-code">localStorage.setItem('cart', JSON.stringify(cart))</code></pre>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="700">
-        <h5 class="fw-bold mb-3">Drag & Drop API</h5>
-        <p>Desarrollé funcionalidad de arrastrar y soltar para mover tareas entre columnas en el sistema Kanban, creando una experiencia interactiva.</p>
-        <pre><code class="typed-code">element.addEventListener('dragstart', handleDragStart)</code></pre>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="800">
-        <h5 class="fw-bold mb-3">Filtrado y Búsqueda</h5>
-        <p>Creé sistemas de filtrado dinámico para productos y búsqueda en tiempo real, mejorando la experiencia de navegación del usuario.</p>
-        <pre><code class="typed-code">products.filter(p => p.name.includes(searchTerm))</code></pre>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="900">
-        <h5 class="fw-bold mb-3">Gestión de Estado</h5>
-        <p>Manejé estados complejos de aplicaciones como el carrito de compras y el sistema de tareas, manteniendo la sincronización entre componentes.</p>
-        <pre><code class="typed-code">updateCartState(newItem)</code></pre>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="1000">
-        <h5 class="fw-bold mb-3">Autenticación Simulada</h5>
-        <p>Implementé sistemas de autenticación básicos con validación de credenciales y gestión de sesiones de usuario.</p>
-        <pre><code class="typed-code">if (user.email && user.password) login()</code></pre>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="js-learn-card p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="1100">
-        <h5 class="fw-bold mb-3">Interfaz Kanban</h5>
-        <p>Desarrollé una interfaz tipo Kanban completa con columnas dinámicas, permitiendo organizar y gestionar tareas de forma visual.</p>
-        <pre><code class="typed-code">createKanbanColumn(status)</code></pre>
-      </div>
-    </div>
-  </div>
 
 <!-- Mi Viaje Web -->
 <section id="journey" class="container my-5">
