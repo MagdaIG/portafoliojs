@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handmade Bags Store - Sistema de Gestión de Usuarios y Pedidos | Portafolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Ajustes específicos de esta página */
+    .section-card { background-color: #fff; border: 1px solid #e2d6f0; border-radius: 16px; }
+    .lead-muted { color: #555; }
+    .code-section { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #1e40af; }
+    .feature-badge { font-size: 0.8rem; }
+    .step-number {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e2d6f0;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+    }
+    .tech-highlight {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-left: 4px solid #1e40af;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .code-snippet {
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+    }
+    .screenshot-container {
+      border: 2px solid #e2d6f0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .challenge-card {
+      background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+      border-left: 4px solid #f39c12;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .challenge-card:hover {
+      transform: translateY(-2px);
+    }
+    .architecture-diagram {
+      border: 1px solid #e2d6f0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    .entity-box {
+      background: white;
+      border: 2px solid #1e40af;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.1);
+    }
+    .relationship-arrow {
+      color: #10b981;
+    }
+    .flow-step {
+      background: white;
+      border: 1px solid #e2d6f0;
+      border-radius: 6px;
+      padding: 10px;
+      margin: 5px 0;
+    }
+    .flow-arrow {
+      color: #6b7280;
+    }
+    .practice-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid #0ea5e9;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .practice-card:hover {
+      transform: translateY(-2px);
+    }
+    .metric-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .metric-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .tech-stack .badge {
+      font-size: 0.85rem;
+      padding: 8px 12px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-container">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-text">Magdalena Inalaf</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html#about">Sobre Mí</a>
+          <a class="nav-link" href="index.html#portfolio-projects">Proyectos</a>
+          <a class="nav-link" href="index.html#skills">Habilidades</a>
+          <a class="nav-link" href="index.html#journey">Mi Viaje</a>
+          <a class="nav-link" href="index.html#contact">Contacto</a>
+        </div>
+        <div class="navbar-social">
+          <a href="https://github.com/MagdaIG" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://inalaf.ca" target="_blank" class="social-link" aria-label="Sitio Web">
+            <i class="bi bi-globe"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer para el contenido fijo -->
+  <div class="navbar-spacer"></div>
+
+  <!-- Breadcrumb -->
+  <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="index.html#portfolio-projects">Proyectos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Handmade Bags Store</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h1 class="display-4 fw-bold text-purple mb-4">
+          <i class="bi bi-shop me-3"></i>
+          Handmade Bags Store
+        </h1>
+        <p class="lead lead-muted mb-4">
+          Sistema completo de gestión de usuarios y pedidos para tienda de handmade bags artesanales.
+          Desarrollado con Node.js, Express, PostgreSQL y Sequelize ORM.
+        </p>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <span class="badge bg-primary">Node.js</span>
+          <span class="badge bg-info">PostgreSQL</span>
+          <span class="badge bg-success">Sequelize</span>
+          <span class="badge bg-warning text-dark">Express</span>
+          <span class="badge bg-secondary">Transacciones</span>
+          <span class="badge bg-dark">bcryptjs</span>
+        </div>
+        <div class="d-flex gap-3">
+          <a href="https://github.com/MagdaIG/bags-shop-node-express" target="_blank" class="btn btn-primary">
+            <i class="bi bi-github me-2"></i>Ver Código
+          </a>
+          <a href="handmade-bags-store-docs.html" class="btn btn-outline-primary">
+            <i class="bi bi-file-text me-2"></i>Documentación
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="screenshot-container">
+          <img src="assets/img/homepage.png" alt="Handmade Bags Store - Página Principal" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contexto del Proyecto -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-info-circle me-2"></i>
+        Contexto del Proyecto
+      </h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Evaluación de Portafolio</h5>
+          <p>
+            Este proyecto fue desarrollado como parte de una evaluación de portafolio que requería implementar
+            un sistema de gestión de usuarios y pedidos para una tienda en línea utilizando PostgreSQL y buenas prácticas en Node.js.
+          </p>
+          <div class="tech-highlight">
+            <strong>Objetivo:</strong> Implementar conexión a PostgreSQL con Sequelize ORM, diseñar relaciones entre entidades
+            de manera eficiente y escalable, y gestionar transacciones para garantizar consistencia de datos.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5>Características Implementadas</h5>
+          <ul>
+            <li>CRUD completo para usuarios y pedidos</li>
+            <li>Base de datos PostgreSQL con Sequelize ORM</li>
+            <li>Transacciones para garantizar consistencia</li>
+            <li>Interfaz web responsive con Bootstrap 5</li>
+            <li>API REST completa con documentación</li>
+            <li>Validaciones robustas en frontend y backend</li>
+            <li>Seguridad con hash de contraseñas bcrypt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capturas de Pantalla -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-display me-2"></i>
+        Capturas de Pantalla del Frontend
+      </h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="screenshot-container">
+            <img src="assets/img/homepage.png" alt="Página Principal" class="img-fluid">
+          </div>
+          <h6 class="mt-3 text-center">Página Principal</h6>
+          <p class="text-muted text-center small">Página de inicio con productos destacados y diseño artesanal</p>
+        </div>
+        <div class="col-md-6">
+          <div class="screenshot-container">
+            <img src="assets/img/products.png" alt="Catálogo de Productos" class="img-fluid">
+          </div>
+          <h6 class="mt-3 text-center">Catálogo de Productos</h6>
+          <p class="text-muted text-center small">Catálogo completo con búsqueda en tiempo real</p>
+        </div>
+        <div class="col-md-6">
+          <div class="screenshot-container">
+            <img src="assets/img/users.png" alt="Gestión de Usuarios" class="img-fluid">
+          </div>
+          <h6 class="mt-3 text-center">Gestión de Usuarios</h6>
+          <p class="text-muted text-center small">Interfaz para gestionar usuarios del sistema</p>
+        </div>
+        <div class="col-md-6">
+          <div class="screenshot-container">
+            <img src="assets/img/orders.png" alt="Gestión de Pedidos" class="img-fluid">
+          </div>
+          <h6 class="mt-3 text-center">Gestión de Pedidos</h6>
+          <p class="text-muted text-center small">Sistema de gestión de pedidos con transacciones</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementación Técnica -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-gear me-2"></i>
+        Implementación Técnica
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Modelos de Base de Datos</h5>
+          <div class="code-section p-3 mb-3">
+            <h6>Modelo Usuario</h6>
+            <ul class="small">
+              <li><code>id</code> - INTEGER, PK, autoincrement</li>
+              <li><code>nombre</code> - STRING(60), validación 2-60 caracteres</li>
+              <li><code>email</code> - STRING(100), único, formato válido</li>
+              <li><code>password</code> - STRING(255), hash bcrypt, min 8 caracteres</li>
+            </ul>
+          </div>
+
+          <div class="code-section p-3">
+            <h6>Modelo Pedido</h6>
+            <ul class="small">
+              <li><code>id</code> - INTEGER, PK, autoincrement</li>
+              <li><code>usuario_id</code> - INTEGER, FK -> User.id</li>
+              <li><code>producto</code> - STRING(100), 1-100 caracteres</li>
+              <li><code>cantidad</code> - INTEGER, mayor a 0</li>
+              <li><code>fecha_pedido</code> - DATEONLY, default NOW()</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Asociaciones Sequelize</h5>
+          <div class="code-snippet">
+// Relación uno a muchos
+User.hasMany(Order, {
+  foreignKey: 'usuario_id',
+  onDelete: 'CASCADE'
+});
+
+Order.belongsTo(User, {
+  foreignKey: 'usuario_id'
+});
+          </div>
+
+          <h5>Validaciones Implementadas</h5>
+          <ul class="small">
+            <li><strong>Email único:</strong> Validación a nivel de base de datos</li>
+            <li><strong>Contraseña segura:</strong> Mínimo 8 caracteres + número</li>
+            <li><strong>Hash bcrypt:</strong> 12 rounds de seguridad</li>
+            <li><strong>Transacciones:</strong> Rollback automático en errores</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- API REST -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-terminal me-2"></i>
+        API REST - Endpoints Implementados
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Endpoints de Usuarios</h5>
+          <div class="code-section p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-success me-2">POST</span>
+              <code>/api/usuarios</code>
+            </div>
+            <small class="text-muted">Crear nuevo usuario</small>
+          </div>
+
+          <div class="code-section p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-primary me-2">GET</span>
+              <code>/api/usuarios</code>
+            </div>
+            <small class="text-muted">Obtener todos los usuarios</small>
+          </div>
+
+          <div class="code-section p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-primary me-2">GET</span>
+              <code>/api/usuarios/:id</code>
+            </div>
+            <small class="text-muted">Obtener usuario por ID</small>
+          </div>
+
+          <div class="code-section p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-warning me-2">PUT</span>
+              <code>/api/usuarios/:id</code>
+            </div>
+            <small class="text-muted">Actualizar usuario</small>
+          </div>
+
+          <div class="code-section p-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-danger me-2">DELETE</span>
+              <code>/api/usuarios/:id</code>
+            </div>
+            <small class="text-muted">Eliminar usuario</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Endpoints de Pedidos</h5>
+          <div class="code-section p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-success me-2">POST</span>
+              <code>/api/pedidos</code>
+            </div>
+            <small class="text-muted">Crear nuevo pedido (con transacción)</small>
+          </div>
+
+          <div class="code-section p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-primary me-2">GET</span>
+              <code>/api/pedidos</code>
+            </div>
+            <small class="text-muted">Obtener todos los pedidos</small>
+          </div>
+
+          <div class="code-section p-3">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-primary me-2">GET</span>
+              <code>/api/pedidos/usuario/:id</code>
+            </div>
+            <small class="text-muted">Obtener pedidos de usuario específico</small>
+          </div>
+
+          <h5 class="mt-4">Ejemplo de Uso</h5>
+          <div class="code-snippet">
+# Crear usuario
+curl -X POST http://localhost:3001/api/usuarios \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre": "María García",
+    "email": "maria@example.com",
+    "password": "MiPassword123"
+  }'
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cumplimiento de Requisitos -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-check-square me-2"></i>
+        Cumplimiento de Requisitos de Evaluación
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="feature-card p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <div class="step-number">1</div>
+              <h6 class="mb-0">Instalación y Configuración</h6>
+            </div>
+            <ul class="small mb-0">
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Node.js configurado correctamente</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Sequelize como ORM instalado</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Variables de entorno configuradas (.env)</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Base de datos PostgreSQL configurada</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Docker Compose para facilitar despliegue</li>
+            </ul>
+          </div>
+
+          <div class="feature-card p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <div class="step-number">2</div>
+              <h6 class="mb-0">Definición de Modelos</h6>
+            </div>
+            <ul class="small mb-0">
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Modelo Usuario con campos requeridos</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Modelo Pedido con campos requeridos</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Asociaciones correctas implementadas</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Validaciones robustas aplicadas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="feature-card p-3 mb-3">
+            <div class="d-flex align-items-center mb-2">
+              <div class="step-number">3</div>
+              <h6 class="mb-0">Operaciones CRUD</h6>
+            </div>
+            <ul class="small mb-0">
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>POST /usuarios - Crear usuario</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>GET /usuarios - Obtener todos los usuarios</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>PUT /usuarios/:id - Actualizar usuario</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>DELETE /usuarios/:id - Eliminar usuario</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>POST /pedidos - Crear pedido</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>GET /usuarios/:id/pedidos - Obtener pedidos</li>
+            </ul>
+          </div>
+
+          <div class="feature-card p-3">
+            <div class="d-flex align-items-center mb-2">
+              <div class="step-number">4</div>
+              <h6 class="mb-0">Transacciones</h6>
+            </div>
+            <ul class="small mb-0">
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Transacción al crear pedido</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Rollback automático si falla</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Verificación de existencia del usuario</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i>Uso correcto de sequelize.transaction()</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lo que Aprendí -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-mortarboard me-2"></i>
+        Lo que Aprendí en este Proyecto
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Habilidades Técnicas Desarrolladas</h5>
+          <ul>
+            <li><strong>Sequelize ORM:</strong> Configuración de modelos, asociaciones y validaciones</li>
+            <li><strong>Transacciones:</strong> Manejo de operaciones atómicas con rollback</li>
+            <li><strong>PostgreSQL:</strong> Configuración y uso de base de datos relacional</li>
+            <li><strong>API REST:</strong> Diseño de endpoints siguiendo convenciones</li>
+            <li><strong>Seguridad:</strong> Hash de contraseñas con bcrypt</li>
+            <li><strong>Validaciones:</strong> Validación robusta en frontend y backend</li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Conceptos de Base de Datos</h5>
+          <ul>
+            <li><strong>Relaciones:</strong> Implementación de relaciones 1:N entre entidades</li>
+            <li><strong>Integridad:</strong> Uso de llaves foráneas y cascadas</li>
+            <li><strong>Consistencia:</strong> Transacciones para mantener datos consistentes</li>
+            <li><strong>Validaciones:</strong> Validaciones a nivel de modelo y base de datos</li>
+            <li><strong>Hooks:</strong> Uso de hooks de Sequelize para operaciones automáticas</li>
+            <li><strong>Seeds:</strong> Población de base de datos con datos de ejemplo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Desafíos Técnicos y Soluciones -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-tools me-2"></i>
+        Desafíos Técnicos y Soluciones
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="challenge-card p-3 mb-3">
+            <h6 class="fw-bold text-warning mb-2">
+              <i class="bi bi-exclamation-triangle me-2"></i>Desafío: Manejo de Transacciones
+            </h6>
+            <p class="small mb-2">
+              <strong>Problema:</strong> Garantizar que la creación de pedidos sea atómica y que si falla cualquier parte, se reviertan todos los cambios.
+            </p>
+            <p class="small mb-2">
+              <strong>Solución:</strong> Implementé transacciones de Sequelize con manejo de errores y rollback automático.
+            </p>
+            <div class="code-snippet small">
+              <pre><code>const transaction = await sequelize.transaction();
+try {
+  const user = await User.findByPk(userId, { transaction });
+  const order = await Order.create(orderData, { transaction });
+  await transaction.commit();
+} catch (error) {
+  await transaction.rollback();
+  throw error;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="challenge-card p-3 mb-3">
+            <h6 class="fw-bold text-warning mb-2">
+              <i class="bi bi-exclamation-triangle me-2"></i>Desafío: Validaciones Robustas
+            </h6>
+            <p class="small mb-2">
+              <strong>Problema:</strong> Asegurar que los datos sean válidos tanto en frontend como backend, con mensajes de error claros.
+            </p>
+            <p class="small mb-2">
+              <strong>Solución:</strong> Validaciones en múltiples capas: modelo Sequelize, middleware Express y frontend JavaScript.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="challenge-card p-3 mb-3">
+            <h6 class="fw-bold text-warning mb-2">
+              <i class="bi bi-exclamation-triangle me-2"></i>Desafío: Asociaciones de Base de Datos
+            </h6>
+            <p class="small mb-2">
+              <strong>Problema:</strong> Implementar correctamente la relación 1:N entre usuarios y pedidos con integridad referencial.
+            </p>
+            <p class="small mb-2">
+              <strong>Solución:</strong> Configuré asociaciones Sequelize con foreign keys y cascadas para mantener consistencia.
+            </p>
+            <div class="code-snippet small">
+              <pre><code>User.hasMany(Order, {
+  foreignKey: 'usuario_id',
+  onDelete: 'CASCADE'
+});
+Order.belongsTo(User, {
+  foreignKey: 'usuario_id'
+});</code></pre>
+            </div>
+          </div>
+
+          <div class="challenge-card p-3 mb-3">
+            <h6 class="fw-bold text-warning mb-2">
+              <i class="bi bi-exclamation-triangle me-2"></i>Desafío: Seguridad de Contraseñas
+            </h6>
+            <p class="small mb-2">
+              <strong>Problema:</strong> Almacenar contraseñas de forma segura sin exponer información sensible.
+            </p>
+            <p class="small mb-2">
+              <strong>Solución:</strong> Hash con bcrypt y salt rounds configurables, hooks de Sequelize para automatizar el proceso.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagramas de Arquitectura -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-diagram-3 me-2"></i>
+        Arquitectura del Sistema
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="mb-3">Diagrama de Base de Datos</h5>
+          <div class="architecture-diagram p-3 bg-light rounded">
+            <div class="text-center">
+              <div class="entity-box mb-3">
+                <h6 class="fw-bold text-primary">USUARIOS</h6>
+                <div class="small">
+                  <div>id (PK)</div>
+                  <div>nombre</div>
+                  <div>email (UNIQUE)</div>
+                  <div>password (HASHED)</div>
+                  <div>created_at</div>
+                  <div>updated_at</div>
+                </div>
+              </div>
+              <div class="relationship-arrow mb-3">
+                <i class="bi bi-arrow-down text-success"></i>
+                <div class="small text-muted">1:N</div>
+              </div>
+              <div class="entity-box">
+                <h6 class="fw-bold text-info">PEDIDOS</h6>
+                <div class="small">
+                  <div>id (PK)</div>
+                  <div>usuario_id (FK)</div>
+                  <div>producto</div>
+                  <div>cantidad</div>
+                  <div>fecha_pedido</div>
+                  <div>created_at</div>
+                  <div>updated_at</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h5 class="mb-3">Flujo de la Aplicación</h5>
+          <div class="architecture-diagram p-3 bg-light rounded">
+            <div class="flow-step mb-2">
+              <i class="bi bi-globe text-primary me-2"></i>
+              <span class="small">Cliente Web (Frontend)</span>
+            </div>
+            <div class="flow-arrow mb-2 text-center">
+              <i class="bi bi-arrow-down"></i>
+            </div>
+            <div class="flow-step mb-2">
+              <i class="bi bi-server text-success me-2"></i>
+              <span class="small">Servidor Express (Backend)</span>
+            </div>
+            <div class="flow-arrow mb-2 text-center">
+              <i class="bi bi-arrow-down"></i>
+            </div>
+            <div class="flow-step mb-2">
+              <i class="bi bi-gear text-warning me-2"></i>
+              <span class="small">Sequelize ORM</span>
+            </div>
+            <div class="flow-arrow mb-2 text-center">
+              <i class="bi bi-arrow-down"></i>
+            </div>
+            <div class="flow-step">
+              <i class="bi bi-database text-info me-2"></i>
+              <span class="small">PostgreSQL Database</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ejemplos de Código Detallados -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-code-square me-2"></i>
+        Ejemplos de Código Detallados
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="mb-3">Implementación de Transacciones</h5>
+          <div class="code-section p-3 mb-3">
+            <h6 class="small fw-bold mb-2">Creación de Pedido con Transacción - Parte 1</h6>
+            <div class="screenshot-container">
+              <img src="assets/img/Creaciondepedidocontransaccion1.png" alt="Creación de Pedido con Transacción - Parte 1" class="img-fluid">
+            </div>
+          </div>
+          <div class="code-section p-3 mb-3">
+            <h6 class="small fw-bold mb-2">Creación de Pedido con Transacción - Parte 2</h6>
+            <div class="screenshot-container">
+              <img src="assets/img/Creaciondepedidocontransaccion2.png" alt="Creación de Pedido con Transacción - Parte 2" class="img-fluid">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h5 class="mb-3">Modelo con Validaciones</h5>
+          <div class="code-section p-3 mb-3">
+            <h6 class="small fw-bold mb-2">Modelo Usuario - Parte 1</h6>
+            <div class="screenshot-container">
+              <img src="assets/img/modelo-usuario1.png" alt="Modelo Usuario - Parte 1" class="img-fluid">
+            </div>
+          </div>
+          <div class="code-section p-3 mb-3">
+            <h6 class="small fw-bold mb-2">Modelo Usuario - Parte 2</h6>
+            <div class="screenshot-container">
+              <img src="assets/img/modelo-usuario2.png" alt="Modelo Usuario - Parte 2" class="img-fluid">
+            </div>
+          </div>
+          <div class="code-section p-3 mb-3">
+            <h6 class="small fw-bold mb-2">Modelo Usuario - Parte 3</h6>
+            <div class="screenshot-container">
+              <img src="assets/img/modelo-usuario-3.png" alt="Modelo Usuario - Parte 3" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buenas Prácticas Implementadas -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-shield-check me-2"></i>
+        Buenas Prácticas Implementadas
+      </h2>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="practice-card p-3 mb-3">
+            <h6 class="fw-bold text-success mb-2">
+              <i class="bi bi-check-circle me-2"></i>Seguridad
+            </h6>
+            <ul class="small mb-0">
+              <li>Hash de contraseñas con bcrypt y salt rounds configurables</li>
+              <li>Validación de entrada en múltiples capas</li>
+              <li>Sanitización de datos antes de almacenar</li>
+              <li>Variables de entorno para configuración sensible</li>
+              <li>Manejo seguro de errores sin exposición de información</li>
+            </ul>
+          </div>
+
+          <div class="practice-card p-3 mb-3">
+            <h6 class="fw-bold text-primary mb-2">
+              <i class="bi bi-check-circle me-2"></i>Arquitectura
+            </h6>
+            <ul class="small mb-0">
+              <li>Separación clara de responsabilidades (MVC)</li>
+              <li>Uso de ORM para abstracción de base de datos</li>
+              <li>Middleware para funcionalidades transversales</li>
+              <li>Estructura modular y escalable</li>
+              <li>Configuración centralizada</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="practice-card p-3 mb-3">
+            <h6 class="fw-bold text-info mb-2">
+              <i class="bi bi-check-circle me-2"></i>Base de Datos
+            </h6>
+            <ul class="small mb-0">
+              <li>Uso de transacciones para operaciones atómicas</li>
+              <li>Índices únicos para campos críticos</li>
+              <li>Relaciones bien definidas con integridad referencial</li>
+              <li>Validaciones a nivel de modelo y base de datos</li>
+              <li>Hooks para operaciones automáticas</li>
+            </ul>
+          </div>
+
+          <div class="practice-card p-3 mb-3">
+            <h6 class="fw-bold text-warning mb-2">
+              <i class="bi bi-check-circle me-2"></i>Código Limpio
+            </h6>
+            <ul class="small mb-0">
+              <li>Nomenclatura consistente y descriptiva</li>
+              <li>Comentarios explicativos en código complejo</li>
+              <li>Manejo centralizado de errores</li>
+              <li>Funciones pequeñas y con responsabilidad única</li>
+              <li>Validaciones reutilizables</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Métricas y Resultados -->
+  <section class="container my-5">
+    <div class="section-card p-4">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-graph-up me-2"></i>
+        Métricas y Resultados del Proyecto
+      </h2>
+
+      <div class="row">
+        <div class="col-md-3 text-center mb-3">
+          <div class="metric-card p-3">
+            <i class="bi bi-clock text-primary mb-2" style="font-size: 2rem;"></i>
+            <h5 class="fw-bold text-primary">3 días</h5>
+            <p class="small mb-0">Tiempo de desarrollo</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 text-center mb-3">
+          <div class="metric-card p-3">
+            <i class="bi bi-check-circle text-success mb-2" style="font-size: 2rem;"></i>
+            <h5 class="fw-bold text-success">100%</h5>
+            <p class="small mb-0">Requisitos cumplidos</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 text-center mb-3">
+          <div class="metric-card p-3">
+            <i class="bi bi-code-slash text-info mb-2" style="font-size: 2rem;"></i>
+            <h5 class="fw-bold text-info">6</h5>
+            <p class="small mb-0">Endpoints API</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 text-center mb-3">
+          <div class="metric-card p-3">
+            <i class="bi bi-database text-warning mb-2" style="font-size: 2rem;"></i>
+            <h5 class="fw-bold text-warning">2</h5>
+            <p class="small mb-0">Modelos de datos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h5 class="mb-3">Funcionalidades Implementadas</h5>
+          <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width: 100%">CRUD Usuarios</div>
+          </div>
+          <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width: 100%">CRUD Pedidos</div>
+          </div>
+          <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width: 100%">Transacciones</div>
+          </div>
+          <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width: 100%">Validaciones</div>
+          </div>
+          <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width: 100%">API REST</div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h5 class="mb-3">Tecnologías Utilizadas</h5>
+          <div class="tech-stack">
+            <span class="badge bg-primary me-2 mb-2">Node.js</span>
+            <span class="badge bg-info me-2 mb-2">Express.js</span>
+            <span class="badge bg-success me-2 mb-2">Sequelize</span>
+            <span class="badge bg-warning text-dark me-2 mb-2">PostgreSQL</span>
+            <span class="badge bg-secondary me-2 mb-2">bcryptjs</span>
+            <span class="badge bg-dark me-2 mb-2">EJS</span>
+            <span class="badge bg-light text-dark me-2 mb-2">Bootstrap 5</span>
+            <span class="badge bg-danger me-2 mb-2">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enlaces del Proyecto -->
+  <section class="container my-5">
+    <div class="section-card p-4 text-center">
+      <h2 class="text-purple mb-4">
+        <i class="bi bi-link me-2"></i>
+        Enlaces del Proyecto
+      </h2>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <a href="https://github.com/MagdaIG/bags-shop-node-express" target="_blank" class="btn btn-primary btn-lg w-100">
+            <i class="bi bi-github me-2"></i>
+            Repositorio GitHub
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="handmade-bags-store-docs.html" class="btn btn-success btn-lg w-100">
+            <i class="bi bi-file-text me-2"></i>
+            Documentación Técnica
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="handmade-bags-store-api.html" class="btn btn-info btn-lg w-100">
+            <i class="bi bi-terminal me-2"></i>
+            Documentación API
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <span class="brand-name">Magdalena Inalaf</span>
+        </div>
+        <div class="copyright">
+          <small>© 2025 Todos los derechos reservados</small>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://inalaf.ca" target="_blank" class="footer-link" aria-label="Sitio web">
+          <div class="icon-container">
+            <i class="bi bi-globe"></i>
+          </div>
+          <span class="link-text">Sitio Web</span>
+        </a>
+        <a href="https://github.com/MagdaIG" target="_blank" class="footer-link" aria-label="GitHub">
+          <div class="icon-container">
+            <i class="bi bi-github"></i>
+          </div>
+          <span class="link-text">GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/minalaf/" target="_blank" class="footer-link" aria-label="LinkedIn">
+          <div class="icon-container">
+            <i class="bi bi-linkedin"></i>
+          </div>
+          <span class="link-text">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="footer-credits">
+        <div class="credits-content">
+          <span class="credits-text">Desarrollado con <i class="bi bi-code-slash"></i> por</span>
+          <span class="developer-name">Magdalena Inalaf G.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
