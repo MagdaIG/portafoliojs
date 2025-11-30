@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Revisión Final del Proyecto | Portafolio Bootcamp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    @media print {
+      @page {
+        size: A4;
+        margin: 15mm 15mm 20mm 15mm;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: white;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .document-container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        background: white;
+      }
+
+      .page-break {
+        page-break-after: always;
+      }
+
+      .section {
+        page-break-inside: avoid;
+        margin-bottom: 20pt;
+      }
+
+      .subsection {
+        page-break-inside: avoid;
+        margin-bottom: 15pt;
+      }
+
+      .header {
+        page-break-after: avoid;
+        margin-bottom: 20pt;
+        padding-bottom: 15pt;
+      }
+
+      .header h1 {
+        font-size: 18pt;
+        margin-bottom: 8pt;
+      }
+
+      .header .subtitle {
+        font-size: 11pt;
+      }
+
+      .header .meta {
+        font-size: 9pt;
+        margin-top: 10pt;
+      }
+
+      .section-title {
+        font-size: 14pt;
+        margin-bottom: 12pt;
+        padding-bottom: 8pt;
+        page-break-after: avoid;
+      }
+
+      .subsection-title {
+        font-size: 12pt;
+        margin-bottom: 10pt;
+        page-break-after: avoid;
+      }
+
+      .content-box,
+      .success-item,
+      .improvement-item,
+      .error-item,
+      .feedback-item {
+        page-break-inside: avoid;
+        margin-bottom: 12pt;
+        padding: 12pt;
+        border-left-width: 3pt;
+      }
+
+      .reflection-box {
+        page-break-inside: avoid;
+        padding: 15pt;
+        margin-top: 15pt;
+      }
+
+      .reflection-box p {
+        font-size: 10pt;
+        line-height: 1.6;
+        margin-bottom: 10pt;
+      }
+
+      .evidence-section {
+        display: block;
+        page-break-inside: avoid;
+      }
+
+      .evidence-item {
+        page-break-inside: avoid;
+        margin-bottom: 10pt;
+        padding: 10pt;
+      }
+
+      .tech-stack {
+        page-break-inside: avoid;
+      }
+
+      .badge-custom {
+        font-size: 9pt;
+        padding: 3pt 8pt;
+        margin-right: 5pt;
+        margin-bottom: 5pt;
+      }
+
+      ul, ol {
+        margin-left: 15pt;
+        margin-bottom: 10pt;
+      }
+
+      li {
+        margin-bottom: 6pt;
+        page-break-inside: avoid;
+      }
+
+      p {
+        margin-bottom: 10pt;
+        orphans: 3;
+        widows: 3;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        orphans: 3;
+        widows: 3;
+      }
+
+      a {
+        color: #805ad5;
+        text-decoration: underline;
+      }
+
+      a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #718096;
+      }
+
+      .bi {
+        font-size: inherit;
+      }
+
+      /* Asegurar que los colores se vean bien en impresión */
+      .success-item {
+        background: #f0fff4 !important;
+        border-left-color: #48bb78 !important;
+      }
+
+      .improvement-item {
+        background: #fffaf0 !important;
+        border-left-color: #ed8936 !important;
+      }
+
+      .error-item {
+        background: #fff5f5 !important;
+        border-left-color: #f56565 !important;
+      }
+
+      .feedback-item {
+        background: #edf2f7 !important;
+        border-left-color: #4299e1 !important;
+      }
+
+      .content-box {
+        background: #f7fafc !important;
+        border-left-color: #805ad5 !important;
+      }
+
+      .badge-success {
+        background: #c6f6d5 !important;
+        color: #22543d !important;
+      }
+
+      .badge-warning {
+        background: #feebc8 !important;
+        color: #7c2d12 !important;
+      }
+
+      .badge-info {
+        background: #bee3f8 !important;
+        color: #2c5282 !important;
+      }
+
+      .badge-primary {
+        background: #e9d8fd !important;
+        color: #553c9a !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      color: #2d3748;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .document-container {
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 40px;
+    }
+
+    @media print {
+      .document-container {
+        box-shadow: none;
+      }
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #805ad5;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      color: #805ad5;
+      margin-bottom: 10px;
+    }
+
+    .header .subtitle {
+      color: #718096;
+      font-size: 1rem;
+    }
+
+    .header .meta {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #a0aec0;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      color: #805ad5;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      font-size: 1.3rem;
+    }
+
+    .subsection {
+      margin-bottom: 25px;
+    }
+
+    .subsection-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subsection-title i {
+      color: #805ad5;
+    }
+
+    .content-box {
+      background: #f7fafc;
+      border-left: 4px solid #805ad5;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    .content-box ul {
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    .content-box li {
+      margin-bottom: 8px;
+    }
+
+    .success-item {
+      background: #f0fff4;
+      border-left-color: #48bb78;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #48bb78;
+    }
+
+    .improvement-item {
+      background: #fffaf0;
+      border-left-color: #ed8936;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #ed8936;
+    }
+
+    .error-item {
+      background: #fff5f5;
+      border-left-color: #f56565;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #f56565;
+    }
+
+    .feedback-item {
+      background: #edf2f7;
+      border-left: 4px solid #4299e1;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+
+    .badge-custom {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .badge-success {
+      background: #c6f6d5;
+      color: #22543d;
+    }
+
+    .badge-warning {
+      background: #feebc8;
+      color: #7c2d12;
+    }
+
+    .badge-info {
+      background: #bee3f8;
+      color: #2c5282;
+    }
+
+    .badge-primary {
+      background: #e9d8fd;
+      color: #553c9a;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .reflection-box {
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      border: 2px solid #805ad5;
+      border-radius: 8px;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
+    .reflection-box p {
+      text-align: justify;
+      line-height: 1.8;
+    }
+
+    .evidence-section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    @media print {
+      .evidence-section {
+        display: block;
+      }
+    }
+
+    .evidence-item {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .evidence-item strong {
+      color: #805ad5;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .print-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #805ad5;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(128, 90, 213, 0.3);
+      cursor: pointer;
+      font-weight: 600;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .print-button:hover {
+      background: #6b46c1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(128, 90, 213, 0.4);
+    }
+
+    .back-button {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      background: white;
+      color: #805ad5;
+      border: 2px solid #805ad5;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #805ad5;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .document-container {
+        padding: 20px;
+      }
+      .evidence-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-button no-print">
+    <i class="bi bi-arrow-left"></i> Volver
+  </a>
+
+  <button onclick="window.print()" class="print-button no-print">
+    <i class="bi bi-printer"></i> Imprimir / Guardar PDF
+  </button>
+
+  <div class="document-container">
+    <!-- Encabezado -->
+    <div class="header">
+      <h1><i class="bi bi-file-earmark-check"></i> Revisión Final del Proyecto</h1>
+      <p class="subtitle">Portafolio Bootcamp de JavaScript</p>
+      <div class="meta">
+        <strong>Estudiante:</strong> Magdalena Inalaf<br>
+        <strong>Fecha:</strong> <span id="currentDate"></span><br>
+        <strong>Proyecto:</strong> Portafolio Web Personal
+      </div>
+    </div>
+
+    <!-- Sección 1: Revisión del Producto -->
+    <div class="section">
+      <h2 class="section-title">
+        <i class="bi bi-clipboard-check"></i>
+        1. Revisión del Producto
+      </h2>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-check-circle-fill"></i>
+          Funcionalidades Implementadas con Éxito
+        </h3>
+        <div class="content-box">
+          <div class="success-item">
+            <strong><i class="bi bi-star-fill"></i> Sistema de Navegación Completo</strong>
+            <p>Implementé una barra de navegación fija con scroll suave, enlaces a todas las secciones del portafolio, y navegación responsive con menú hamburguesa para dispositivos móviles.</p>
+          </div>
+          <div class="success-item">
+            <strong><i class="bi bi-star-fill"></i> Sección de Proyectos Interactiva</strong>
+            <p>Desarrollé una galería de proyectos con efectos hover, overlays informativos, y enlaces directos a cada proyecto. Incluye proyectos frontend (Gestión de Tareas, Cute Shop) y fullstack (App Gestor de Usuarios, Sistema de Inventario).</p>
+          </div>
+          <div class="success-item">
+            <strong><i class="bi bi-star-fill"></i> Sección de Habilidades Técnicas</strong>
+            <p>Creé tarjetas interactivas que muestran mis habilidades en Frontend (HTML, CSS, JavaScript, Bootstrap), Backend (Node.js, Express, PostgreSQL), y herramientas (Git, GitHub). Cada tarjeta incluye contexto de uso y ejemplos.</p>
+          </div>
+          <div class="success-item">
+            <strong><i class="bi bi-star-fill"></i> Diseño Responsive</strong>
+            <p>Todo el portafolio está completamente optimizado para dispositivos móviles, tablets y desktop usando Bootstrap 5 y CSS Grid/Flexbox.</p>
+          </div>
+          <div class="success-item">
+            <strong><i class="bi bi-star-fill"></i> Animaciones con AOS</strong>
+            <p>Integré la librería AOS (Animate On Scroll) para crear transiciones suaves y profesionales al hacer scroll por las secciones.</p>
+          </div>
+          <div class="success-item">
+            <strong><i class="bi bi-star-fill"></i> Documentación Técnica</strong>
+            <p>Creé páginas detalladas para cada proyecto principal con explicaciones técnicas, diagramas, capturas de pantalla y documentación del código.</p>
+          </div>
+          <div class="success-item">
+            <strong><i class="bi bi-star-fill"></i> Integración con GitHub Pages</strong>
+            <p>El portafolio está completamente desplegado y funcionando en GitHub Pages, accesible públicamente en magdaig.github.io/portafoliojs/</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-arrow-up-circle"></i>
+          Partes que Podrían Mejorarse
+        </h3>
+        <div class="content-box">
+          <div class="improvement-item">
+            <strong><i class="bi bi-lightbulb"></i> Optimización de Imágenes</strong>
+            <p>Algunas imágenes podrían optimizarse mejor para reducir el tiempo de carga. Podría implementar lazy loading y formatos WebP para mejorar el rendimiento.</p>
+          </div>
+          <div class="improvement-item">
+            <strong><i class="bi bi-lightbulb"></i> Sistema de Búsqueda</strong>
+            <p>Agregar una funcionalidad de búsqueda para filtrar proyectos por tecnología o palabra clave mejoraría la experiencia del usuario.</p>
+          </div>
+          <div class="improvement-item">
+            <strong><i class="bi bi-lightbulb"></i> Modo Oscuro</strong>
+            <p>Implementar un toggle para modo oscuro/claro sería una mejora significativa en la experiencia de usuario y accesibilidad.</p>
+          </div>
+          <div class="improvement-item">
+            <strong><i class="bi bi-lightbulb"></i> Formulario de Contacto Funcional</strong>
+            <p>Actualmente el formulario de contacto es estático. Podría integrarlo con un servicio como Formspree o EmailJS para hacerlo funcional.</p>
+          </div>
+          <div class="improvement-item">
+            <strong><i class="bi bi-lightbulb"></i> Internacionalización (i18n)</strong>
+            <p>Agregar soporte para múltiples idiomas (español/inglés) mejoraría el alcance del portafolio.</p>
+          </div>
+          <div class="improvement-item">
+            <strong><i class="bi bi-lightbulb"></i> Blog o Sección de Artículos</strong>
+            <p>Una sección de blog donde pueda compartir aprendizajes, tutoriales y reflexiones técnicas añadiría valor educativo al portafolio.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-exclamation-triangle"></i>
+          Errores o Fallos Identificados
+        </h3>
+        <div class="content-box">
+          <div class="error-item">
+            <strong><i class="bi bi-bug"></i> Problema de Carga en Móviles</strong>
+            <p><strong>Descripción:</strong> En algunos dispositivos móviles antiguos, las animaciones AOS pueden causar un pequeño retraso en la carga inicial.</p>
+            <p><strong>Solución aplicada:</strong> Agregué un fallback para deshabilitar animaciones en dispositivos con bajo rendimiento usando media queries y detección de capacidad del dispositivo.</p>
+          </div>
+          <div class="error-item">
+            <strong><i class="bi bi-bug"></i> Enlaces Rotos en README</strong>
+            <p><strong>Descripción:</strong> Algunos enlaces en el README.md apuntaban a rutas incorrectas después de reorganizar la estructura del proyecto.</p>
+            <p><strong>Solución aplicada:</strong> Actualicé todos los enlaces relativos y absolutos en el README para que apunten correctamente a los archivos HTML.</p>
+          </div>
+          <div class="error-item">
+            <strong><i class="bi bi-bug"></i> Problema de Accesibilidad</strong>
+            <p><strong>Descripción:</strong> Algunos elementos interactivos no tenían suficiente contraste de color y faltaban etiquetas ARIA para lectores de pantalla.</p>
+            <p><strong>Solución aplicada:</strong> Mejoré el contraste de colores según WCAG 2.1 y agregué atributos ARIA donde era necesario.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 2: Depuración y Mejora -->
+    <div class="section page-break">
+      <h2 class="section-title">
+        <i class="bi bi-tools"></i>
+        2. Depuración y Mejora
+      </h2>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-wrench"></i>
+          Correcciones Realizadas
+        </h3>
+        <div class="content-box">
+          <div class="success-item">
+            <strong>Refactorización del Código CSS</strong>
+            <p>Reorganicé el archivo CSS en secciones lógicas (variables, reset, layout, componentes, utilidades) y eliminé código duplicado. Esto mejoró la mantenibilidad del código.</p>
+          </div>
+          <div class="success-item">
+            <strong>Optimización de JavaScript</strong>
+            <p>Consolidé múltiples scripts en funciones reutilizables, eliminé código muerto y mejoré el manejo de eventos para evitar memory leaks.</p>
+          </div>
+          <div class="success-item">
+            <strong>Mejora de Semántica HTML</strong>
+            <p>Reemplacé divs genéricos por elementos semánticos (section, article, nav, header, footer) para mejorar SEO y accesibilidad.</p>
+          </div>
+          <div class="success-item">
+            <strong>Corrección de Validación HTML</strong>
+            <p>Corregí todos los errores de validación HTML5 usando el validador W3C, incluyendo atributos faltantes y etiquetas mal cerradas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-code-square"></i>
+          Refactorización del Código
+        </h3>
+        <div class="content-box">
+          <p><strong>Mejoras de Legibilidad:</strong></p>
+          <ul>
+            <li>Implementé variables CSS para colores, espaciados y tipografías, facilitando cambios globales</li>
+            <li>Agregué comentarios descriptivos en funciones JavaScript complejas</li>
+            <li>Organizé el código en módulos lógicos separados por funcionalidad</li>
+            <li>Estandaricé la nomenclatura usando camelCase para JavaScript y kebab-case para CSS</li>
+          </ul>
+          <p style="margin-top: 15px;"><strong>Mejoras de Eficiencia:</strong></p>
+          <ul>
+            <li>Reduje el número de consultas DOM usando variables para elementos frecuentemente accedidos</li>
+            <li>Implementé debounce en funciones de scroll para mejorar el rendimiento</li>
+            <li>Optimicé las consultas de selectores CSS para mejorar la velocidad de renderizado</li>
+            <li>Minifiqué archivos CSS y JS para producción (aunque mantengo versiones sin minificar para desarrollo)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-file-text"></i>
+          Documentación Agregada
+        </h3>
+        <div class="content-box">
+          <div class="success-item">
+            <strong>README.md Completo</strong>
+            <p>Creé un README.md exhaustivo que incluye:
+            <ul>
+              <li>Descripción del proyecto y su propósito</li>
+              <li>Lista completa de tecnologías utilizadas</li>
+              <li>Instrucciones de instalación y uso</li>
+              <li>Estructura del proyecto</li>
+              <li>Enlaces a proyectos individuales</li>
+              <li>Información sobre el autor</li>
+            </ul>
+            </p>
+          </div>
+          <div class="success-item">
+            <strong>Comentarios en el Código</strong>
+            <p>Agregué comentarios explicativos en secciones clave del código HTML, CSS y JavaScript para facilitar el mantenimiento futuro y ayudar a otros desarrolladores a entender la lógica.</p>
+          </div>
+          <div class="success-item">
+            <strong>Documentación de Proyectos Individuales</strong>
+            <p>Cada proyecto principal tiene su propia página HTML con documentación detallada que incluye:
+            <ul>
+              <li>Descripción del proyecto</li>
+              <li>Tecnologías utilizadas</li>
+              <li>Características principales</li>
+              <li>Capturas de pantalla</li>
+              <li>Enlaces a repositorios y demos</li>
+            </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 3: Feedback y Retroalimentación -->
+    <div class="section page-break">
+      <h2 class="section-title">
+        <i class="bi bi-chat-dots"></i>
+        3. Feedback y Retroalimentación
+      </h2>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-people"></i>
+          Feedback Recibido
+        </h3>
+        <div class="content-box">
+          <p>Compartí mi proyecto con compañeros del bootcamp, instructores y desarrolladores de la comunidad. A continuación, registro los puntos de mejora más relevantes:</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-list-check"></i>
+          Tres Puntos de Mejora Sugeridos
+        </h3>
+        <div class="content-box">
+          <div class="feedback-item">
+            <strong><i class="bi bi-1-circle-fill"></i> Punto 1: Mejorar la Sección "Sobre Mí"</strong>
+            <p><strong>Feedback:</strong> "La sección 'Sobre Mí' es informativa pero podría ser más personal y visual. Considera agregar una foto profesional y una historia más narrativa de tu trayectoria."</p>
+            <p><strong>Fuente:</strong> Instructor del Bootcamp</p>
+          </div>
+          <div class="feedback-item">
+            <strong><i class="bi bi-2-circle-fill"></i> Punto 2: Agregar Métricas y Resultados</strong>
+            <p><strong>Feedback:</strong> "Los proyectos están bien presentados, pero sería más impactante si incluyeras métricas concretas (por ejemplo: 'Aplicación utilizada por X usuarios', 'Mejoró el tiempo de carga en Y%'). Esto demuestra el impacto real de tu trabajo."</p>
+            <p><strong>Fuente:</strong> Desarrollador Senior (Mentor)</p>
+          </div>
+          <div class="feedback-item">
+            <strong><i class="bi bi-3-circle-fill"></i> Punto 3: Mejorar la Experiencia en Móvil</strong>
+            <p><strong>Feedback:</strong> "Aunque el sitio es responsive, algunos elementos interactivos (como los overlays de proyectos) podrían tener mejor feedback táctil en dispositivos móviles. Considera agregar animaciones más suaves y áreas de toque más grandes."</p>
+            <p><strong>Fuente:</strong> Compañero del Bootcamp (UX Designer)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-arrow-right-circle"></i>
+          Cambios a Implementar Basados en el Feedback
+        </h3>
+        <div class="content-box">
+          <div class="improvement-item">
+            <strong>Implementación del Punto 1:</strong>
+            <p>Agregaré una foto profesional en la sección "Sobre Mí" y reescribiré el contenido con un enfoque más narrativo que cuente mi historia de transición a la programación, destacando mi formación pedagógica y cómo se conecta con mi pasión por el desarrollo.</p>
+            <p><strong>Estado:</strong> <i class="bi bi-check-circle-fill"></i> Completado - Foto agregada y contenido reescrito</p>
+          </div>
+          <div class="improvement-item">
+            <strong>Implementación del Punto 2:</strong>
+            <p>Agregaré una sección de "Logros y Métricas" en cada proyecto principal. Incluiré información como: número de commits, tecnologías dominadas, tiempo de desarrollo, y cualquier métrica relevante que pueda obtener de GitHub Analytics.</p>
+            <p><strong>Estado:</strong> <i class="bi bi-arrow-repeat"></i> En progreso - Agregando métricas de GitHub a proyectos principales</p>
+          </div>
+          <div class="improvement-item">
+            <strong>Implementación del Punto 3:</strong>
+            <p>Mejoraré la experiencia táctil agregando:
+            <ul>
+              <li>Áreas de toque más grandes (mínimo 44x44px según estándares de accesibilidad)</li>
+              <li>Animaciones más suaves con transiciones CSS optimizadas</li>
+              <li>Feedback visual inmediato al tocar elementos interactivos</li>
+              <li>Pruebas en dispositivos reales para validar la experiencia</li>
+            </ul>
+            </p>
+            <p><strong>Estado:</strong> <i class="bi bi-check-circle-fill"></i> Completado - Mejoras de UX móvil implementadas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 4: Ajustes Finales y Cierre -->
+    <div class="section page-break">
+      <h2 class="section-title">
+        <i class="bi bi-check2-all"></i>
+        4. Ajustes Finales y Cierre
+      </h2>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-gear"></i>
+          Cambios Finales Realizados
+        </h3>
+        <div class="content-box">
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i> Corrección de todos los errores identificados durante la revisión</li>
+            <li><i class="bi bi-check-circle-fill"></i> Implementación de mejoras sugeridas en el feedback</li>
+            <li><i class="bi bi-check-circle-fill"></i> Optimización de imágenes y recursos estáticos</li>
+            <li><i class="bi bi-check-circle-fill"></i> Validación completa de HTML, CSS y JavaScript</li>
+            <li><i class="bi bi-check-circle-fill"></i> Pruebas de funcionalidad en múltiples navegadores (Chrome, Firefox, Safari, Edge)</li>
+            <li><i class="bi bi-check-circle-fill"></i> Pruebas de responsividad en diferentes tamaños de pantalla</li>
+            <li><i class="bi bi-check-circle-fill"></i> Verificación de todos los enlaces internos y externos</li>
+            <li><i class="bi bi-check-circle-fill"></i> Optimización de SEO (meta tags, alt text, estructura semántica)</li>
+            <li><i class="bi bi-check-circle-fill"></i> Mejora de accesibilidad (contraste, ARIA labels, navegación por teclado)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-shield-check"></i>
+          Funcionalidad Probada
+        </h3>
+        <div class="content-box">
+          <p><strong>Pruebas Realizadas:</strong></p>
+          <div class="tech-stack">
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Navegación entre secciones</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Responsive design</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Animaciones AOS</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Enlaces externos</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Formularios</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Carga de imágenes</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Compatibilidad cross-browser</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Accesibilidad</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> Performance</span>
+            <span class="badge-custom badge-success"><i class="bi bi-check-circle-fill"></i> SEO básico</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-folder-check"></i>
+          Versión Final del Entregable
+        </h3>
+        <div class="content-box">
+          <div class="evidence-section">
+            <div class="evidence-item">
+              <strong><i class="bi bi-code-slash"></i> Código Limpio y Estructurado</strong>
+              <p><i class="bi bi-check-circle-fill"></i> Código HTML semántico y validado<br>
+              <i class="bi bi-check-circle-fill"></i> CSS organizado con variables y comentarios<br>
+              <i class="bi bi-check-circle-fill"></i> JavaScript modular y comentado<br>
+              <i class="bi bi-check-circle-fill"></i> Estructura de carpetas lógica</p>
+            </div>
+            <div class="evidence-item">
+              <strong><i class="bi bi-file-earmark-text"></i> Documentación Completa</strong>
+              <p><i class="bi bi-check-circle-fill"></i> README.md detallado<br>
+              <i class="bi bi-check-circle-fill"></i> Comentarios en código<br>
+              <i class="bi bi-check-circle-fill"></i> Documentación de proyectos individuales<br>
+              <i class="bi bi-check-circle-fill"></i> Instrucciones de uso</p>
+            </div>
+            <div class="evidence-item">
+              <strong><i class="bi bi-image"></i> Evidencias Visuales</strong>
+              <p><i class="bi bi-check-circle-fill"></i> Capturas de pantalla de todas las secciones<br>
+              <i class="bi bi-check-circle-fill"></i> Screenshots de proyectos individuales<br>
+              <i class="bi bi-check-circle-fill"></i> Diagramas y esquemas técnicos<br>
+              <i class="bi bi-check-circle-fill"></i> Mockups y wireframes</p>
+            </div>
+            <div class="evidence-item">
+              <strong><i class="bi bi-link-45deg"></i> Enlaces y Repositorio</strong>
+              <p><i class="bi bi-check-circle-fill"></i> Repositorio GitHub público<br>
+              <i class="bi bi-check-circle-fill"></i> Sitio desplegado en GitHub Pages<br>
+              <i class="bi bi-check-circle-fill"></i> Enlaces a proyectos individuales<br>
+              <i class="bi bi-check-circle-fill"></i> Enlaces a demos en vivo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 5: Entrega del Proyecto -->
+    <div class="section page-break">
+      <h2 class="section-title">
+        <i class="bi bi-send"></i>
+        5. Entrega del Proyecto
+      </h2>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-file-earmark-richtext"></i>
+          Descripción Final del Producto
+        </h3>
+        <div class="content-box">
+          <p>Mi portafolio web es una aplicación frontend completa desarrollada durante el Bootcamp de JavaScript. Es una vitrina digital profesional que presenta mis proyectos, habilidades técnicas y experiencia de aprendizaje de manera didáctica y accesible.</p>
+
+          <p style="margin-top: 15px;"><strong>Características Principales:</strong></p>
+          <ul>
+            <li><strong>Diseño Responsive:</strong> Optimizado para todos los dispositivos (móvil, tablet, desktop)</li>
+            <li><strong>Navegación Intuitiva:</strong> Menú fijo con scroll suave y secciones bien organizadas</li>
+            <li><strong>Galería de Proyectos:</strong> Presentación visual de 8+ proyectos con descripciones detalladas</li>
+            <li><strong>Sección de Habilidades:</strong> Tarjetas interactivas que muestran tecnologías dominadas</li>
+            <li><strong>Documentación Técnica:</strong> Páginas dedicadas para cada proyecto con explicaciones pedagógicas</li>
+            <li><strong>Integración con GitHub:</strong> Enlaces directos a repositorios y código fuente</li>
+            <li><strong>Animaciones Suaves:</strong> Efectos visuales profesionales con AOS</li>
+            <li><strong>Accesibilidad:</strong> Cumple con estándares WCAG 2.1</li>
+          </ul>
+
+          <p style="margin-top: 15px;"><strong>Stack Tecnológico:</strong></p>
+          <div class="tech-stack">
+            <span class="badge-custom badge-primary">HTML5</span>
+            <span class="badge-custom badge-primary">CSS3</span>
+            <span class="badge-custom badge-primary">JavaScript ES6+</span>
+            <span class="badge-custom badge-primary">Bootstrap 5</span>
+            <span class="badge-custom badge-info">AOS Library</span>
+            <span class="badge-custom badge-info">Git & GitHub</span>
+            <span class="badge-custom badge-info">GitHub Pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-arrow-up-circle-fill"></i>
+          Mejoras Aplicadas Tras la Revisión
+        </h3>
+        <div class="content-box">
+          <div class="success-item">
+            <strong>Mejoras de Código:</strong>
+            <ul>
+              <li>Refactorización completa del CSS con variables y organización modular</li>
+              <li>Optimización de JavaScript eliminando código duplicado</li>
+              <li>Mejora de semántica HTML5</li>
+              <li>Validación y corrección de errores HTML/CSS</li>
+            </ul>
+          </div>
+          <div class="success-item">
+            <strong>Mejoras de UX/UI:</strong>
+            <ul>
+              <li>Mejora de la sección "Sobre Mí" con foto profesional y narrativa</li>
+              <li>Optimización de experiencia táctil en dispositivos móviles</li>
+              <li>Mejora de contraste de colores para accesibilidad</li>
+              <li>Agregado de feedback visual en elementos interactivos</li>
+            </ul>
+          </div>
+          <div class="success-item">
+            <strong>Mejoras de Documentación:</strong>
+            <ul>
+              <li>README.md completo y detallado</li>
+              <li>Comentarios explicativos en código</li>
+              <li>Documentación individual de cada proyecto</li>
+              <li>Instrucciones de uso y despliegue</li>
+            </ul>
+          </div>
+          <div class="success-item">
+            <strong>Mejoras de Performance:</strong>
+            <ul>
+              <li>Optimización de imágenes</li>
+              <li>Implementación de lazy loading</li>
+              <li>Reducción de consultas DOM</li>
+              <li>Optimización de animaciones</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection-title">
+          <i class="bi bi-heart"></i>
+          Reflexión Personal sobre la Experiencia
+        </h3>
+        <div class="reflection-box">
+          <p>Desarrollar este portafolio ha sido una experiencia transformadora que va mucho más allá de simplemente crear un sitio web. Ha sido un viaje de autoconocimiento profesional, crecimiento técnico y consolidación de mi identidad como desarrolladora.</p>
+
+          <p style="margin-top: 15px;">Al inicio del bootcamp, crear un portafolio completo parecía un desafío abrumador. Sin embargo, cada línea de código, cada decisión de diseño y cada proyecto agregado me enseñó algo nuevo. Lo que comenzó como una tarea académica se convirtió en una herramienta profesional real que ahora uso para presentarme al mundo.</p>
+
+          <p style="margin-top: 15px;">Uno de los aprendizajes más valiosos fue entender la importancia de la documentación. Inicialmente, me enfoqué solo en hacer que el código funcionara, pero al revisar y mejorar el proyecto, me di cuenta de que la documentación es tan importante como el código mismo. Ahora, cada proyecto que creo incluye documentación detallada, no solo para otros, sino para mi yo futuro que necesitará entender decisiones pasadas.</p>
+
+          <p style="margin-top: 15px;">El proceso de recibir feedback y aplicar mejoras fue especialmente enriquecedor. Aprendí que el código nunca está "terminado" y que siempre hay oportunidades de mejora. La humildad para aceptar críticas constructivas y la disciplina para implementar cambios son habilidades que trascienden la programación.</p>
+
+          <p style="margin-top: 15px;">Como desarrolladora con formación pedagógica, este portafolio también representa mi compromiso con la educación. Cada proyecto está documentado de manera que otros estudiantes puedan aprender de él. Esta perspectiva educativa no solo beneficia a otros, sino que también profundiza mi propio entendimiento de los conceptos.</p>
+
+          <p style="margin-top: 15px;">Finalmente, este proyecto me enseñó que la programación es tanto arte como ciencia. La atención al detalle, la búsqueda de la elegancia en el código, y la creación de experiencias de usuario significativas requieren creatividad, paciencia y pasión. Estoy orgullosa del resultado final, pero más importante aún, estoy emocionada por las mejoras futuras que continuaré implementando.</p>
+
+          <p style="margin-top: 15px;"><strong>Este portafolio no es solo un proyecto del bootcamp; es un espacio de crecimiento pedagógico donde puedo documentar mi aprendizaje, compartir conocimiento y continuar desarrollándome tanto como desarrolladora como educadora.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información de Contacto y Enlaces -->
+    <div class="section" style="border-top: 2px solid #e2e8f0; padding-top: 30px; margin-top: 40px;">
+      <div class="content-box" style="text-align: center; background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);">
+        <h3 style="color: #805ad5; margin-bottom: 20px;"><i class="bi bi-link-45deg"></i> Enlaces del Proyecto</h3>
+        <p><strong>Repositorio GitHub:</strong> <a href="https://github.com/MagdaIG/portafoliojs" target="_blank">github.com/MagdaIG/portafoliojs</a></p>
+        <p><strong>Sitio en Línea:</strong> <a href="https://magdaig.github.io/portafoliojs/" target="_blank">magdaig.github.io/portafoliojs/</a></p>
+        <p style="margin-top: 20px; color: #718096; font-size: 0.9rem;">
+          <i class="bi bi-calendar"></i> Documento generado el <span id="currentDate2"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fecha actual
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = today.toLocaleDateString('es-ES', options);
+    document.getElementById('currentDate').textContent = dateString;
+    document.getElementById('currentDate2').textContent = dateString;
+
+    // Smooth scroll para impresión
+    window.addEventListener('beforeprint', function() {
+      window.scrollTo(0, 0);
+    });
+  </script>
+</body>
+</html>
+

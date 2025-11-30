@@ -857,6 +857,38 @@
       color: var(--texto-medio);
       line-height: 1.6;
     }
+
+    .review-button {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--pastel-lavanda) 0%, var(--pastel-rosa) 100%);
+      border: 2px solid var(--lavanda-suave);
+      border-radius: 15px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      text-align: center;
+      text-decoration: none;
+      color: var(--texto-oscuro);
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .review-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
+      background: linear-gradient(135deg, var(--lavanda-suave) 0%, var(--rosa-suave) 100%);
+    }
+
+    .review-button i {
+      font-size: 1.2rem;
+      color: var(--morado-principal);
+    }
   </style>
 </head>
 <body>
@@ -1167,6 +1199,10 @@ Como desarrolladora, un portafolio construido con código propio demuestra mis h
             <i class="bi bi-lightbulb"></i> <strong>Mi Compromiso:</strong> Continuaré actualizando mi portafolio con nuevos proyectos y mejoras, manteniendo siempre el enfoque pedagógico que me caracteriza.
           </p>
         </div>
+        <a href="revision-proyecto-final.html" class="review-button">
+          <i class="bi bi-file-earmark-check"></i>
+          <span>Ver Revisión Final del Proyecto</span>
+        </a>
         <div class="screen-indicator">8 / 8</div>
         <div class="nav-bar two-items">
           <a href="#" class="nav-item two-items" onclick="showScreen(7); return false;">
