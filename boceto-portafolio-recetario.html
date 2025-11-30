@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tutorial: Creación de Portafolio de Productos | Guía Interactiva</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    :root {
+      --pastel-rosa: #FFE5F1;
+      --pastel-azul: #E5F3FF;
+      --pastel-verde: #E5FFE5;
+      --pastel-amarillo: #FFF9E5;
+      --pastel-lavanda: #F0E5FF;
+      --pastel-coral: #FFE5E5;
+      --pastel-menta: #E5FFF5;
+      --rosa-suave: #FFB6D9;
+      --azul-suave: #B6D9FF;
+      --verde-suave: #B6FFB6;
+      --amarillo-suave: #FFF9B6;
+      --lavanda-suave: #D9B6FF;
+      --coral-suave: #FFB6B6;
+      --menta-suave: #B6FFE5;
+      --texto-oscuro: #2D2D2D;
+      --texto-medio: #5A5A5A;
+      --bg-crema: #FEFEFE;
+      --bg-gris-claro: #F5F5F5;
+      --morado-principal: #A855F7;
+      --morado-claro: #C084FC;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: var(--texto-oscuro);
+      padding: 10px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Efectos de bombillas y partículas */
+    .background-effects {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .lightbulb {
+      position: absolute;
+      font-size: 2.5rem;
+      color: rgba(255, 255, 255, 0.2);
+      animation: lightbulbFlicker 4s ease-in-out infinite;
+      opacity: 0.3;
+      transition: all 0.5s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    .lightbulb.on {
+      color: rgba(255, 255, 150, 1);
+      text-shadow:
+        0 0 15px rgba(255, 255, 200, 1),
+        0 0 30px rgba(255, 255, 200, 0.8),
+        0 0 50px rgba(255, 255, 200, 0.5);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .background-text {
+      position: absolute;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.15);
+      animation: textFlicker 5s ease-in-out infinite;
+      opacity: 0.2;
+      transition: all 0.8s ease;
+      white-space: nowrap;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      top: 50%;
+      z-index: 0;
+    }
+
+    .background-text.left {
+      left: 10%;
+      transform: translateY(-50%);
+    }
+
+    .background-text.right {
+      right: 3%;
+      transform: translateY(-50%);
+    }
+
+    .background-text.on {
+      color: rgba(255, 255, 200, 0.9);
+      text-shadow:
+        0 0 20px rgba(255, 255, 200, 1),
+        0 0 40px rgba(255, 255, 200, 0.8),
+        0 0 60px rgba(255, 255, 200, 0.6),
+        0 0 80px rgba(255, 255, 200, 0.4);
+      opacity: 1;
+    }
+
+    .background-text.left.on {
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .background-text.right.on {
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    @keyframes textFlicker {
+      0%, 100% {
+        opacity: 0.15;
+      }
+      25% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 0.2;
+      }
+      75% {
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes lightbulbFlicker {
+      0%, 100% {
+        opacity: 0.2;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+      25% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+      50% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.95);
+      }
+      75% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      animation: sparkleFloat 5s ease-in-out infinite;
+      box-shadow:
+        0 0 8px rgba(255, 255, 255, 1),
+        0 0 16px rgba(255, 255, 255, 0.6);
+    }
+
+    @keyframes sparkleFloat {
+      0%, 100% {
+        transform: translateY(0) translateX(0) scale(0.3);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-150px) translateX(30px) scale(1.2);
+        opacity: 1;
+      }
+      80% {
+        opacity: 0.6;
+      }
+    }
+
+    .glow-particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+      border-radius: 50%;
+      animation: particleMove 10s linear infinite;
+      box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes particleMove {
+      0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--dx), var(--dy)) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .phone-container {
+      width: 100%;
+      max-width: 360px;
+      height: 100vh;
+      max-height: 700px;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      animation: slideIn 0.5s ease-out;
+      margin: 0 auto;
+    }
+
+    .phone-container:hover .nav-bar:not(.always-visible) {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-top: 0;
+      padding-bottom: 0;
+      display: none;
+      background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+      position: relative;
+    }
+
+    .screen.active {
+      display: block;
+      animation: fadeIn 0.4s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+
+    .header {
+      padding: 25px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--pastel-lavanda) 0%, var(--pastel-rosa) 100%);
+      border-bottom: 3px solid var(--lavanda-suave);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--texto-oscuro);
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      color: var(--texto-medio);
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      padding: 20px;
+      padding-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--lavanda-suave), var(--rosa-suave));
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--texto-oscuro);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 i {
+      color: var(--morado-principal);
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, var(--pastel-lavanda), var(--pastel-rosa));
+      padding: 8px;
+      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--texto-medio);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .card strong {
+      color: var(--texto-oscuro);
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .card strong:first-child {
+      margin-top: 0;
+    }
+
+    .response-box {
+      background: linear-gradient(135deg, var(--pastel-amarillo) 0%, var(--pastel-menta) 100%);
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 15px;
+      border-left: 4px solid var(--amarillo-suave);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .response-box::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: 15px;
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .response-box::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      right: 17px;
+      width: 20px;
+      height: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23A855F7' viewBox='0 0 16 16'%3E%3Cpath d='M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-1.894 0l-.224-.447a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z'/%3E%3C/svg%3E") no-repeat center;
+      background-size: contain;
+    }
+
+    .response-box p {
+      font-size: 0.9rem;
+      color: var(--texto-oscuro);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .response-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    .response-box li {
+      padding: 10px 0;
+      padding-left: 28px;
+      position: relative;
+      font-size: 0.9rem;
+      color: var(--texto-medio);
+      line-height: 1.7;
+    }
+
+    .response-box li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--verde-suave);
+      font-weight: bold;
+      font-size: 1.1rem;
+      background: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .criteria-item {
+      background: linear-gradient(135deg, var(--pastel-coral) 0%, var(--pastel-rosa) 100%);
+      padding: 15px;
+      border-radius: 16px;
+      text-align: center;
+      border: 2px solid var(--coral-suave);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .criteria-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .criteria-item strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--texto-oscuro);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .criteria-item p {
+      font-size: 0.8rem;
+      color: var(--texto-medio);
+      line-height: 1.5;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, var(--pastel-verde) 0%, var(--pastel-menta) 100%);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--verde-suave);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .project-card strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--texto-oscuro);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: var(--texto-medio);
+      line-height: 1.7;
+    }
+
+    .tool-item {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--azul-suave);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .tool-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .tool-item h5 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--texto-oscuro);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tool-item h5 i {
+      color: var(--azul-suave);
+      font-size: 1.2rem;
+      background: var(--pastel-azul);
+      padding: 8px;
+      border-radius: 10px;
+    }
+
+    .tool-item p {
+      font-size: 0.85rem;
+      color: var(--texto-medio);
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+
+    .conclusion-card {
+      background: linear-gradient(135deg, var(--pastel-lavanda) 0%, var(--pastel-rosa) 100%);
+      border-radius: 20px;
+      padding: 25px;
+      border: 3px solid var(--lavanda-suave);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .conclusion-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--texto-oscuro);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .conclusion-card h3 i {
+      color: var(--morado-principal);
+      font-size: 1.4rem;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .conclusion-card textarea {
+      width: 100%;
+      min-height: 280px;
+      padding: 18px;
+      border: 2px solid var(--lavanda-suave);
+      border-radius: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      resize: vertical;
+      background: white;
+      color: var(--texto-oscuro);
+      transition: all 0.3s ease;
+    }
+
+    .conclusion-card textarea:focus {
+      outline: none;
+      border-color: var(--morado-principal);
+      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+    }
+
+    .nav-bar {
+      position: relative;
+      width: 100%;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding: 12px 10px 20px 10px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 -2px 15px rgba(0,0,0,0.08);
+      border-radius: 25px 25px 0 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar.always-visible {
+      opacity: 1;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .nav-bar:not(.always-visible) {
+      opacity: 0.35;
+      background: rgba(255,255,255,0.25);
+      pointer-events: all;
+    }
+
+    .phone-container:hover .nav-bar:not(.always-visible) {
+      opacity: 1;
+      background: rgba(255,255,255,0.75);
+    }
+
+    .nav-bar.two-items {
+      justify-content: space-between;
+      padding: 12px 25px 18px 25px;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: var(--texto-medio);
+      font-size: 0.7rem;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      flex: 1;
+      max-width: 80px;
+      position: relative;
+    }
+
+    .nav-item.active {
+      color: var(--morado-principal);
+      background: var(--pastel-lavanda);
+    }
+
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35px;
+      height: 3px;
+      background: var(--morado-principal);
+      border-radius: 0 0 3px 3px;
+    }
+
+    .nav-item i {
+      font-size: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item.active i {
+      transform: scale(1.15);
+    }
+
+    .nav-item span {
+      font-size: 0.65rem;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .nav-item.two-items {
+      flex: 0 1 auto;
+      min-width: 100px;
+      max-width: none;
+    }
+
+    .screen-indicator {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: rgba(168, 85, 247, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--morado-principal);
+      font-weight: 600;
+      z-index: 5;
+      border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .back-button {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--lavanda-suave);
+      border-radius: 25px;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: var(--texto-oscuro);
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: var(--pastel-lavanda);
+      color: var(--texto-oscuro);
+      transform: translateX(-3px);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin: 4px;
+      background: linear-gradient(135deg, var(--pastel-azul), var(--pastel-lavanda));
+      color: var(--texto-oscuro);
+      border: 1px solid var(--azul-suave);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0;
+      }
+
+      .phone-container {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+
+
+      .back-button {
+        top: 15px;
+        left: 15px;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+      }
+
+      .nav-bar {
+        max-width: 100%;
+        border-radius: 0;
+        opacity: 1 !important;
+        transform: translateX(-50%) translateY(0) !important;
+        pointer-events: all !important;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .phone-container {
+        max-width: 400px;
+      }
+    }
+
+    .highlight-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--lavanda-suave), var(--rosa-suave));
+      color: white;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-right: 8px;
+      box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+    }
+
+    .info-bubble {
+      background: var(--pastel-azul);
+      border-radius: 12px;
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 3px solid var(--azul-suave);
+      font-size: 0.85rem;
+      color: var(--texto-medio);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-effects" id="backgroundEffects"></div>
+
+  <a href="index.html" class="back-button">
+    <i class="bi bi-arrow-left"></i> Volver
+  </a>
+
+  <div class="phone-container">
+
+    <!-- Pantalla 1: Objetivo -->
+    <div class="screen active" id="screen1">
+      <div class="header">
+        <h1>Mi Portafolio Pedagógico</h1>
+        <p>Mi Experiencia y Objetivos</p>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3><i class="bi bi-bullseye"></i> Mi Objetivo con este Portafolio</h3>
+          <p>Como desarrolladora con formación en pedagogía, quiero crear un portafolio que no solo muestre mis proyectos técnicos, sino que también sirva como herramienta educativa. Mi objetivo es demostrar mi crecimiento profesional mientras comparto mi proceso de aprendizaje de manera didáctica y accesible.</p>
+          <div class="info-bubble">
+            <strong><i class="bi bi-lightbulb"></i> Mi Enfoque:</strong> Este portafolio refleja mi pasión por enseñar y aprender, combinando desarrollo técnico con metodología pedagógica.
+          </div>
+        </div>
+        <div class="screen-indicator">1 / 8</div>
+        <div class="nav-bar two-items always-visible">
+          <a href="#" class="nav-item two-items" onclick="showScreen(1); return false;">
+            <i class="bi bi-house-fill"></i>
+            <span>Inicio</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(2); return false;">
+            <i class="bi bi-arrow-right"></i>
+            <span>Siguiente</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla 2: Paso 1 - Definición -->
+    <div class="screen" id="screen2">
+      <div class="header">
+        <h1>Mi Comprensión</h1>
+        <p>¿Qué es un Portafolio para Mí?</p>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3><i class="bi bi-question-circle"></i> Mi Definición de Portafolio</h3>
+          <div class="response-box">
+            <p>Para mí, un portafolio de productos es una <strong>colección organizada y presentada</strong> de mis trabajos, proyectos y logros profesionales que funciona como una <strong>vitrina digital</strong>.</p>
+            <p><strong>Mi Propósito:</strong> Como desarrolladora con formación pedagógica, quiero demostrar de manera tangible mis habilidades, experiencia y potencial, pero también quiero que mi portafolio sea una herramienta educativa. Más allá de un currículum tradicional, me permite contar una <strong>historia visual y práctica</strong> sobre mi trayectoria, mostrando no solo qué sé hacer, sino cómo aprendí y cómo puedo enseñar a otros.</p>
+          </div>
+        </div>
+        <div class="screen-indicator">2 / 8</div>
+        <div class="nav-bar two-items">
+          <a href="#" class="nav-item two-items" onclick="showScreen(1); return false;">
+            <i class="bi bi-arrow-left"></i>
+            <span>Atrás</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(3); return false;">
+            <i class="bi bi-arrow-right"></i>
+            <span>Siguiente</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla 3: Paso 1 - Importancia -->
+    <div class="screen" id="screen3">
+      <div class="header">
+        <h1>Mi Comprensión</h1>
+        <p>¿Por qué es Importante para Mí?</p>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3><i class="bi bi-star"></i> La Importancia de Mi Portafolio</h3>
+          <div class="response-box">
+            <p><strong><span class="highlight-number">1</span> Visibilidad profesional:</strong> Como desarrolladora fullstack, necesito destacar en un mercado competitivo. Mi portafolio funciona como herramienta de marketing personal que puede ser encontrada por reclutadores y también por estudiantes que buscan ejemplos de código y proyectos.</p>
+            <p><strong><span class="highlight-number">2</span> Oportunidades laborales y educativas:</strong> Muchos empleadores valoran más un portafolio sólido que años de experiencia sin demostrar resultados. Además, mi formación pedagógica me permite buscar oportunidades en educación tecnológica, donde un portafolio bien documentado es esencial.</p>
+            <p><strong><span class="highlight-number">3</span> Presentación de habilidades y metodología:</strong> Mi portafolio muestra habilidades técnicas de forma práctica y visual, pero también demuestra mi capacidad pedagógica para explicar conceptos complejos de manera accesible. En lugar de solo mencionar JavaScript, muestro proyectos funcionales con documentación educativa.</p>
+          </div>
+        </div>
+        <div class="screen-indicator">3 / 8</div>
+        <div class="nav-bar two-items">
+          <a href="#" class="nav-item two-items" onclick="showScreen(2); return false;">
+            <i class="bi bi-arrow-left"></i>
+            <span>Atrás</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(4); return false;">
+            <i class="bi bi-arrow-right"></i>
+            <span>Siguiente</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla 4: Paso 1 - Buenas Prácticas -->
+    <div class="screen" id="screen4">
+      <div class="header">
+        <h1>Mi Comprensión</h1>
+        <p>Buenas Prácticas que Aplico</p>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3><i class="bi bi-check2-circle"></i> Mis Buenas Prácticas</h3>
+          <div class="response-box">
+            <p><strong><span class="highlight-number">1</span> Calidad sobre cantidad:</strong> Prefiero mostrar 3-5 proyectos bien documentados que 20 sin contexto. Cada proyecto en mi portafolio cuenta una historia clara: el problema que resolví, cómo lo hice, qué tecnologías usé y qué aprendí. Además, incluyo explicaciones pedagógicas para que otros puedan aprender.</p>
+            <p><strong><span class="highlight-number">2</span> Actualización constante:</strong> Mantengo mi portafolio vivo y en crecimiento. Agrego nuevos proyectos del bootcamp, mejoro los existentes con mejor documentación y elimino trabajos que ya no representan mi nivel actual. Esto refleja mi compromiso con el aprendizaje continuo.</p>
+            <p><strong><span class="highlight-number">3</span> Claridad y enfoque pedagógico:</strong> Mi portafolio debe ser fácil de navegar y educativo. Uso estructura lógica, títulos claros, descripciones concisas y me aseguro de que funcione en móviles. Mi formación pedagógica me ayuda a presentar información de manera didáctica y accesible.</p>
+          </div>
+        </div>
+        <div class="screen-indicator">4 / 8</div>
+        <div class="nav-bar two-items">
+          <a href="#" class="nav-item two-items" onclick="showScreen(3); return false;">
+            <i class="bi bi-arrow-left"></i>
+            <span>Atrás</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(5); return false;">
+            <i class="bi bi-arrow-right"></i>
+            <span>Siguiente</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla 5: Paso 2 - Análisis -->
+    <div class="screen" id="screen5">
+      <div class="header">
+        <h1>Mi Análisis</h1>
+        <p>Ejemplos que Inspiran Mi Portafolio</p>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3><i class="bi bi-search"></i> Ejemplos que He Analizado</h3>
+          <div class="response-box">
+            <p><strong><i class="bi bi-github"></i> Mi Portafolio Actual:</strong><br>
+            <strong>URL:</strong> https://magdaig.github.io/portafoliojs/<br>
+            <strong>Tipo:</strong> Página personal con HTML, CSS, JavaScript desarrollada durante mi Bootcamp<br>
+            <strong>Plataforma:</strong> GitHub Pages<br>
+            <strong>Mi Enfoque:</strong> Este portafolio documenta mi crecimiento técnico desde los fundamentos hasta aplicaciones complejas, con un enfoque pedagógico que explica cada proyecto.</p>
+            <p style="margin-top: 12px;"><strong><i class="bi bi-globe"></i> Mi Portafolio Profesional:</strong><br>
+            <strong>URL:</strong> https://inalaf.ca/<br>
+            <strong>Tipo:</strong> Sitio web profesional con Next.js<br>
+            <strong>Plataforma:</strong> Hosting personalizado<br>
+            <strong>Mi Objetivo:</strong> Demostrar mis habilidades avanzadas y mi capacidad para crear aplicaciones modernas y responsivas.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="bi bi-clipboard-check"></i> Cómo Evalúo Mi Propio Portafolio</h3>
+          <div class="criteria-grid">
+            <div class="criteria-item">
+              <strong><i class="bi bi-check-circle"></i> Claridad</strong>
+              <p>Estructura clara con secciones bien definidas que facilitan el aprendizaje</p>
+            </div>
+            <div class="criteria-item">
+              <strong><i class="bi bi-palette"></i> Diseño</strong>
+              <p>Responsive y moderno, accesible desde cualquier dispositivo</p>
+            </div>
+            <div class="criteria-item">
+              <strong><i class="bi bi-collection"></i> Variedad</strong>
+              <p>Múltiples tipos de proyectos que muestran mi evolución</p>
+            </div>
+            <div class="criteria-item">
+              <strong><i class="bi bi-tools"></i> Herramientas</strong>
+              <p>HTML, CSS, JS, Bootstrap, Node.js, PostgreSQL</p>
+            </div>
+          </div>
+        </div>
+        <div class="screen-indicator">5 / 8</div>
+        <div class="nav-bar two-items">
+          <a href="#" class="nav-item two-items" onclick="showScreen(4); return false;">
+            <i class="bi bi-arrow-left"></i>
+            <span>Atrás</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(6); return false;">
+            <i class="bi bi-arrow-right"></i>
+            <span>Siguiente</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla 6: Paso 3 - Diseño -->
+    <div class="screen" id="screen6">
+      <div class="header">
+        <h1>Mi Diseño</h1>
+        <p>Estructura de Mi Portafolio</p>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3><i class="bi bi-person-circle"></i> Mi Presentación Personal</h3>
+          <div class="response-box">
+            <p><strong><i class="bi bi-mortarboard"></i> Mi Formación:</strong> Soy desarrolladora fullstack chilena y programadora analista con formación en pedagogía. Esta combinación única me permite crear portafolios que no solo muestran código, sino que también enseñan.</p>
+            <p><strong><i class="bi bi-graph-up"></i> Mi Trayectoria:</strong> Me adentré en la tecnología a través de bootcamps intensivos y certificaciones, incluyendo Fundamentos de Gestión y Control de Ciberseguridad en USACH. Cada paso de mi aprendizaje está documentado en mi portafolio.</p>
+            <p><strong><i class="bi bi-code-slash"></i> Mi Especialización:</strong> Me especializo en desarrollo frontend y backend, creando aplicaciones responsivas centradas en el usuario utilizando tecnologías JavaScript modernas.</p>
+            <p><strong><i class="bi bi-gear"></i> Mis Áreas:</strong> UX/UI, Metodologías Ágiles, desarrollo Fullstack JavaScript, y especialmente, la enseñanza de programación de manera accesible.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="bi bi-folder"></i> Mis Proyectos Principales</h3>
+          <div class="project-card">
+            <strong><i class="bi bi-1-circle"></i> Gestión de Tareas (Kanban)</strong>
+            <p>Este proyecto muestra mi aprendizaje de JavaScript ES6+, HTML5, CSS3, LocalStorage y Drag & Drop API. Lo documenté con explicaciones pedagógicas para que otros puedan entender cómo funciona.</p>
+          </div>
+          <div class="project-card">
+            <strong><i class="bi bi-2-circle"></i> Cute Shop (E-commerce)</strong>
+            <p>Desarrollé esta tienda online usando JavaScript ES6+, HTML5, CSS3, Bootstrap y LocalStorage. Incluye documentación sobre el proceso de desarrollo y decisiones técnicas.</p>
+          </div>
+          <div class="project-card">
+            <strong><i class="bi bi-3-circle"></i> App Gestor de Usuarios</strong>
+            <p>Proyecto avanzado con Node.js, Express, PostgreSQL, Sequelize y Bootstrap 5. Demuestra mi capacidad para crear aplicaciones fullstack completas con documentación técnica detallada.</p>
+          </div>
+          <div class="project-card">
+            <strong><i class="bi bi-4-circle"></i> Gestión de Inventario</strong>
+            <p>Sistema de base de datos con PostgreSQL, PL/pgSQL, SQL y DBeaver. Este proyecto muestra mi aprendizaje de bases de datos relacionales y lo documenté como recurso educativo.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="bi bi-envelope"></i> Mi Información de Contacto</h3>
+          <div class="response-box">
+            <p><strong><i class="bi bi-github"></i> GitHub:</strong> github.com/MagdaIG - Aquí puedes ver todo mi código y proyectos</p>
+            <p><strong><i class="bi bi-linkedin"></i> LinkedIn:</strong> linkedin.com/in/minalaf/ - Mi perfil profesional</p>
+            <p><strong><i class="bi bi-globe"></i> Sitio Web:</strong> inalaf.ca - Mi portafolio profesional principal</p>
+            <p><strong><i class="bi bi-envelope"></i> Email:</strong> Disponible a través del formulario de contacto en mi portafolio</p>
+            <p><strong><i class="bi bi-file-earmark-pdf"></i> CV:</strong> Disponible para descarga en formato PDF</p>
+          </div>
+        </div>
+        <div class="screen-indicator">6 / 8</div>
+        <div class="nav-bar two-items">
+          <a href="#" class="nav-item two-items" onclick="showScreen(5); return false;">
+            <i class="bi bi-arrow-left"></i>
+            <span>Atrás</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(7); return false;">
+            <i class="bi bi-arrow-right"></i>
+            <span>Siguiente</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla 7: Paso 4 - Herramientas -->
+    <div class="screen" id="screen7">
+      <div class="header">
+        <h1>Mi Elección</h1>
+        <p>Herramientas para Mi Portafolio</p>
+      </div>
+      <div class="content">
+        <div class="tool-item">
+          <h5><i class="bi bi-github"></i> GitHub Pages</h5>
+          <p><strong>Por qué lo elegí:</strong> Gratuito, integrado con Git, ideal para desarrolladores y perfecto para mostrar código</p>
+          <div class="response-box" style="margin-top: 10px;">
+            <p>Elegí GitHub Pages porque me permite alojar mi portafolio directamente desde mi repositorio. El proceso fue simple: creé el repositorio, subí mis archivos HTML/CSS/JS, activé GitHub Pages, y ahora está disponible en magdaig.github.io/portafoliojs/. Esto me permite demostrar mis habilidades técnicas mientras mantengo el código accesible para otros estudiantes.</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <h5><i class="bi bi-code-slash"></i> HTML/CSS/JavaScript</h5>
+          <p><strong>Por qué lo elegí:</strong> Control total, aprendizaje profundo, personalización ilimitada</p>
+          <div class="response-box" style="margin-top: 10px;">
+            <p>Construí mi portafolio con HTML/CSS/JavaScript desde cero porque me da control total sobre el diseño y funcionalidad. Usé HTML semántico para el contenido, CSS con variables para mantener consistencia, y JavaScript para interactividad. Integré Bootstrap para componentes responsive y AOS para animaciones. Esta elección demuestra mis habilidades frontend y me permite personalizar completamente la experiencia educativa.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="bi bi-check-circle"></i> Mi Elección Final</h3>
+          <div class="response-box">
+            <p><strong><i class="bi bi-check-circle-fill"></i> GitHub Pages + HTML/CSS/JavaScript</strong></p>
+            <p><strong>Mis Razones:</strong> Esta combinación es perfecta para mí porque demuestra mis habilidades técnicas directamente, me da control total para crear una experiencia educativa personalizada, se integra perfectamente con Git para versionado, es completamente gratuito, me permite aprender continuamente mientras mantengo y mejoro el portafolio, y el código es portable a otros servicios si es necesario. Además, al ser código abierto, otros estudiantes pueden aprender de mi trabajo.</p>
+          </div>
+        </div>
+        <div class="screen-indicator">7 / 8</div>
+        <div class="nav-bar two-items">
+          <a href="#" class="nav-item two-items" onclick="showScreen(6); return false;">
+            <i class="bi bi-arrow-left"></i>
+            <span>Atrás</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(8); return false;">
+            <i class="bi bi-arrow-right"></i>
+            <span>Siguiente</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla 8: Paso 5 - Reflexión -->
+    <div class="screen" id="screen8">
+      <div class="header">
+        <h1>Mi Reflexión</h1>
+        <p>Mi Conclusión Personal</p>
+      </div>
+      <div class="content">
+        <div class="conclusion-card">
+          <h3><i class="bi bi-lightbulb"></i> Mi Reflexión sobre Mi Portafolio Pedagógico</h3>
+          <textarea>Mi portafolio de productos no es simplemente una colección de trabajos; es una herramienta estratégica que combina mi desarrollo profesional con mi pasión por la enseñanza. Como desarrolladora con formación pedagógica, veo mi portafolio como un puente entre el mundo técnico y el educativo, permitiéndome comunicar mi valor profesional de manera tangible mientras comparto conocimiento con otros.
+
+La creación de este portafolio ha sido un proceso profundo de autoconocimiento profesional. Me ha obligado a reflexionar sobre mis logros, identificar mis fortalezas y áreas de mejora, y definir cómo quiero ser percibida en el campo profesional. Más allá de mostrar lo que he hecho, mi portafolio demuestra mi capacidad de pensar críticamente, resolver problemas y, especialmente, comunicar ideas técnicas de manera accesible y educativa.
+
+Mantener mi portafolio actualizado fomenta mi aprendizaje continuo y mi mejora constante. Cada nuevo proyecto que agrego del bootcamp representa un nuevo hito en mi desarrollo profesional, y cada actualización es una oportunidad para refinar tanto mi presentación técnica como mi metodología pedagógica. En esencia, mi portafolio es tanto un reflejo de mi pasado como una promesa de mi potencial futuro, tanto como desarrolladora como educadora.
+
+Como desarrolladora, un portafolio construido con código propio demuestra mis habilidades técnicas de manera práctica, mostrando no solo qué puedo hacer, sino cómo lo hago. Pero como educadora, mi portafolio va más allá: es una inversión en mi carrera profesional que genera retornos a largo plazo en forma de oportunidades laborales, conexiones profesionales, crecimiento personal y, especialmente, la capacidad de inspirar y enseñar a otros desarrolladores en formación.</textarea>
+          <p style="font-size: 0.8rem; color: var(--texto-medio); margin-top: 12px; font-style: italic; line-height: 1.6;">
+            <i class="bi bi-lightbulb"></i> <strong>Mi Compromiso:</strong> Continuaré actualizando mi portafolio con nuevos proyectos y mejoras, manteniendo siempre el enfoque pedagógico que me caracteriza.
+          </p>
+        </div>
+        <div class="screen-indicator">8 / 8</div>
+        <div class="nav-bar two-items">
+          <a href="#" class="nav-item two-items" onclick="showScreen(7); return false;">
+            <i class="bi bi-arrow-left"></i>
+            <span>Atrás</span>
+          </a>
+          <a href="#" class="nav-item two-items" onclick="showScreen(1); return false;">
+            <i class="bi bi-house-fill"></i>
+            <span>Inicio</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showScreen(screenNumber) {
+      // Ocultar todas las pantallas
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+
+      // Mostrar la pantalla seleccionada
+      document.getElementById('screen' + screenNumber).classList.add('active');
+
+      // Scroll al inicio
+      document.getElementById('screen' + screenNumber).scrollTop = 0;
+
+      // Actualizar visibilidad de la barra de navegación
+      document.querySelectorAll('.nav-bar').forEach(nav => {
+        nav.classList.remove('always-visible');
+      });
+
+      // La primera pantalla siempre muestra la navegación
+      if (screenNumber === 1) {
+        const firstNav = document.querySelector('#screen1 .nav-bar');
+        if (firstNav) {
+          firstNav.classList.add('always-visible');
+        }
+      }
+
+      // Actualizar navegación activa
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+    }
+
+    // Navegación con teclado
+    document.addEventListener('keydown', function(e) {
+      const activeScreen = document.querySelector('.screen.active');
+      const currentScreen = parseInt(activeScreen.id.replace('screen', ''));
+
+      if (e.key === 'ArrowRight' && currentScreen < 8) {
+        showScreen(currentScreen + 1);
+      } else if (e.key === 'ArrowLeft' && currentScreen > 1) {
+        showScreen(currentScreen - 1);
+      }
+    });
+
+    // Touch swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const activeScreen = document.querySelector('.screen.active');
+      const currentScreen = parseInt(activeScreen.id.replace('screen', ''));
+
+      if (touchEndX < touchStartX - 50 && currentScreen < 8) {
+        showScreen(currentScreen + 1);
+      }
+      if (touchEndX > touchStartX + 50 && currentScreen > 1) {
+        showScreen(currentScreen - 1);
+      }
+    }
+
+    // Efectos de fondo: bombillas y partículas
+    function createBackgroundEffects() {
+      const container = document.getElementById('backgroundEffects');
+      if (!container) return;
+
+      // Crear bombillas
+      const lightbulbPositions = [
+        { top: '10%', left: '15%', delay: 0 },
+        { top: '20%', left: '85%', delay: 0.5 },
+        { top: '40%', left: '10%', delay: 1 },
+        { top: '60%', left: '90%', delay: 1.5 },
+        { top: '80%', left: '20%', delay: 2 },
+        { top: '30%', left: '70%', delay: 2.5 },
+        { top: '70%', left: '50%', delay: 3 },
+        { top: '15%', left: '50%', delay: 0.8 },
+        { top: '50%', left: '30%', delay: 1.2 },
+        { top: '85%', left: '75%', delay: 1.8 }
+      ];
+
+      lightbulbPositions.forEach((pos, index) => {
+        const lightbulb = document.createElement('div');
+        lightbulb.className = 'lightbulb';
+        lightbulb.innerHTML = '<i class="bi bi-lightbulb"></i>';
+        lightbulb.style.top = pos.top;
+        lightbulb.style.left = pos.left;
+        lightbulb.style.animationDelay = pos.delay + 's';
+        container.appendChild(lightbulb);
+
+        // Alternar encendido/apagado aleatoriamente
+        setTimeout(() => {
+          const toggleLight = () => {
+            const isOn = Math.random() > 0.4;
+            if (isOn) {
+              lightbulb.classList.add('on');
+              setTimeout(() => {
+                lightbulb.classList.remove('on');
+              }, 800 + Math.random() * 1500);
+            }
+          };
+          toggleLight();
+          setInterval(toggleLight, 2500 + Math.random() * 2000);
+        }, pos.delay * 1000);
+      });
+
+      // Crear texto izquierdo "Hola soy"
+      const backgroundTextLeft = document.createElement('div');
+      backgroundTextLeft.className = 'background-text left';
+      backgroundTextLeft.textContent = 'Hola soy';
+      container.appendChild(backgroundTextLeft);
+
+      // Crear texto derecho "Magdalena Inalaf"
+      const backgroundTextRight = document.createElement('div');
+      backgroundTextRight.className = 'background-text right';
+      backgroundTextRight.textContent = 'Magdalena Inalaf';
+      container.appendChild(backgroundTextRight);
+
+      // Alternar encendido/apagado del texto izquierdo
+      const toggleTextLeft = () => {
+        const isOn = Math.random() > 0.3;
+        if (isOn) {
+          backgroundTextLeft.classList.add('on');
+          setTimeout(() => {
+            backgroundTextLeft.classList.remove('on');
+          }, 1200 + Math.random() * 2000);
+        }
+      };
+      toggleTextLeft();
+      setInterval(toggleTextLeft, 3000 + Math.random() * 2500);
+
+      // Alternar encendido/apagado del texto derecho
+      const toggleTextRight = () => {
+        const isOn = Math.random() > 0.3;
+        if (isOn) {
+          backgroundTextRight.classList.add('on');
+          setTimeout(() => {
+            backgroundTextRight.classList.remove('on');
+          }, 1200 + Math.random() * 2000);
+        }
+      };
+      // Iniciar con un pequeño delay para que no se enciendan al mismo tiempo
+      setTimeout(() => {
+        toggleTextRight();
+        setInterval(toggleTextRight, 3000 + Math.random() * 2500);
+      }, 1000);
+
+      // Crear partículas brillantes
+      for (let i = 0; i < 20; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 4 + 's';
+        sparkle.style.animationDuration = (3 + Math.random() * 3) + 's';
+        container.appendChild(sparkle);
+      }
+
+      // Crear partículas que se mueven
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'glow-particle';
+        const startX = Math.random() * 100;
+        const startY = Math.random() * 100;
+        const dx = (Math.random() - 0.5) * 200;
+        const dy = (Math.random() - 0.5) * 200;
+        particle.style.left = startX + '%';
+        particle.style.top = startY + '%';
+        particle.style.setProperty('--dx', dx + 'px');
+        particle.style.setProperty('--dy', dy + 'px');
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        container.appendChild(particle);
+      }
+    }
+
+    // Inicializar efectos cuando la página cargue
+    document.addEventListener('DOMContentLoaded', createBackgroundEffects);
+  </script>
+</body>
+</html>
