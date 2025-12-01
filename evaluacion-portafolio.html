@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evaluación de Portafolio | Productos Digitales</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    :root {
+      --primary-purple: #805ad5;
+      --light-purple: #e9d8fd;
+      --dark-text: #2d3748;
+      --medium-text: #4a5568;
+      --light-bg: #f7fafc;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    .evaluation-header {
+      background: linear-gradient(135deg, var(--primary-purple) 0%, #9f7aea 100%);
+      color: white;
+      padding: 60px 0;
+      margin-bottom: 50px;
+    }
+
+    .evaluation-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .evaluation-header p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .problem-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-left: 5px solid var(--primary-purple);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(128, 90, 213, 0.15);
+    }
+
+    .problem-card h3 {
+      color: var(--primary-purple);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .problem-section {
+      background: var(--light-bg);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .problem-section h4 {
+      color: var(--primary-purple);
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .solution-section {
+      background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #48bb78;
+      margin-top: 20px;
+    }
+
+    .process-timeline {
+      position: relative;
+      padding-left: 40px;
+      margin: 30px 0;
+    }
+
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary-purple);
+    }
+
+    .process-step {
+      position: relative;
+      margin-bottom: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .process-step::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 20px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary-purple);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--primary-purple);
+    }
+
+    .process-step h5 {
+      color: var(--primary-purple);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .tech-badge {
+      display: inline-block;
+      background: var(--light-purple);
+      color: var(--primary-purple);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin: 5px 5px 5px 0;
+    }
+
+    .evidence-box {
+      background: white;
+      border: 2px dashed var(--primary-purple);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .evidence-box a {
+      color: var(--primary-purple);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .evidence-box a:hover {
+      text-decoration: underline;
+    }
+
+    .requirement-checklist {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .requirement-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .requirement-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .requirement-icon {
+      color: #48bb78;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .requirement-content h5 {
+      color: var(--primary-purple);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .back-to-portfolio {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: white;
+      color: var(--primary-purple);
+      border: 2px solid var(--primary-purple);
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(128, 90, 213, 0.2);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-to-portfolio:hover {
+      background: var(--primary-purple);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(128, 90, 213, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-to-portfolio">
+    <i class="bi bi-arrow-left"></i> Volver al Portafolio
+  </a>
+
+  <!-- Header -->
+  <div class="evaluation-header">
+    <div class="container">
+      <h1><i class="bi bi-clipboard-check"></i> Evaluación de Portafolio</h1>
+      <p>Productos Digitales que Resuelven Problemáticas Reales</p>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <!-- Promoción del Portafolio Principal -->
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="problem-card" style="background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%); border-left: 5px solid #48bb78; border-left-width: 8px;">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h3 style="color: #22543d; margin-bottom: 20px;">
+                <i class="bi bi-check-circle-fill" style="color: #48bb78;"></i>
+                Mi Portafolio Cumple con Todos los Requerimientos
+              </h3>
+              <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                <strong>Mi portafolio principal (portafoliojs)</strong> está completamente desarrollado, desplegado en GitHub Pages y cumple con <strong>todos los requerimientos funcionales</strong> solicitados para la evaluación de portafolio profesional.
+              </p>
+              <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                <h5 style="color: var(--primary-purple); margin-bottom: 15px;"><i class="bi bi-star-fill"></i> Características Implementadas:</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <ul style="list-style: none; padding: 0;">
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Portafolio profesional y efectivo</li>
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Diseño responsive y moderno</li>
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Múltiples productos digitales</li>
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Documentación completa</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul style="list-style: none; padding: 0;">
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Código en GitHub público</li>
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Demos en vivo funcionales</li>
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Sección profesional "Sobre Mí"</li>
+                      <li style="margin-bottom: 10px;"><i class="bi bi-check-circle-fill" style="color: #48bb78;"></i> Evidencias tangibles de habilidades</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 25px;">
+                <a href="index.html" class="btn" style="background: var(--primary-purple); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; margin-right: 15px;">
+                  <i class="bi bi-house-fill"></i> Ver Portafolio Principal
+                </a>
+                <a href="https://magdaig.github.io/portafoliojs/" target="_blank" class="btn" style="background: white; color: var(--primary-purple); border: 2px solid var(--primary-purple); padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block;">
+                  <i class="bi bi-globe"></i> Portafolio en Línea
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <i class="bi bi-trophy-fill" style="font-size: 4rem; color: #fbbf24; margin-bottom: 15px;"></i>
+                <h4 style="color: var(--primary-purple); margin-bottom: 10px;">100% Completo</h4>
+                <p style="color: var(--medium-text); margin-bottom: 20px;">Todos los requerimientos cumplidos</p>
+                <div style="background: #f0fff4; padding: 15px; border-radius: 10px;">
+                  <p style="margin: 0; font-size: 0.9rem; color: #22543d;">
+                    <strong>URL:</strong><br>
+                    <a href="https://magdaig.github.io/portafoliojs/" target="_blank" style="color: var(--primary-purple); word-break: break-all;">magdaig.github.io/portafoliojs/</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Introducción a la Evaluación -->
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="problem-card">
+          <h3><i class="bi bi-info-circle"></i> Sobre esta Evaluación</h3>
+          <p>Este documento es un <strong>resumen de la evaluación</strong> que complementa mi portafolio profesional, demostrando cómo cada producto digital desarrollado resuelve una problemática real identificada. Cada proyecto incluye la documentación del problema resuelto, el proceso de desarrollo seguido, las tecnologías utilizadas y evidencias tangibles de las competencias aplicadas.</p>
+          <p><strong>Objetivo:</strong> Mostrar mi capacidad para desarrollar productos tecnológicos efectivos que resuelvan problemas reales, aplicando buenas prácticas del ciclo de vida del desarrollo de software y utilizando tecnologías apropiadas del stack JavaScript.</p>
+          <div style="background: var(--light-bg); padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--primary-purple);">
+            <p style="margin: 0;"><strong><i class="bi bi-lightbulb"></i> Nota:</strong> Este documento detalla la evaluación de dos proyectos representativos. Para ver todos mis proyectos y el portafolio completo, visita la <a href="index.html" style="color: var(--primary-purple); font-weight: 600;">página principal del portafolio</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 1: Gestión de Tareas (Kanban) -->
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="problem-card">
+          <h3><i class="bi bi-kanban"></i> Proyecto 1: Sistema de Gestión de Tareas (Kanban)</h3>
+
+          <div class="problem-section">
+            <h4><i class="bi bi-exclamation-triangle"></i> Problemática Identificada</h4>
+            <p><strong>Problema Real:</strong> La falta de organización y seguimiento de tareas personales y profesionales genera estrés, pérdida de productividad y dificultad para priorizar actividades. Muchas personas utilizan métodos tradicionales (listas en papel, notas sueltas) que no permiten visualizar el estado de las tareas ni colaborar eficientemente.</p>
+            <p><strong>Necesidad del Usuario:</strong> Una herramienta digital que permita:</p>
+            <ul>
+              <li>Visualizar el estado de las tareas de forma clara e intuitiva</li>
+              <li>Organizar tareas por etapas de desarrollo (Borrador, En progreso, Completada)</li>
+              <li>Mover tareas entre estados de forma interactiva</li>
+              <li>Persistir la información sin necesidad de conexión constante</li>
+              <li>Acceder desde cualquier dispositivo de forma responsive</li>
+            </ul>
+          </div>
+
+          <div class="solution-section">
+            <h4><i class="bi bi-lightbulb"></i> Solución Implementada</h4>
+            <p>Desarrollé un sistema de gestión de tareas tipo Kanban que resuelve esta problemática mediante una interfaz visual e interactiva. El sistema permite a los usuarios organizar sus tareas en columnas visuales, moverlas entre estados mediante drag & drop, y mantener toda la información persistente en el navegador.</p>
+          </div>
+
+          <div class="problem-section" style="margin-top: 20px;">
+            <h4><i class="bi bi-gear"></i> Proceso de Desarrollo</h4>
+            <div class="process-timeline">
+              <div class="process-step">
+                <h5>1. Planificación y Análisis</h5>
+                <p>Identifiqué los requerimientos funcionales: sistema de columnas Kanban, drag & drop, persistencia local, autenticación básica, y diseño responsive. Definí la estructura de datos y la arquitectura de la aplicación.</p>
+              </div>
+              <div class="process-step">
+                <h5>2. Diseño de Interfaz</h5>
+                <p>Creé wireframes y mockups de la interfaz Kanban, diseñando columnas visuales claras, tarjetas de tareas informativas, y un sistema de colores que facilite la identificación rápida del estado de cada tarea.</p>
+              </div>
+              <div class="process-step">
+                <h5>3. Desarrollo Frontend</h5>
+                <p>Implementé la interfaz usando HTML5 semántico, CSS3 con Grid y Flexbox para el layout, y JavaScript ES6+ para la lógica de negocio. Integré la API de Drag & Drop nativa del navegador para la funcionalidad de arrastrar y soltar.</p>
+              </div>
+              <div class="process-step">
+                <h5>4. Persistencia de Datos</h5>
+                <p>Implementé localStorage para guardar tareas, usuarios y configuraciones. Desarrollé funciones para serializar/deserializar datos y manejar errores de almacenamiento.</p>
+              </div>
+              <div class="process-step">
+                <h5>5. Sistema de Autenticación</h5>
+                <p>Creé un sistema básico de autenticación que permite gestionar múltiples usuarios, cada uno con su propio conjunto de tareas, utilizando localStorage para mantener sesiones.</p>
+              </div>
+              <div class="process-step">
+                <h5>6. Testing y Refinamiento</h5>
+                <p>Realicé pruebas en múltiples navegadores, dispositivos móviles y tablets. Ajusté el diseño responsive y optimicé la experiencia de usuario basándome en feedback.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="problem-section" style="margin-top: 20px;">
+            <h4><i class="bi bi-code-slash"></i> Tecnologías Utilizadas</h4>
+            <div>
+              <span class="tech-badge">HTML5</span>
+              <span class="tech-badge">CSS3</span>
+              <span class="tech-badge">JavaScript ES6+</span>
+              <span class="tech-badge">Drag & Drop API</span>
+              <span class="tech-badge">LocalStorage API</span>
+              <span class="tech-badge">Bootstrap 5</span>
+            </div>
+            <p style="margin-top: 15px;"><strong>Justificación Tecnológica:</strong> Elegí estas tecnologías porque son estándares web modernos que permiten crear una aplicación completamente funcional sin dependencias externas complejas. El uso de APIs nativas del navegador (Drag & Drop, LocalStorage) garantiza rendimiento y compatibilidad, mientras que Bootstrap asegura un diseño responsive profesional.</p>
+          </div>
+
+          <div class="evidence-box" style="margin-top: 30px;">
+            <h5 style="color: var(--primary-purple); margin-bottom: 20px;"><i class="bi bi-link-45deg"></i> Evidencias del Proyecto</h5>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <img src="assets/img/gestion-tareas.png" alt="Sistema de Gestión de Tareas Kanban" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Interfaz Kanban del Sistema</p>
+              </div>
+              <div class="col-md-6">
+                <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid var(--primary-purple);">
+                  <p><strong><i class="bi bi-globe"></i> Demo en Vivo:</strong><br>
+                  <a href="https://magdaig.github.io/Gestion-de-tareas-con-javascript/" target="_blank" style="color: var(--primary-purple);">magdaig.github.io/Gestion-de-tareas-con-javascript/</a></p>
+                  <p class="mb-0"><strong><i class="bi bi-github"></i> Código Fuente:</strong><br>
+                  <a href="https://github.com/MagdaIG/Gestion-de-tareas-con-javascript" target="_blank" style="color: var(--primary-purple);">github.com/MagdaIG/Gestion-de-tareas-con-javascript</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 2: App Gestor de Usuarios -->
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="problem-card">
+          <h3><i class="bi bi-people"></i> Proyecto 2: App Gestor de Usuarios y Roles</h3>
+
+          <div class="problem-section">
+            <h4><i class="bi bi-exclamation-triangle"></i> Problemática Identificada</h4>
+            <p><strong>Problema Real:</strong> Las organizaciones necesitan gestionar usuarios, roles y permisos de forma eficiente y segura. Los sistemas tradicionales de gestión manual o hojas de cálculo no escalan, son propensos a errores, y no garantizan la integridad de los datos. Además, la falta de un sistema centralizado dificulta el control de acceso y la auditoría.</p>
+            <p><strong>Necesidad del Usuario:</strong> Una aplicación web que permita:</p>
+            <ul>
+              <li>Gestionar usuarios con información completa y validada</li>
+              <li>Asignar y gestionar roles con diferentes niveles de acceso</li>
+              <li>Mantener relaciones complejas entre usuarios, roles y permisos</li>
+              <li>Garantizar integridad de datos mediante transacciones</li>
+              <li>Proporcionar una interfaz intuitiva para administradores</li>
+              <li>Almacenar datos de forma persistente y segura</li>
+            </ul>
+          </div>
+
+          <div class="solution-section">
+            <h4><i class="bi bi-lightbulb"></i> Solución Implementada</h4>
+            <p>Desarrollé una aplicación fullstack completa que gestiona usuarios y roles utilizando PostgreSQL como base de datos relacional y Sequelize como ORM. La aplicación implementa relaciones complejas (1:1, 1:N, N:M), transacciones atómicas, validaciones robustas y una interfaz administrativa responsive.</p>
+          </div>
+
+          <div class="problem-section" style="margin-top: 20px;">
+            <h4><i class="bi bi-gear"></i> Proceso de Desarrollo</h4>
+            <div class="process-timeline">
+              <div class="process-step">
+                <h5>1. Análisis de Requerimientos</h5>
+                <p>Definí el modelo de datos: Usuarios, Roles, y la relación muchos-a-muchos entre ellos. Identifiqué las operaciones CRUD necesarias y los casos de uso principales del sistema.</p>
+              </div>
+              <div class="process-step">
+                <h5>2. Diseño de Base de Datos</h5>
+                <p>Diseñé el esquema de base de datos en PostgreSQL, definiendo tablas, relaciones, constraints y validaciones. Implementé normalización hasta 3FN para garantizar integridad referencial.</p>
+              </div>
+              <div class="process-step">
+                <h5>3. Configuración del Backend</h5>
+                <p>Configuré un servidor Express con Sequelize ORM, estableciendo conexión a PostgreSQL, definiendo modelos con asociaciones (hasMany, belongsToMany), y configurando middleware para validación y manejo de errores.</p>
+              </div>
+              <div class="process-step">
+                <h5>4. Implementación de APIs REST</h5>
+                <p>Desarrollé endpoints RESTful para todas las operaciones CRUD de usuarios y roles. Implementé transacciones para operaciones que requieren múltiples cambios en la base de datos, garantizando atomicidad.</p>
+              </div>
+              <div class="process-step">
+                <h5>5. Validaciones y Seguridad</h5>
+                <p>Implementé validaciones con Joi para datos de entrada, hash seguro de contraseñas con bcrypt, y manejo de errores robusto. Agregué validaciones a nivel de base de datos mediante constraints.</p>
+              </div>
+              <div class="process-step">
+                <h5>6. Desarrollo del Frontend</h5>
+                <p>Creé una interfaz administrativa con Bootstrap 5 que consume las APIs REST. Implementé formularios dinámicos, tablas responsivas, modales para confirmaciones, y feedback visual para todas las operaciones.</p>
+              </div>
+              <div class="process-step">
+                <h5>7. Testing y Documentación</h5>
+                <p>Realicé pruebas de todas las funcionalidades, validé las transacciones, y documenté el proyecto con diagramas ERD, explicaciones técnicas y capturas de pantalla del proceso.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="problem-section" style="margin-top: 20px;">
+            <h4><i class="bi bi-code-slash"></i> Tecnologías Utilizadas</h4>
+            <div>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">Express</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">Sequelize ORM</span>
+              <span class="tech-badge">Joi (Validación)</span>
+              <span class="tech-badge">bcrypt</span>
+              <span class="tech-badge">Bootstrap 5</span>
+              <span class="tech-badge">JavaScript ES6+</span>
+            </div>
+            <p style="margin-top: 15px;"><strong>Justificación Tecnológica:</strong> Elegí Node.js y Express para el backend porque permiten desarrollo rápido y eficiente de APIs REST. PostgreSQL es ideal para datos relacionales complejos, y Sequelize simplifica el manejo de relaciones y transacciones. Esta stack es estándar en la industria y demuestra competencia en desarrollo fullstack.</p>
+          </div>
+
+          <div class="evidence-box" style="margin-top: 30px;">
+            <h5 style="color: var(--primary-purple); margin-bottom: 20px;"><i class="bi bi-link-45deg"></i> Evidencias del Proyecto</h5>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <img src="assets/img/screenshot-dashboard.png" alt="Dashboard del Gestor de Usuarios" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Dashboard Principal</p>
+              </div>
+              <div class="col-md-6">
+                <img src="assets/img/screenshot-users-list.png" alt="Lista de Usuarios" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Lista de Usuarios</p>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <img src="assets/img/screenshot-user-form.png" alt="Formulario de Usuario" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Formulario de Creación/Edición</p>
+              </div>
+              <div class="col-md-6">
+                <img src="assets/img/screenshot-roles.png" alt="Gestión de Roles" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Gestión de Roles</p>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <img src="assets/img/diagrama-erd.png" alt="Diagrama ERD" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Diagrama Entidad-Relación</p>
+              </div>
+              <div class="col-md-6">
+                <img src="assets/img/modelo-usuario1.png" alt="Modelo de Usuario en Sequelize" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Modelo Sequelize - Usuario</p>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <img src="assets/img/endpoints-usuarios.png" alt="Endpoints de la API" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Endpoints REST API</p>
+              </div>
+              <div class="col-md-6">
+                <img src="assets/img/ejemplodetransaccionensequelize.png" alt="Transacciones en Sequelize" class="img-fluid rounded shadow-sm" style="border: 2px solid var(--primary-purple);">
+                <p class="text-center mt-2" style="font-size: 0.85rem; color: var(--medium-text);">Implementación de Transacciones</p>
+              </div>
+            </div>
+
+            <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid var(--primary-purple); margin-top: 20px;">
+              <p class="mb-2"><strong><i class="bi bi-file-earmark-text"></i> Documentación Completa:</strong><br>
+              <a href="app-gestor-usuario.html" target="_blank" style="color: var(--primary-purple);">Ver Documentación Técnica Completa</a></p>
+              <p class="mb-0"><strong><i class="bi bi-github"></i> Código Fuente:</strong><br>
+              <a href="https://github.com/MagdaIG/portafoliojs" target="_blank" style="color: var(--primary-purple);">github.com/MagdaIG/portafoliojs</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verificación Completa de Cumplimiento -->
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="problem-card" style="background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%); border-left: 8px solid #48bb78;">
+          <h3 style="color: #22543d; font-family: 'Poppins', sans-serif; margin-bottom: 25px;">
+            <i class="bi bi-check-circle-fill" style="color: #48bb78; font-size: 2rem;"></i> Verificación de Cumplimiento Completo
+          </h3>
+          <p style="font-size: 1.1rem; margin-bottom: 30px; color: #22543d;">
+            <strong>Confirmación:</strong> Mi portafoliojs cumple con <strong>TODOS</strong> los requerimientos funcionales mínimos esperados para la evaluación de portafolio profesional.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cumplimiento de Requerimientos -->
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="requirement-checklist">
+          <h3 style="color: var(--primary-purple); font-family: 'Poppins', sans-serif; margin-bottom: 30px;">
+            <i class="bi bi-check2-square"></i> Cumplimiento Detallado de Requerimientos Funcionales
+          </h3>
+
+          <div class="requirement-item">
+            <i class="bi bi-check-circle-fill requirement-icon"></i>
+            <div class="requirement-content">
+              <h5>1. Portafolio Profesional y Efectivo <span style="color: #48bb78; font-size: 0.9rem;">✓ CUMPLIDO</span></h5>
+              <p><strong>Claridad y enfoque:</strong> El portafolio comunica claramente mi propuesta de valor como desarrolladora fullstack con enfoque pedagógico. Sección "Sobre Mí" con objetivos profesionales definidos.</p>
+              <p><strong>Organización:</strong> Contenido estructurado con navegación intuitiva (menú fijo), secciones bien definidas (Sobre Mí, Proyectos, Habilidades, Contacto) y fácil acceso a todos los proyectos.</p>
+              <p><strong>Pruebas de habilidades:</strong> Cada proyecto incluye capturas de pantalla, enlaces a demos en vivo, código fuente en GitHub y documentación técnica detallada. Evidencias tangibles en cada sección.</p>
+              <p><strong>Estética y diseño:</strong> Diseño moderno, profesional, con paleta de colores consistente (morado/rosa), tipografía clara (Inter, Poppins) y animaciones suaves con AOS.</p>
+              <p><strong>Responsividad:</strong> Completamente responsive usando Bootstrap 5, probado en dispositivos móviles, tablets y desktop. Menú hamburguesa para móviles.</p>
+              <p style="margin-top: 10px; padding: 10px; background: #f0fff4; border-radius: 5px; border-left: 3px solid #48bb78;">
+                <strong><i class="bi bi-link-45deg"></i> Evidencia:</strong> <a href="index.html" target="_blank" style="color: var(--primary-purple);">Ver Portafolio Principal</a> |
+                <a href="https://magdaig.github.io/portafoliojs/" target="_blank" style="color: var(--primary-purple);">Portafolio en Línea</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="requirement-item">
+            <i class="bi bi-check-circle-fill requirement-icon"></i>
+            <div class="requirement-content">
+              <h5>2. Productos Tecnológicos que Resuelven Problemáticas Reales <span style="color: #48bb78; font-size: 0.9rem;">✓ CUMPLIDO</span></h5>
+              <p><strong>Identificación de problemáticas:</strong> Cada proyecto documenta claramente el problema real que resuelve. Este documento (evaluacion-portafolio.html) detalla las problemáticas de Gestión de Tareas y App Gestor de Usuarios. Otros proyectos también documentan sus problemáticas.</p>
+              <p><strong>Proceso de desarrollo:</strong> Cada proyecto incluye documentación del proceso seguido con timeline detallado (planificación, diseño, desarrollo, testing). Ver secciones "Proceso de Desarrollo" en este documento.</p>
+              <p><strong>Tecnologías apropiadas:</strong> Uso de tecnologías modernas del stack JavaScript (Node.js, Express, PostgreSQL, Sequelize, JavaScript ES6+, Bootstrap 5) que reflejan tendencias actuales de la industria. Justificación tecnológica incluida.</p>
+              <p style="margin-top: 10px; padding: 10px; background: #f0fff4; border-radius: 5px; border-left: 3px solid #48bb78;">
+                <strong><i class="bi bi-folder"></i> Proyectos que resuelven problemáticas reales:</strong> Gestión de Tareas (Kanban), App Gestor de Usuarios, Cute Shop (E-commerce), Sistema de Inventario, y más. Todos documentados en el portafolio.
+              </p>
+            </div>
+          </div>
+
+          <div class="requirement-item">
+            <i class="bi bi-check-circle-fill requirement-icon"></i>
+            <div class="requirement-content">
+              <h5>3. Implementación del Portafolio de Producto Digital <span style="color: #48bb78; font-size: 0.9rem;">✓ CUMPLIDO</span></h5>
+              <p><strong>Diseño del portafolio:</strong> Sitio web responsivo desarrollado con HTML5, CSS3, Bootstrap 5 y JavaScript, desplegado en GitHub Pages. Accesible 24/7 en magdaig.github.io/portafoliojs/</p>
+              <p><strong>Contenido del portafolio:</strong> Cada producto incluye descripción completa, objetivos resueltos, tecnologías utilizadas, capturas de pantalla, enlaces a demos en vivo y código fuente en GitHub. Ver sección "Proyectos de Portafolio" en index.html</p>
+              <p><strong>Presentación profesional:</strong> Sección "Sobre Mí" con experiencia, habilidades técnicas, formación, y objetivos profesionales claramente definidos. Incluye foto profesional y trayectoria.</p>
+              <p><strong>Gestión del código:</strong> Todo el código está versionado en GitHub (github.com/MagdaIG/portafoliojs) con commits descriptivos, README.md detallado, documentación en código con comentarios, y estructura de carpetas organizada.</p>
+              <p><strong>Pruebas de acceso:</strong> Enlaces directos a demos en vivo (magdaig.github.io/Gestion-de-tareas-con-javascript/, etc.) y código fuente disponible públicamente en GitHub. Cada proyecto tiene botón "Ver Proyecto" funcional.</p>
+              <p style="margin-top: 10px; padding: 10px; background: #f0fff4; border-radius: 5px; border-left: 3px solid #48bb78;">
+                <strong><i class="bi bi-github"></i> Repositorio:</strong> <a href="https://github.com/MagdaIG/portafoliojs" target="_blank" style="color: var(--primary-purple);">github.com/MagdaIG/portafoliojs</a> |
+                <strong><i class="bi bi-globe"></i> Sitio:</strong> <a href="https://magdaig.github.io/portafoliojs/" target="_blank" style="color: var(--primary-purple);">magdaig.github.io/portafoliojs/</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="requirement-item">
+            <i class="bi bi-check-circle-fill requirement-icon"></i>
+            <div class="requirement-content">
+              <h5>4. Entrega Final <span style="color: #48bb78; font-size: 0.9rem;">✓ CUMPLIDO</span></h5>
+              <p><strong>Portafolio Digital Funcional:</strong> Disponible en línea en <a href="https://magdaig.github.io/portafoliojs/" target="_blank" style="color: var(--primary-purple); font-weight: 600;">magdaig.github.io/portafoliojs/</a> con diseño atractivo y fácil navegación. Incluye <strong>más de dos proyectos</strong> que resuelven problemas reales: Gestión de Tareas, App Gestor de Usuarios, Cute Shop, Sistema de Inventario, Gestión de Productos, y más.</p>
+              <p><strong>Documentación del Proyecto:</strong> Cada producto documenta el problema resuelto, tecnologías utilizadas y enfoque de desarrollo seguido. Este documento (evaluacion-portafolio.html) detalla 2 proyectos representativos. Páginas individuales (app-gestor-usuario.html, gestor-productos.html, etc.) documentan cada proyecto completo.</p>
+              <p><strong>Código Fuente en GitHub:</strong> Todo el código está disponible públicamente en <a href="https://github.com/MagdaIG/portafoliojs" target="_blank" style="color: var(--primary-purple); font-weight: 600;">github.com/MagdaIG/portafoliojs</a> con buenas prácticas de codificación, comentarios explicativos, estructura clara, README.md completo y documentación técnica.</p>
+              <p style="margin-top: 10px; padding: 15px; background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%); border-radius: 8px; border: 2px solid #48bb78;">
+                <strong style="color: #22543d; font-size: 1.1rem;"><i class="bi bi-check-circle-fill"></i> RESUMEN:</strong> <br>
+                ✓ Portafolio funcional en línea<br>
+                ✓ Más de 2 proyectos que resuelven problemas reales<br>
+                ✓ Documentación completa de cada proyecto<br>
+                ✓ Código fuente público en GitHub con buenas prácticas<br>
+                ✓ Todas las evidencias (capturas, demos, código) disponibles
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conclusión -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="problem-card" style="background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%); border-left-color: #48bb78;">
+          <h3 style="color: #22543d;"><i class="bi bi-trophy"></i> Conclusión</h3>
+          <p>Este portafolio demuestra mi capacidad para desarrollar productos tecnológicos efectivos que resuelven problemáticas reales. Cada proyecto fue desarrollado siguiendo buenas prácticas del ciclo de vida del desarrollo de software, desde la identificación de necesidades hasta la implementación y documentación.</p>
+          <p>Los productos desarrollados utilizan tecnologías modernas y apropiadas del stack JavaScript, reflejando las tendencias actuales de la industria. El portafolio está completamente funcional, accesible en línea, y documentado para facilitar la revisión por parte de empleadores, colaboradores y la comunidad de desarrolladores.</p>
+          <p><strong>Este portafolio no solo muestra lo que sé hacer, sino cómo lo hago, por qué lo hago, y cómo puedo contribuir a resolver problemas reales mediante el desarrollo de software.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container text-center">
+      <p class="text-muted mb-0">
+        <i class="bi bi-github"></i>
+        <a href="https://github.com/MagdaIG/portafoliojs" target="_blank" style="color: var(--primary-purple); text-decoration: none;">Repositorio en GitHub</a> |
+        <a href="https://magdaig.github.io/portafoliojs/" target="_blank" style="color: var(--primary-purple); text-decoration: none;">Portafolio en Línea</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+
